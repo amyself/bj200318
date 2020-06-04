@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 100px;
+            height: 100px;
+            background: pink;
+            position: absolute;
+            left:0;
+            top:0;
+        }
+    </style>
+</head>
+<body>
+<div id="box">哈哈哈</div>
+<script type="text/javascript">
+  window.onload = function () {
+//    这个功能不能使用单击事件  因为单击事件需要包含鼠标按下和鼠标抬起两个动作
+//    这个功能需要用到三个事件  onmousedown鼠标按下  onmouseup鼠标抬起  onmousemove 鼠标移动
+//    三个事件存在的关系  鼠标按下以后才可以移动  鼠标抬起后 需要 移除  鼠标移动事件和鼠标抬起事件
+//    元素距离差 = 鼠标距离差
+//     鼠标移动后的位置
+//      鼠标距离差      这一次交互鼠标移动的距离
+      var box = document.getElementById('box');
+      box.onmousedown = function (event) {
+          event = event || window.event;//兼容写法
+//        console.log('鼠标按下');
+//     元素起始位置   按下鼠标的时候
+          var eleX = box.offsetLeft;
+          var eleY = box.offsetTop;
+
+//         鼠标按下的位置
+          var startX = event.clientX;
+          var startY = event.clientY;
+          box.onmousemove = function (event) {
+              event = event || window.event;
+//             在移动过程中 根据当前鼠标位置 动态的修改box的left和top
+//              console.log('鼠标移动');
+//             获取元素移动后的位置
+                var endX = event.clientX;
+                var endY = event.clientY;
+//                计算鼠标距离差
+                var disX = endX - startX;
+                var disY = endY - startY;
+//                计算元素最终位置    元素起始位置 + 鼠标距离差（元素距离差）  = 元素最终位置
+                var lastX = disX + eleX;
+                var lastY = disY + eleY;
+
+//              设置最终的位置给元素
+              box.style.left = lastX + 'px';
+              box.style.top = lastY + 'px';
+          };
+          box.onmouseup = function () {
+//             移除鼠标移动和鼠标抬起事件
+              console.log('鼠标抬起');
+              box.onmousemove = null;
+              box.onmouseup = null;
+          };
+      };
+
+
+  }
+</script>
+</body>
+</html>

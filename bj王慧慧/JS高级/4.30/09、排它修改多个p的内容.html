@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>我是段落1</p>
+		<p>我是段落2</p>
+		<p>我是段落3</p>
+		<p>我是段落4</p>
+		<p>我是段落5</p>
+		<script type="text/javascript">
+			//1、点击任意的一个p，让所有的p内容变为哈哈
+			
+//			window.onload = function(){
+//				//获取到所有的p
+//				var pNodes = document.querySelectorAll('p');
+//				
+//				//每个p都要添加点击事件监听
+//				for(var i = 0; i < pNodes.length; i++){
+//					pNodes[i].onclick = function(){
+//						//点击之后，需要把每个p的内容都改为haha
+//						for(var j = 0; j < pNodes.length; j++){
+//							pNodes[j].innerHTML = '哈哈';
+//						}
+//					};
+//				}
+//			}
+			//点击任何的一个p，点击的这个p变成哈哈，其它的变成嘿嘿
+			
+			window.onload = function(){
+				//获取到所有的p
+				var pNodes = document.querySelectorAll('p');
+				
+				//每个p都要添加点击事件监听
+				for(var i = 0; i < pNodes.length; i++){
+					pNodes[i].onclick = function(){
+						//点击之后，点击的那一个变哈哈，其它的变嘿嘿
+						//排它思想
+						//第一步、先让所有的全部变成嘿嘿
+						for(var j = 0; j < pNodes.length; j++){
+							pNodes[j].innerHTML = '嘿嘿';
+						}
+						//第二步、再让点击的那一个变成哈哈
+						//只要以后你们敢在事件回调函数当中直接使用外部for循环的循环变量，就给你报错；
+						//因为内部事件回调函数执行的时候，循环早都执行完啦，循环变量的值早都已经变味了；
+//						console.log(i);//5
+//						pNodes[i].innerHTML = '哈哈';
+
+						this.innerHTML = '哈哈';//this在事件回调函数当中，代表发生事件的那个元素对象（一般就是事件源）；
+
+					};
+				}
+			}
+			
+		</script>
+	</body>
+</html>

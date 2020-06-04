@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 100px;
+            height: 100px;
+            background: pink;
+        }
+
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script type="text/javascript">
+  // 点击div 让div的宽度变成300  高度变成300  背景色变成天蓝
+    window.onload = function () {
+      var box = document.getElementById('box');
+      box.onclick = function () {
+//          console.log(box.style.width);//从行内拿不到样式的，因为一开始行内是没有这个样式的
+//       修改样式语法    要操作的元素.style.要操作的样式名称 = ‘属性值’;
+//       问题：多个样式同时操作   比较麻烦  所以一般操作多个的时候 可以选择添加class;
+//       在使用js操作样式时  只要是碰到中划线  ‘-’的时候   要把中划线去掉 然后直接转换成小驼峰写法
+        box.style.width = '300px';
+        box.style.height = '300px';
+//        background-color
+        box.style.backgroundColor = 'skyblue';
+        console.log(box.style.width);//设置了行内样式之后，才能读取到;就算能读取 也不这样读取
+//        js操作样式的时候，都是操作行内样式（内联样式），只有内联才会让权限最高，才能保证js后期的操作的样式生效
+//        js如果一开始就去读取元素的某个样式，是读取不到的，因为一开始行内没有写样式；
+//        一般我们在操作样式的时候，设置可以直接设置 读取的时候后边会有特定的方法去读；
+      }
+    }
+</script>
+</body>
+</html>

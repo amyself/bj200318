@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    //正则第一种创建方式  ， 字面量创建正则对象
+//  var str = 'ijowienobuefdknv';
+////  1、假设我想要知道一个字符串当中是否有6，该如何去做
+//    var patt = /6/;//正则就是你要去查找或者判断的规则；
+//    var result = patt.test(str);//test是用来在字符串当中查找是否存在符合规则的字符串
+//    console.log(result);
+//    正则第二种创建方式  构造函数创建正则对象
+//    var patt = new RegExp('6');
+//    var result = patt.test(str);
+//    console.log(result)
+
+
+//    2、查找字符串当中是否包含数字
+//    var patt = /\d/;//\d代表的是一个数字
+    //    var result = patt.test(str);
+    //    console.log(result)
+//    var patt = new RegExp('\\d');
+//    var result = patt.test(str);
+//    console.log(result)
+//    3、字符串是否存在
+//    var str = '!@#$';
+//    var patt = /abcd/;
+//    var result = patt.test(str);
+//    console.log(result);
+//    4、字符串当中是否有字母
+//    var patt = /\w/;//  \w代表的是一个单词字符
+//    var result = patt.test(str);
+//    console.log(result)
+//    5、查找其中任意一个
+//    var str = 'ddcdcddddccccdcdcdcdca';
+//    var patt = /[^dc]/;//[] 可以理解成或的意思  [3456789]   ^可以理解成非的意思
+//    var result = patt.test(str);
+//    console.log(result)
+//    6、判断字符串是否包含四个连续数字
+//    var str = 'fokdo41foskdov122okbob125';
+//    var patt = /\d{4}/;
+//    var result = patt.test(str);
+//    console.log(result)
+//    7、判断字符串是不是一个11位的数字字符串
+//    var str = '9999999999900';
+//    var patt = /^\d{11}$/;
+//    console.log(patt.test(str));
+//    8.* + ? 的含义
+//    var str = 'oijweoif456dd';
+////    var patt = /\d+/;//1个或多个数字
+////    var patt = /\d*/;//0个或多个数字
+//    var patt = /\d?/;//0个或1个数字
+//    console.log(patt.test(str));
+//    9、（）分组,反向引用
+//    var str = '111bb1111b111';
+//    var patt = /^(1{3})(b{2})\1\2\1$/;
+//    console.log(patt.test(str))
+//  11、字符串方法 使用正则
+//    search   match   replace
+//    search  从字符串当中去查找看是否存在符合正则的字符串  如果存在返回索引 如果不存在返回-1
+//    var str = 'joijphuanghaibingow23r0dmlfb';
+//    var patt = /huanghaibing/;
+//    var result = str.search(patt);
+//    console.log(result)
+//    match  这个方法是匹配符合正则的内容返回
+//    如果不加g， 返回一个数组 内容很详细 包含  匹配到的内容  索引  原字符串
+//    如果加g 全局匹配 把所有符合的都查到 一起返回 但是信息不详细
+//    如果找不到返回的是null；
+//    var str = 'oijwoei134kn231vld55555f12';
+//    var patt = /\d{3}/g;
+//    var result = str.match(patt);
+//    console.log(result)
+//    replace  用一个新的串 把符合正则匹配规则的子串替换掉
+//    var str = '13269997453';//132****7453
+//    var patt = /\d{3}(\d{4})\d{4}/;
+//    //添加捕获规则 括号分组除了可以反向引用之外
+//    // 还可以把捕获到的内容用match方法 放到数组当中
+//    console.log(str.match(patt)[1]);
+//    var result = str.replace(str.match(patt)[1],'****');
+//    console.log(result);
+//    react和vue 会使用到的一些很基础的东西做路由的匹配
+//     ^ $ \d \w + * ?  {} []  ()
+//    判断手机号
+//    var str = '130213549631';
+//    var patt = /^1[3-9]\d{9}$/;
+//    console.log(patt.test(str))
+//   匹配身份证号
+//    var str = '';
+//    var patt = /\d{17}[\d|x]|\d{15}/;
+
+//    从一篇文章 中 匹配所有的电话号码
+    var str = 'vba130213549631wefv123623asdp13269997453'
+    var patt = /1[3-9]\d{9}/g;
+    var result = str.match(patt);
+    console.log(result)
+</script>
+</body>
+</html>

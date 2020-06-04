@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #wrap{
+            width: 830px;
+            height: 482px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .list{
+            height: 482px;
+            width: 830px;
+            overflow: hidden;
+
+        }
+        .list>li{
+            list-style: none;
+            position: absolute;
+        }
+
+        /*pointer样式*/
+        #pointer{
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            width: 160px;
+            height: 20px;
+        }
+        #pointer>a{
+            display: block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            float: left;
+            background-color: rgba(255,255,255,.6);
+            /*background-color: yellow;*/
+            margin: 0 6px;
+
+        }
+        /*左右两侧的样式*/
+.left,.right{
+    width: 30px;
+    height: 50px;
+    background-color: rgba(255,255,255,.2);
+    position: absolute;
+    font-size: 30px;
+    font-weight: bolder;
+    text-align: center;
+    line-height: 50px;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+}
+        .right{
+            right: 0px;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <div id="ad">
+        <ul class="list">
+            <li><img src="img/1.jpg"></li>
+            <li><img src="img/2.jpg"></li>
+            <li><img src="img/3.png"></li>
+            <li><img src="img/4.png"></li>
+            <li><img src="img/5.png"></li>
+        </ul>
+    </div>
+    <div id="pointer">
+        <a href="#" style="background-color: rgb(252,180,45)"></a>
+        <a href="#"></a>
+        <a href="#"></a>
+        <a href="#"></a>
+        <a href="#"></a>
+    </div>
+    <div class="left">	&lt;</div>
+    <div class="right">	&gt;</div>
+</div>
+
+
+
+</body>
+</html>

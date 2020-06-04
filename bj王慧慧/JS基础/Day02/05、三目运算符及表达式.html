@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//所有语言当中只要出现三目运算符  就是?:
+			//由这个运算符组成的表达式，我们叫做三元表达式或者问号冒号表达式
+			//
+			//三元表达式执行过程：
+			//  先看问号？前面的值，如果值为真，则取冒号：前面的值作为整个表达式的值，冒号：后面的不执行：
+			//		            前面的值，如果值为假，则取冒号：后面的值作为整个表达式的值，冒号：前面的不执行；
+			
+			//1、
+//			var a = 10;
+//			var b = 20;
+//			console.log(a + b > 50 ? a++ : ++b);//21
+//			console.log(a,b);
+			
+			//2、
+//			var a = 100;
+//			var b = 200;
+//			console.log('heihei'?a+b++:b--);//300   a 100  b201
+//			console.log(a,b);//100 201
+			
+			
+			//3、
+			var str = '666';
+			var a = 0;
+			var c = (a && str)? str : (a++ && str);
+//			var c = 0?str:0
+			console.log(c,a);
+			
+		</script>
+	</body>
+</html>

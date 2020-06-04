@@ -1,0 +1,43 @@
+//引入外部混合
+@import "mixin";
+//@import "reset";
+//@import "header";
+//@import "footer";
+*{
+  margin: 0;
+  padding: 0;
+}
+.allCenter(@w:100px,@h:100px,@bg:red){
+  width: @w;
+  height: @h;
+  background: @bg;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+};
+.wrap{
+  .allCenter(@w:500px,@h:500px,@bg:pink);
+  .box1{
+    .allCenter(@w:400px,@h:400px,@bg:yellowgreen);
+  }
+  .box2{
+    .allCenter(@w:300px,@h:300px,@bg:skyblue);
+  }
+  .box3{
+    .allCenter();
+  }
+}
+//  代码的书写要有规律
+.btn{
+  position: absolute;  top: 0;  bottom: 0;  left: 0;  right: 0;
+  display: block;  width: 100px;  height: 30px;margin: 0 auto;border:1px solid #ccc;
+  line-height: 30px;  text-align: center;  color: #00b3ee;font-weight: bold;
+  background: pink;
+  border-radius: 10px;
+  span{
+
+  }
+}

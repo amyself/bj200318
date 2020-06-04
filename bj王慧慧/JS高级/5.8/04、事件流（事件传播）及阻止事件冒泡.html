@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            position: absolute;
+            left:50%;
+            top:50%;
+            transform: translate(-50%,-50%);
+        }
+        .wrap{
+            width: 400px;
+            height: 400px;
+            background: pink;
+        }
+        .box{
+            width: 300px;
+            height: 300px;
+            background: skyblue;
+        }
+        .inner{
+            width: 200px;
+            height: 200px;
+            background: orange;
+        }
+    </style>
+</head>
+<body>
+    <h1>wrap是最外边的   box排第二  inner是最里边的</h1>
+    <div class="wrap">
+        <div class="box">
+            <div class="inner"></div>
+        </div>
+    </div>
+<script type="text/javascript">
+  window.onload = function () {
+    var wrap = document.querySelector('.wrap');
+    var box = document.querySelector('.box');
+    var inner = document.querySelector('.inner');
+//    事件传播是客观存在的      但是是否有反馈或者存在逻辑  是由是否绑定了回调函数决定的
+//     事件冒泡机制   就是由内向外 逐层传递  最终到document结束
+//      事件冒泡是可以被阻止的   要通过事件对象上的一个方法来阻止
+//      dom0事件及dom2的低版本事件都是冒泡
+//    inner.onclick = function () {
+//      console.log('我是inner');
+////      阻止事件冒泡
+//    };
+//    box.onclick = function (event) {
+//      console.log('我是box');
+//        event.stopPropagation();
+//    };
+//    wrap.onclick = function () {
+//      console.log('我是wrap')
+//    };
+//    document.body.onclick = function () {
+//      console.log('我是body')
+//    };
+//    document.documentElement.onclick = function () {
+//        console.log('我是html')
+//    };
+//    document.onclick = function () {
+//      console.log('我是祖宗')
+//    }
+//      捕获以后基本不会有应用场景
+//      捕获只能通过dom2事件高级浏览器绑定的方式来观察
+//      知道就行了
+
+      inner.addEventListener('click',function () {
+          console.log('我是inner')
+      },true);
+      box.addEventListener('click',function () {
+          console.log('我是box')
+      },true);
+      wrap.addEventListener('click',function () {
+          console.log('我是wrap')
+      },true);
+  }
+</script>
+</body>
+</html>

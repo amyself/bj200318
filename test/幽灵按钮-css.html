@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #wrap{
+            margin:  200px auto;
+            height: 80px;
+            width: 300px;
+            background: yellowgreen;
+            color: #fff;
+            line-height: 80px;
+            text-align: center;
+            font-size: 40px;
+            font-weight: bold;
+            position: relative;
+            transition: 2s;
+        }
+        /* 谁改变了 就给谁加过渡*/
+        /*   为了不让两个横条 影响标准流当中的排列（宽度为0时  是不占位的）*/
+        #top,#bottom{
+            /*width: 100%;*/
+            /*width: 0px;*/
+            /*使用过渡时  要给定初始值*/
+            width: 0px;
+            height: 10px;
+            background: yellowgreen;
+            position: absolute;
+            transition: 2s;
+        }
+        #top{
+            top:0;
+            left:0;
+        }
+        #bottom{
+            bottom: 0;
+            right:0;
+        }
+       /* #wrap:hover #top,#wrap:hover #bottom{
+            width: 100%;
+        }
+        #wrap:hover{
+            color: yellowgreen;
+            background: #fff;
+        } */
+    </style>
+</head>
+<body>
+
+<div id="wrap">
+    <div id="top"></div>
+    HTML5
+    <div id="bottom"></div>
+</div>
+
+</body>
+<script type="text/javascript">
+    window.onload = function () {
+        var box = document.getElementById('box');
+
+
+    }
+</script>
+</html>

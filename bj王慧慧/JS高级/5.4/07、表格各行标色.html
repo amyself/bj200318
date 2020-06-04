@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>班级</td>
+            <td>姓名</td>
+            <td>性别</td>
+        </tr>
+        <tr>
+            <td>0318</td>
+            <td>张三</td>
+            <td>男</td>
+        </tr>
+        <tr>
+            <td>0318</td>
+            <td>张三</td>
+            <td>男</td>
+        </tr>
+        <tr>
+            <td>0318</td>
+            <td>张三</td>
+            <td>男</td>
+        </tr>
+        <tr>
+            <td>0318</td>
+            <td>张三</td>
+            <td>男</td>
+        </tr>
+        <tr>
+            <td>0318</td>
+            <td>张三</td>
+            <td>男</td>
+        </tr>
+    </table>
+    <script type="text/javascript">
+      window.onload = function () {
+        var trNodes = document.querySelectorAll('tr');
+          for (var i = 0; i < trNodes.length; i++) {
+              if(i%2 == 0){
+                trNodes[i].style.backgroundColor = 'grey'
+              }else {
+                trNodes[i].style.backgroundColor = 'skyblue'
+              }
+          }
+      }
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="box">
+        <p>唱歌</p>
+        <p>滑雪</p>
+        <p>吃饭</p>
+        <p>玩游戏</p>
+        <!--我是注释-->
+    </div>
+
+
+<script type="text/javascript">
+  window.onload = function () {
+//    要查找子节点或者子元素节点  必须先找到一个元素，代表找谁的（父级）
+      var box = document.getElementById('box');
+      console.log(box.childNodes);//拿的是子节点（不是子元素节点）
+
+//                         nodeName            nodeType             nodeValue
+//      文本节点            #text                 3                  文本内容
+//      元素节点          全大写的元素名          1                    null
+//      注释节点          #comment                8                   注释内容
+//      我想从子节点当中去过滤出所有的子元素节点 形成一个真数组
+
+//      var arr = [];
+      
+//      for (var i = 0; i < box.childNodes.length; i++) {
+//        if(box.childNodes[i].nodeType === 1){
+////          只要能进到if里边 说明当前这个索引对应的节点  是元素节点
+//            arr.push(box.childNodes[i])
+//        }
+//      }
+//        console.log(arr);
+
+//      子元素节点
+      console.log(box.children);//专门用来拿子元素节点的，但是高级浏览器拿到的是子元素 低级浏览器拿到的除了子元素还有注释
+      var arr2 = [];
+      for (var i = 0; i < box.children.length; i++) {
+          if(box.children[i].nodeType === 1){
+            arr2.push(box.children[i]);
+          }
+      }
+//      console.log(arr2);
+//    父节点和父元素节点
+//      console.log(box.parentNode);//父节点
+//      console.log(box.parentElement);//父元素节点
+//     注：拿父节点和父元素节点的时候  拿的都是父元素  所以以后都可以
+//      每个节点里面都有nodeType  nodeName nodeValue三个属性
+  }
+</script>
+</body>
+</html>

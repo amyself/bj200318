@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//自增自减运算符
+			// ++   --
+			// ++ -- 是让一个变量自增1或者自减1
+			// 它们只能和变量组成表达式  不能和常量    不能写1++
+			// 口诀 对于 表达式（a++  ++a）来说 
+			//1、 ++在后， 先赋值（先把变量a的值，赋值给表达式a++）后++(然后偷摸滴让变量a加1)
+			//2、 ++在前， 先++（先让变量a的值加1） 后赋值（然后再把变量的值赋值给表达式++a）;
+			
+			
+//			var a = 10;
+			//1、
+//			a++;//   a++ 和 a  是不一样的  a++是表达式  a是变量
+//			++a;
+//			console.log(a);//11
+			
+			
+			//2、
+//			console.log(++a);
+			
+			
+			//3、
+			
+//			a--;
+//			--a;
+//			console.log(a);//9
+			
+			
+			//4、
+//			console.log(--a);
+
+
+
+
+			//练习
+			var a = 2;
+			var b = 3;
+			var c = a + b++;   // a 2   b++ 3   c 5              b 4 
+			c= ++a + b++;  //  ++a 3   b++  4   c 7              a 3  b 5
+			c = a + b--;   //  a  3    b--  5   c 8              b 4
+
+			console.log(a,b,c);
+
+		</script>
+	</body>
+</html>

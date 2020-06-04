@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p style="color: skyblue">今天天气真不错</p>
+<p style="color: rebeccapurple">中午吃点啥</p>
+
+<script type="text/javascript" src="js/jquery-1.10.1.js"></script>
+<script type="text/javascript">
+  // 获取第一个p标签的字体颜色
+  console.log($('p:first').css('color'));
+//    设置所有p标签的字体颜色为pink
+  $('p').css('color','pink');
+//    设置第二个p标签的字体颜色为red  背景为 blue   宽 300px  高 30px
+    var lastPnode = $('p:last');
+//    lastPnode.css('background','blue');
+//    lastPnode.css('color','red');
+//    lastPnode.css('width','300px');
+//    lastPnode.css('height','30px');
+//   配置对象
+    lastPnode.css({
+        'color':'#fff',
+        'background':'yellowgreen',
+        'width':'400px',
+        'height':'40px'
+    })
+</script>
+</body>
+</html>

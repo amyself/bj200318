@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul,li{
+            list-style: none;
+        }
+        .list>li{
+            width: 200px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            background: pink;
+            color: #fff;
+            float: left;
+            margin-right: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <ul class="list">
+        <li>李立超</li>
+        <li>刘渊</li>
+        <li>邱海峰</li>
+    </ul>
+<script type="text/javascript">
+  window.onload = function () {
+    var liNodes = document.querySelectorAll('.list>li');
+//    需要给所有的li绑定移入和移出事件
+      for (var i = 0; i < liNodes.length; i++) {
+//          添加移入事件监听   onmouseover
+//          在pc端上 常见状态下   给元素绑定click事件  是最多的
+//          一旦涉及鼠标的移动操作   大多数情况是移入+移出 或者 移入+ 移动+ 移出
+          liNodes[i].onmouseover = function () {
+            console.log('移入');
+            this.style.backgroundColor = '#bfa';
+          };
+//          添加移出的事件监听  onmouseout
+          liNodes[i].onmouseout = function () {
+            console.log('移出');
+            this.style.backgroundColor = 'pink'
+          }
+
+      }
+  }
+</script>
+
+</body>
+</html>

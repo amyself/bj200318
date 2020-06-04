@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//逻辑运算符： &&与（并且）    ||或（或者）     ! 非（取反）
+			//一般的情况： 都是用在多个条件表达式的连接
+			// &&   一假则假     
+			// ||   一真则真  
+			// ！       非真即假，非假即真
+			//假设颜值 0 - 100表示
+			//假设金钱  50w  上下
+			var handsome = 60;
+			var money = 100000;
+			console.log(handsome >= 50  && money >= 500000);
+			console.log(handsome >= 50  || money >= 500000);
+			console.log(!(handsome >= 50  || money >= 500000));
+			
+			//二般情况：如果不是条件表达式，一般情况的口诀就不适用了
+			//特殊情况：我们要遵循以下口诀：这个口诀是通用的，一般情况也能用
+			//如果逻辑表达式是&&：********
+				//&& ：  前面的值如果为真，则取后面的值，作为整个表达式的值；
+				//		前面的值如果为假，则取前面的值，作为整个表达式的值，后面的东西不执行
+			//如果逻辑表达式是||：	
+				//|| :  前面的值如果为真，则取前面的值，作为整个表达式的值，后面的东西不执行
+				//      前面的值如果为假，则取后面的值，作为整个表达式的值
+			//如果逻辑表达式是!：	
+				//！：以后碰到它，首先感叹号要先运算，其次感叹号要求它的后面必须是一个布尔值，
+					//如果不是布尔值，先转化为布尔值，
+					//最后再取反
+				
+			//1
+//			var a = 10;
+//			a = 0;
+//			var b = 'zhaoliying';
+//			console.log(a && b);//对于数字，非0即为真
+			
+			//2
+//			var a = 0.5;
+//			a = 0;
+//			var b = 2;
+//			console.log(a && b++);
+//			console.log(b);
+
+			//3、
+//			var str = 'i love you~';
+//			str = '';
+//			var c = 10;
+//			console.log(str || ++c);//对于字符串，非空(空串)即为真
+//			console.log(c);
+			
+			
+			//4、
+			console.log(!'zhaoliying');
+			console.log(!6);
+			console.log(!0);
+			console.log(!'');
+		</script>
+			
+	</body>
+</html>

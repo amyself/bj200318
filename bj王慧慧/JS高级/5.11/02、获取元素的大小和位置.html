@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box1{
+            width: 500px;
+            height: 500px;
+            margin: 50px;
+            padding: 50px;
+            border:10px solid #333333;
+            background: pink;
+            position: absolute;
+        }
+        #box2{
+            width: 300px;
+            height: 300px;
+            margin: 50px;
+            padding: 50px;
+            border:10px solid orange;
+            background: skyblue;
+            overflow: scroll;
+        }
+        #box3{
+            width: 400px;
+            height: 400px;
+            margin: 50px;
+            padding: 50px;
+            border:10px solid deeppink;
+            background: yellowgreen;
+        }
+        .test{
+            width: 160px;
+            height: 2px;
+            background: red;
+            position: absolute;
+            left:0;
+            top:160px;
+        }
+    </style>
+</head>
+<body>
+<div class="test"></div>
+    <div id="box1">
+        <div id="box2">
+            <div id="box3"></div>
+        </div>
+    </div>
+<button>获取</button>
+    <script type="text/javascript">
+      window.onload = function () {
+        var box2 = document.getElementById('box2');
+        var btn = document.querySelector('button');
+//        1、获取大小  三个系列
+//          console.log(box2.clientWidth);// 拿的是元素的内容 + padding
+//          console.log(box2.offsetWidth);//拿的是元素的内容 + padding + border  这个用的最多
+//          console.log(box2.scrollWidth);//当内容比盒子小的时候，拿的是盒子的clientWidth
+//                                          当内容比盒子大的时候  拿的是内容offsetWidth + 盒子一侧的内边距
+//      2、获取位置  三个系列
+          console.log(box2.clientLeft);//拿的是左边框的宽度
+          console.log(box2.offsetLeft);//拿的就是盒子的偏移(位置，可以理解为拿的就是盒子定位的位置)
+//                                        起始主要就是让我们获取元素设置的left和top值
+//                                        只不过元素不需要定位 也是可以获取到偏移量的
+//                                        获取偏移量的位置参照物  和绝对定位完全一致
+
+
+          btn.onclick = function () {
+              console.log(box2.scrollLeft);//内容向左边滚动的距离
+          }
+      }
+    </script>
+</body>
+</html>

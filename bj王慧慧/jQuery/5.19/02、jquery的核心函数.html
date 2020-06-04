@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="box">
+    <button id="btn">测试</button>
+    <br>
+    <input type="text" name="msg1"><br>
+    <input type="text" name="msg2"><br>
+</div>
+<script type="text/javascript" src="js/jquery-1.10.1.js"></script>
+<script type="text/javascript">
+  //点击按钮  显示按钮的文本  生成一个新的输入框
+//    1、参数为函数，当dom加载完成后的回调函数
+    $(function () {
+//    2、参数为选择器字符串：查找到匹配的元素并封装成jquery对象返回
+      $('#btn').click(function () {
+//       3、参数为dom对象：把dom对象转换成相应的jquery
+//          .html（）   =    innerHTML
+        alert($(this).html());
+//      4、参数为html标签字符串：创建相应的标签，且当前创建的标签为jquery对象
+          $('<input type="text" name="msg3"><br>').appendTo('.box');
+      })
+    });
+//    需求，遍历输出数组中的所有元素的值
+    var arr = [9,5,2,13,12,62];
+//    参数1：要遍历的对象或数组   参数2：回调函数
+    $.each(arr,function (index,num) {
+        console.log(index,num)
+    })
+//    需求，去掉字符串两端空格
+    var str = '    my atguigu    ';
+    console.log('----'+$.trim(str)+'---')
+
+</script>
+</body>
+</html>

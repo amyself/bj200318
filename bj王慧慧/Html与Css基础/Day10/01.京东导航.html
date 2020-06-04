@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/iconfont.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1721351_52sl8meuivh.css">
+    <style type="text/css" rel="stylesheet">
+        #wrap{
+height: 1000px;
+        }
+        /*ad广告样式*/
+
+        /*nav导航样式*/
+        .nav{
+            height: 32px;
+            line-height: 32px;
+            background: rgb(227,228,229);
+            text-align: center;
+        }
+
+        .nav>.nav_list{
+            width: 990px;
+            height: 31px;
+            background: rgb(227,228,229);
+            margin: 0 auto;
+            position: relative;
+        }
+        .left{
+            position: absolute;
+            left: 0;
+        }
+       .left> a{
+           font-size: 12px;
+           color: red;
+           text-decoration: none;
+           width: 60px;
+
+
+       }
+        .left> a:hover{
+            border-width: 1px 1px 0 1px;
+            /*会出现文字移动的现象，解决方案，将所有的li都添加一个边框，颜色为透明*/
+            border-color: rgb(167,167,167);
+            border-style: solid;
+            background-color: white;
+
+        }
+        .position{
+            display: none;
+        }
+        .left> a:hover +.position{
+            display: block;
+        }
+        a>span{
+
+            color: rgb(167,167,167);
+            font-size: 12px;
+        }
+        .right>ul{
+            padding: 0 0 0 150px;
+            float: right;
+        }
+        .right li{
+            float: left;
+            overflow: hidden;
+        }
+        .right li span{
+            color: rgb(167,167,167);
+            font-size: 12px;
+        }
+
+        .right li>a{
+            font-size: 12px;
+            color: rgb(167,167,167);
+            text-decoration: none;
+            width: 16px;
+
+        }
+        .spacer{
+            overflow: hidden;
+            margin: 11px 5px 0;
+            width: 1px;
+            height: 10px;
+            background-color: #ccc;
+        }
+        /*地点下拉列表样式*/
+        .left>.position{
+         width: 300px;
+            height: 300px;
+            border-width: 0 1px 1px 1px;
+            border-color: rgb(167,167,167);
+            border-style: solid;
+            background-color: white;
+
+        }
+        .left>.position>li{
+            width: 60px;
+            padding: 2px 0;
+            float: left;
+
+        }
+        .left>.position>li>a{
+            padding: 0 8px;
+            text-decoration: none;
+            color: rgb(167,167,167);
+            font-size: 14px;
+
+        }
+ </style>
+</head>
+<body>
+<div id="wrap">
+    <div class="nav">
+         <div class="nav_list">
+             <div class="left">
+                 <a class="iconfont icon-weizhi" href="#"style="display: block"><span>河北</span></a>
+                 <ul class="position" >
+                     <li><a href="#">北京</a></li>
+                     <li><a href="#">上海</a></li>
+                     <li><a href="#">重庆</a></li>
+                     <li><a href="#">天津</a></li>
+                     <li><a href="#">河北</a></li>
+                     <li><a href="#">陕西</a></li>
+                     <li><a href="#">山西</a></li>
+                     <li><a href="#">贵州</a></li>
+                     <li><a href="#">四川</a></li>
+                     <li><a href="#">云南</a></li>
+                     <li><a href="#">陕西</a></li>
+                     <li><a href="#">山西</a></li>
+                     <li><a href="#">贵州</a></li>
+                     <li><a href="#">四川</a></li>
+                     <li><a href="#">云南</a></li>
+                     <li><a href="#">陕西</a></li>
+                     <li><a href="#">山西</a></li>
+                     <li><a href="#">贵州</a></li>
+                     <li><a href="#">四川</a></li>
+                     <li><a href="#">云南</a></li>
+                     <li><a href="#">陕西</a></li>
+                     <li><a href="#">山西</a></li>
+                     <li><a href="#">贵州</a></li>
+                     <li><a href="#">四川</a></li>
+                     <li><a href="#">云南</a></li>
+                     <li><a href="#">陕西</a></li>
+                     <li><a href="#">山西</a></li>
+                     <li><a href="#">贵州</a></li>
+                     <li><a href="#">四川</a></li>
+                     <li><a href="#">云南</a></li>
+                     <li><a href="#">陕西</a></li>
+                     <li><a href="#">山西</a></li>
+                     <li><a href="#">贵州</a></li>
+                     <li><a href="#">四川</a></li>
+                     <li><a href="#">云南</a></li>
+                 </ul>
+             </div>
+             <div class="right">
+                 <ul>
+                     <li><a href="#">您好，请登录</a>&nbsp;&nbsp;
+                         <a href="#" style="color: red" class="ecl">免费注册</a>&nbsp;&nbsp;
+                     </li>
+                     <li class="spacer"></li>
+                     <li >
+                         &nbsp;&nbsp;<a  href="#">我的订单</a>&nbsp;&nbsp;
+                     </li>
+                     <li class="spacer"></li>
+                     <li>
+                         &nbsp;&nbsp;<a href="#" >我的京东</a><span class="iconfont icon-xiangxia"></span>&nbsp;&nbsp;
+                     </li>
+                     <li class="spacer"></li>&nbsp;&nbsp;
+                     <li>
+                         &nbsp;&nbsp;<a href="#">京东会员</a>&nbsp;&nbsp;
+                     </li>
+                     <li class="spacer"></li>&nbsp;&nbsp;
+                     <li>
+                         &nbsp;&nbsp; <a href="#" style="color: red">企业采购</a><span class="iconfont icon-xiangxia"></span>&nbsp;&nbsp;
+                     </li>
+                     <li class="spacer"></li>&nbsp;&nbsp;
+                     <li>
+                         &nbsp;&nbsp;<a href="#">客户服务</a><span class="iconfont icon-xiangxia"></span>&nbsp;&nbsp;
+                     </li>
+                     <li class="spacer"></li>&nbsp;&nbsp;
+                     <li>
+                         &nbsp;&nbsp;<a href="#">网站导航</a><span class="iconfont icon-xiangxia"></span>&nbsp;&nbsp;
+                     </li>
+                     <li class="spacer"></li>
+                     <li>
+                         &nbsp;&nbsp;<a href="#">手机京东</a><span class="iconfont icon-xiangxia"></span>
+                     </li>
+                 </ul>
+             </div>
+         </div>
+     </div>
+
+</div>
+</body>
+</html>

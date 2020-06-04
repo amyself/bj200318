@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn">清除</button>
+    <script type="text/javascript">
+      window.onload = function () {
+          var btn = document.getElementById('btn');
+        var a = 10;
+        var b = 20;
+        var result = a + b;
+//        console.log(result);
+//        延迟5秒之后在打印  ，  延迟定时器   想象成是定时炸弹
+//          就像定时炸弹一样   炸了之后就不会再炸了
+//          执行一次之后就不会执行了
+//          延迟定时器一共两个参数
+//          第一个参数  代表时间到达后的回调函数
+//          第二个参数  代表延迟的时间，毫秒为单位   1000毫秒 =  1秒
+          var timer = setTimeout(function () {
+              console.log(result)
+          },5000);
+
+//          清除定时器
+//          延迟定时器执行完会返回一个值   这个值我们称为 定时器ID
+//          清除定时器时  我们需要在清除的方法里边传入相应的定时器ID
+          btn.onclick = function () {
+              clearTimeout(timer)
+          }
+
+      }
+    </script>
+</body>
+</html>

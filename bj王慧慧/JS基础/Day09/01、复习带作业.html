@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+//			创建两个同一品牌的手机对象（要求品牌和方法在原型当中定义共享使用）;
+			
+			//1、需要构建手机的类（构造函数）
+			
+			function MobilePhone(name,color,size){
+				this.name = name;
+				this.color = color;
+				this.size = size;
+			}
+			//函数（函数、函数对象）
+			//当函数用  带小括号就当函数使用，为了执行函数内部的代码，不会影响函数对象内部的属性
+			//当对象用  带点就当函数对象使用，为了去读写函数对象内部的属性值
+			
+			
+			//普通函数和构造函数调用
+			//1、this    普通函数调用this是window   构造函数调用this是实例化对象
+			//2、返回值      普通函数返回值看return    
+//						 构造函数调用 没有return或者return基本值，返回的都是实例化对象
+//						 构造函数调用 return对象数据，返回的都是这个对象数据
+
+			//this的5种场合
+			//1、普通函数调用    window
+			//2、构造函数调用    实例化对象
+			//3、方法当中调用    这个方法的对象
+			//4、call和apply  由自己指定
+			//5、事件回调函数    事件源对象
+			
+			
+			//new干了4件事？
+			//1、开辟新的内存
+			//2、把函数调用内部的this指向到这个新的空间
+			//3、执行函数代码
+			//4、返回开辟的空间地址（实例化对象）
+			
+			
+			//原型和原型链****************************************
+			//原型对象：
+			//函数对象一旦定义好，随他而来（Object会实例化）也会有它对应的原型对象
+			//函数对象身上有一个prototype属性（每个函数对象都有），它就是我们的原型对象（存储了原型对象的地址）
+			//资源共享，节约内存
+			MobilePhone.prototype.brand = '华为';
+			MobilePhone.prototype.playMusic = function(){
+				console.log('我可以听音乐');
+			}
+			
+			var m1 = new MobilePhone('p30','black',6.5);
+			console.log(m1);
+			var m2 = new MobilePhone('mate30','black',6);
+			console.log(m2);
+			
+			
+			//原型链   就是为了让对象去找属性
+			m1.playMusic();
+			m2.playMusic();
+			console.log(m1.brand);
+			console.log(m2.brand);
+			
+			//虽然Object的原型默认是Object实例化出来的
+			//但是它的原型对象不是Object的实例（instanceof判定是false）
+			console.log(Object.prototype instanceof Object)//false
+			
+			
+			
+		</script>
+	</body>
+</html>

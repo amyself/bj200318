@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>表</title>
+		<style>
+			
+			html{
+				perspective: 800px;
+			}
+
+			
+			.outer{
+				width: 500px;
+				height: 500px;
+				border-radius: 50%;
+				margin: 0 auto;
+				
+				background: url(img/bg3.jpg) 0 0 /cover;
+				position: relative;
+				transform-origin: top;
+			}
+			
+			.sec, .min, .hour{
+				width: 2px;
+				height: 46%;
+				position: absolute;
+
+				background-color: deeppink;
+				
+				left: 0;
+				right: 0;
+				bottom: 50%;
+				margin: 0 auto;
+
+				transform-origin: bottom;
+				
+			}
+			
+
+			.sec{
+				animation: clock 10s steps(60) infinite;
+			}
+
+
+			.min{
+				width: 4px;
+				height: 42%;
+				background-color: #000;
+				animation: clock 600s steps(60) infinite;
+			}
+			
+
+			.hour{
+				width: 6px;
+				height: 38%;
+				background-color: #000;
+				
+				animation: clock 7200s linear infinite;
+			}
+
+			@keyframes clock{
+				from{
+					transform: rotateZ(0);
+				}
+				to{
+					transform: rotateZ(360deg);
+				}
+			}
+
+			@keyframes test{
+				from{
+					transform: rotateZ(-45deg);
+				}
+				to{
+					transform: rotateZ(45deg);
+				}
+			}
+			
+		</style>
+	</head>
+	<body>
+		
+		<div class="outer">
+			<div class="hour"></div>
+			<div class="min"></div>
+			<div class="sec"></div>
+		</div>
+		
+		
+		
+	</body>
+</html>

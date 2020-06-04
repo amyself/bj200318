@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" value="今天聊的不错">
+
+<script type="text/javascript">
+  //获取焦点和失去焦点
+//    当获取焦点的时候让input的文字变成pink  背景色变成skyblue
+//    当失去焦点的时候让input的文字和背景随机改变
+    window.onload = function () {
+      var inputNode = document.querySelector('input');
+//      获取焦点
+        inputNode.onfocus = function () {
+//          console.log('我当前获取焦点了')
+            this.style.color = 'pink';
+            this.style.backgroundColor = 'skyblue';
+        }
+//       失去焦点
+        inputNode.onblur = function () {
+          var r1 = Math.floor(Math.random()*256);
+          var g1 = Math.floor(Math.random()*256);
+          var b1 = Math.floor(Math.random()*256);
+
+          var r2 = Math.floor(Math.random()*256);
+          var g2 = Math.floor(Math.random()*256);
+          var b2 = Math.floor(Math.random()*256);
+
+          this.style.color = 'rgb(' + r1 + ',' + g1 + ',' + b1 + ')';
+          this.style.backgroundColor = 'rgb(' + r2 + ',' + g2 + ',' + b2 + ')'
+        }
+    }
+
+
+
+</script>
+</body>
+</html>

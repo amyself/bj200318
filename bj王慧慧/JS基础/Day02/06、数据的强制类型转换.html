@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//数据的强制类型转换  其实就是想把数据转化为我们想要的数据类型
+			//Number()    String()     Boolean()
+			
+			//1、把其它的数据类型转化为数字  就用到Number();
+//			var num = 1;//数字转数字还是数字，没必要
+			//1-1 字符串转数字
+			var str = 'zhaoliying';//NaN
+			//NaN  (not a number)  本意：不是一个数字，但是它又是数字类型
+			//当转化不了数字的时候，而最终又必须是数字类型，结果就是NaN
+			//NaN 是属于数字类型，代表不是一个数字
+			
+			str = 'iaufdw1273651sjhahdskjh15324案件还打算';//NaN
+			str = '12563      ';//12563
+			
+			str = '123sdjhgdakjd';//NaN
+			str = '';//0
+			// str = '123456    ';//0
+									console.log(Number(str))
+			
+//			var result = Number(str);//强制把字符串转化为数字，赋值给result
+//			console.log(result);
+//			console.log(Number(str));//和上面两行出来的结果是一样；
+			
+			//1-2 布尔值转数字
+			var bool = true;//1
+			bool = false;//0
+//			console.log(Number(bool));
+			
+			//1-3 undefined转数字
+			var und;
+			console.log(Number(und));
+			
+			//1-4  null转数字
+			var nul = null;
+			console.log(Number(nul));
+			
+			//总结 
+			//   字符串转数字： 
+			//1、整体去看，如果是一个数字（前后有空白无所谓，中间不行），那么就转化为这个数字
+			//2、整体去看，如果不是数字，那么转化为NaN
+			//3、空串和空白串转化为0
+			
+			//   布尔值转数字   true就是1  false就是0
+			//   undefined转数字  出来就是NaN
+			//   null 转数字 出来就是0
+			
+			
+			
+			//2、把其它的数据转字符串
+			// 任何的数据转字符串，直接加引号；
+			
+			var a = 1;//  '1'  
+			a = true;  //'true'
+			a = null;//'null'
+//			console.log(String(a));
+			//总结：其它数据转字符串，直接给数据添加引号，就变成对应转化的字符串
+			
+			
+			//3、把其它数据转化布尔值
+			//3-1、数字转布尔
+			var num = 0;
+			num = 0.01;
+			num = NaN;
+//			console.log(Boolean(num));
+			//3-2、字符串转布尔
+			//3-3、undefined和null转布尔
+			var und;
+			var nul = null;
+			console.log(Boolean(und));
+			console.log(Boolean(nul));
+			
+			
+			//总结：数字转布尔： 除了0和NaN是false以外，其余都是true
+			//		字符串转布尔:非空即为真(除了空字符串是false以外,其余都是true)
+			//      undefined和null转布尔值都是false
+			
+			
+			
+			
+			//
+//			Number(NaN)//NaN
+//			Number('')//0
+//			Number('123zhaoliying')//NaN
+//			Number('heihei')//NaN
+//			Number('    123.6')//123.6
+//			Number(null)//0
+//			console.log(String(NaN));
+			
+			Boolean(0.01);//true
+			Boolean(0);//false
+			Boolean('    ');//true
+			Boolean('');//false
+			Boolean(undefined);//false
+			Boolean(null);//false
+			Boolean(NaN);//fasle
+			
+		</script>
+	</body>
+</html>

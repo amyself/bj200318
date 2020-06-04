@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+				}
+				.box{
+					width:100px;
+					height: 100px;
+					background-color: pink;
+					position: absolute;
+					left:0;
+					top:0;
+				}
+		</style>
+		
+	</head>
+	<body>
+		<div class="box">哈哈vvvvvvv</div>
+		<script>
+			var box=document.querySelector(".box")
+			box.onmousedown=function(event){
+				var eleX=box.offsetLeft;
+				var eleY=box.offsetTop;
+				
+				var startX=event.clientX;
+				var startY=event.clientY;
+			// 解决低版本浏览器的问题开启全局捕获
+			box.setCapture&&box.setCapture()//前为真则取后,前为假则跳过
+			
+			
+				//第二步修改
+				document.onmousemove=function(event){
+				var endX=event.clientX;
+				var endY=event.clientY;
+				var disX=endX-startX;
+				var disY=endY-startY;
+				
+				var eleDx=startX+disX;
+				var eleDy=startY+disY;
+				
+				 box.style.left=eleDx+"px"
+				box.style.top=eleDy+"px"
+				
+				}
+				//第四处修改
+				document.onmouseup=function(){
+					//第三处修改
+					document.onmousemove=null;
+					document.onmouseup=null;
+					//第七处修改的地方
+					box.releaseCapture&&box.releaseCapture()
+				}
+				//禁止默认行为
+				return false;//dom0的方式,第一处修改
+			}
+		</script>
+	</body>
+</html>

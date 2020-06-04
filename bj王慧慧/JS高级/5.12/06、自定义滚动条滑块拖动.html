@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        /*禁止浏览器滚动条*/
+        html,body{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        #wrap{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: pink;
+            position: relative;
+        }
+        #wrap .scrollBar{
+            width: 30px;
+            height: 100%;
+            position: absolute;
+            right: 0;
+            top: 0;
+            background: skyblue;
+            border-left: 1px solid orange;
+            border-right: 1px solid orange;
+        }
+        #wrap .scrollBar .scrollIn{
+            position: absolute;
+            top:0;
+            left:50%;
+            transform: translateX(-50%);
+            width: 26px;
+            height: 100px;
+            background: coral;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <!--自定义滚动条结构-->
+    <!--滑槽-->
+    <div class="scrollBar">
+        <!--滑块-->
+        <div class="scrollIn">
+
+        </div>
+    </div>
+
+</div>
+<script type="text/javascript">
+  window.onload = function () {
+      //    拖拽目标
+      var box = document.querySelector('.scrollIn');
+
+      box.onmousedown = function (event) {
+          event = event || window.event;
+          var eleY = box.offsetTop;//元素起始top
+          var startY = event.clientY;//鼠标按下的y坐标
+          box.setCapture && box.setCapture();//  低版本开启全局捕获兼容写法
+          document.onmousemove = function (event) {
+              event = event || window.event;
+              var endY = event.clientY;//鼠标结束的位置Y
+              var disY = endY - startY;//纵向鼠标距离差
+              var lastY = eleY + disY;//元素最终的top值
+
+//              滑块边界值判断
+              if(lastY > document.documentElement.clientHeight - box.offsetHeight){
+                lastY = document.documentElement.clientHeight - box.offsetHeight;
+              }else if(lastY < 0){
+                  lastY = 0;
+              }
+
+              box.style.top = lastY + 'px';
+          };
+          document.onmouseup = function () {
+              document.onmousemove = document.onmouseup = null;
+              box.releaseCapture && box.releaseCapture();//低版本浏览器 释放全局捕获
+          };
+//      阻止浏览器默认行为
+          return false;
+      }
+  }
+</script>
+</body>
+</html>

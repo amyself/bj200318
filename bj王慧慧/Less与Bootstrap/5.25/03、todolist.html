@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>未完成版</title>
+		<link rel="stylesheet" href="index.css">
+		<style>
+			.todo-main li button {
+				display: none;
+			}
+		</style>
+		<script type="text/javascript" src="js/jquery-1.10.1.js"></script>
+		<script type="text/javascript">
+			$(function () {
+//			  模拟数据    实际的开发当中 根据后台接口来的
+				var dataJson = [{
+				    'content':'唱歌'
+				},{
+				    'content':'滑雪'
+				},{
+					'content':'遛狗'
+				}];
+//				获取ul元素
+				var $todoMain = $('.todo-main');
+//				获取全选按钮
+				var $checkAll = $('#checkAll');
+//				数据绑定  1.页面初始化   2.新增任务
+				function bindData(data) {
+//					循环拼装节点
+                    for (var i = 0; i < data.length; i++) {
+                        $todoMain.append('<li class="todoItem" style="background: rgb(255, 255, 255);"><label>' +
+							'<input type="checkbox"><span>'+data[i].content+'</span></label>' +
+							'<button class="btn btn-danger" style="display: none;">删除</button></li>')
+                    }
+//					更新任务总数
+                    allTodos();
+				}
+                bindData(dataJson);
+//				更新任务总数
+				function allTodos() {
+//				  ul当中有多少个li 就有多少个任务 所以直接使用li的长度即可
+					$('#allTodos').html($todoMain.children('li').length)
+				}
+//				更新已完成任务数
+				function allCompletedTodos() {
+//				  当前已经选中多少个复选框 就有多少个已完成任务
+					$('#allCompletedTodos').html($todoMain.find(':checkbox:checked').length)
+				}
+//				复选框单击事件
+				$todoMain.delegate('.todoItem input','click',function () {
+//				  更新已完成任务数
+                    allCompletedTodos();
+//                判断所有的任务都被选中了
+                    $checkAll.prop('checked',$todoMain.find(':checkbox:not(:checked)').length === 0);
+                });
+//				全选按钮
+				$checkAll.click(function () {
+//				  让所有的复选框 与全选按钮的checked状态保持一致
+					$todoMain.find(':checkbox').prop('checked',this.checked)
+//					更新已完成任务数
+					allCompletedTodos();
+				});
+//				移入移出li
+				$todoMain.delegate('.todoItem','mouseenter',function () {
+                    $(this).css('background','#ccc');
+                    $(this).children('button').show();
+				});
+				$todoMain.delegate('.todoItem','mouseleave',function () {
+                    $(this).css('background','#fff');
+                    $(this).children('button').hide();
+				});
+
+//				删除按钮
+				$todoMain.delegate('.todoItem button','click',function () {
+                    //					点击删除按钮 删除的是当前这个按钮的父元素li
+                    $(this).parent().remove();
+//					更新任务总数
+                    allTodos();
+//					更新已完成任务数
+                    allCompletedTodos();
+//					如果删除某几个任务时 剩余的任务全都选中 全选的状态需要更新
+//					需要确定当前任务列表当中还存在任务  全选才可以被选中
+                    $checkAll.prop('checked',$todoMain.children('li').length!=0 &&
+                        $todoMain.find(':checkbox:not(:checked)').length === 0)
+				})
+//				清除已完成任务按钮
+				$('#removeAllCompleted').click(function () {
+				  $todoMain.find(':checkbox:checked').parent().parent().remove();
+//				  更新任务总数
+					allTodos();
+//					更新已完成任务数
+					allCompletedTodos();
+//					全选按钮只能是false状态
+//					点击这个按钮之后  只有两种情况
+//					1.删除所有选中的  留下一些 没有被选中的   这个时候全选不需要被选中
+//					2.所有任务都被选中了 直接清空了所有任务  这个时候全选也不需要被选中
+					$checkAll.prop('checked',false);
+				})
+//				根据输入的值 创建新的任务
+				$('#newTodo').keyup(function (event) {
+//				  所有创建相关的逻辑 都要在按下回车的前提下执行
+					if(event.keyCode == 13){
+//					  判断输入的值 去除空格后是否为空
+						if($.trim($(this).val())){
+//						  输入有效
+//							根据当前输入框的value  执行创建逻辑
+							var newData = [{
+							    'content':$(this).val()
+							}];
+							bindData(newData);
+//						更新全选状态 因为新增的任务一定是未完成状态 所以需要更新 且一定为false
+							$checkAll.prop('checked',false);
+						}else{
+//						    输入无效
+							alert('请不要输入空信息')
+						}
+//						清空输入框
+						$(this).val('');
+					}
+				})
+			})
+		</script>
+	</head>
+
+	<body>
+		<div id="root">
+			<div class="todo-container">
+				<div class="todo-wrap">
+					<div class="todo-header">
+						<input id="newTodo" type="text" placeholder="请输入你的任务名称，按回车键确认" />
+					</div>
+					<ul class="todo-main">
+
+					</ul>
+					<div class="todo-footer">
+						<label>
+          <input id="checkAll" type="checkbox"/>
+        </label>
+						<span>
+          已完成<span id="allCompletedTodos">0</span> / 全部<span id="allTodos">2</span>
+						</span>
+						<button id="removeAllCompleted" class="btn btn-danger">清除已完成任务</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul>
+        <li>滑雪</li>
+        <li>唱歌</li>
+        <li class="single">打鼓</li>
+        <li>吃饭</li>
+        <li>遛狗</li>
+    </ul>
+<script type="text/javascript">
+  window.onload = function () {
+
+//      var ulNode = document.querySelector('ul');
+//      var single = document.querySelector('.single');
+      //    往最后添加（追加）
+//      var liNode = document.createElement('li');
+//      liNode.innerHTML = '羽毛球';
+//      ulNode.appendChild(liNode);
+
+
+
+////      往一个参照物的前面去增加
+//      var ulNode = document.querySelector('ul');//父级
+//      var single = document.querySelector('.single');//参照物
+//      var liNode = document.createElement('li');//新增的
+//      liNode.innerHTML = '打篮球';
+////     由父元素调用.insertBefore（新增元素，参照物）
+//      ulNode.insertBefore(liNode,single);
+
+
+
+//      替换掉某一个元素
+//        var ulNode = document.querySelector('ul');//父级
+//        var single = document.querySelector('.single');//要被替换的  旧的
+//        var liNode = document.createElement('li');//要去替换的  新的
+//        liNode.innerHTML = '看电影';
+////       由父元素调用.replaceChild（要去替换的（新的），要被替换的（旧的））
+//        ulNode.replaceChild(liNode,single);
+
+//      删除某一个元素
+      var ulNode = document.querySelector('ul');//父级
+      var single = document.querySelector('.single');//被删除的
+//      由父级调用.removeChild（要删除的元素）
+//      ulNode.removeChild(single);
+//      要删除的元素.remove（）   ie不支持
+      single.remove();
+
+  }
+</script>
+</body>
+</html>

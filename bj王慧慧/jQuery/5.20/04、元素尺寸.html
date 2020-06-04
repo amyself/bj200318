@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 200px;
+            background: pink;
+            padding: 10px;
+            border:10px solid yellowgreen;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="box"></div>
+<script type="text/javascript" src="js/jquery-1.10.1.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var $box = $('.box');
+//  width和height方法  就是返回你设置给当前元素的宽度与高度的样式的值
+        console.log($box.width(),$box.height());
+//内部尺寸  包含：width + padding-left + padding-right   高度同理
+        console.log($box.innerWidth(),$box.innerHeight());
+//外部尺寸   width + padding-left + border-left + padding-right + border-right   高度同理
+        console.log($box.outerWidth(),$box.outerHeight());
+// 如果outerWidth和outerHeight方法传递了参数为true  则在原有的基础之上增加margin的值
+        console.log($box.outerWidth(true),$box.outerHeight(true));
+    })
+
+</script>
+</body>
+</html>

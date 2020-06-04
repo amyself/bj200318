@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//语法
+			/*
+			 * if(){
+			 * 	
+			 * }else if(){
+			 * 	
+			 * }else if(){
+			 * 	
+			 * }else{
+			 * 	
+			 * }
+			 */
+			
+			//执行过程：
+			//1、先计算if后()里面的值
+			//2、把if后()里面的值转化为布尔值
+			//3、如果if后（）的值为真，就执行if花括号里面的代码
+			//4、如果if后（）的值为假，就接着判断下一个if后（）的值，（判断过程同上）
+			//5、如果上面所有的if后()里面的值，都为假，最后执行else花括号里面的代码
+			
+			
+			//理解：前面我们说的单分支和双分支是把一件事分成两个情况去考虑（真假两面）
+			//多分支是从另外一个角度，把一件事分成多种情况去考虑
+			
+			//1、根据体重判定身材
+			//成年人体重 ：  最低放在70    最高350
+			//体重如果   70 - 90      骨感美
+//					   90 - 120  性感美
+//					   120 - 150 丰满美
+//					   150 - 200 肉感美
+//					   200 - 350 该减肥了
+
+			
+//			var weight = parseFloat(prompt('请输入您的体重'));		   
+//					   
+//			if(weight >= 70 && weight < 90)	{
+//				console.log('骨感美!');
+//			}else if(weight >= 90 && weight < 120){
+//				console.log('性感美!');
+//			}else if(weight >= 120 && weight < 150){
+//				console.log('丰满美!');
+//			}else if(weight >= 150 && weight < 200){
+//				console.log('肉感美!');
+//			}else if(weight >= 200 && weight <= 350){
+//				console.log('该减肥了');
+//			}else{
+//				console.log('温馨提示：体重应该在70 - 350之间');
+//			}
+					   
+			//注意：多分支语句，所有的分支，最终只是执行了其中的一个
+			//而且多分支语句会发生跳楼现象
+			
+			
+			
+			//2、输入一个数，如果这个数
+			// 0 - 100之间      +5
+			// 100 - 500之间   -5
+			// 500 - 1000之间    *5
+			// 1000 - 2000   /5
+			// 如果不在以上区间内    原样输出
+			
+			
+			var num = parseFloat(prompt('请输入一个数'));
+			if(num >= 0 && num < 100){
+				num += 5;
+//				console.log(num);
+			}else if(num >= 100 && num < 500){
+				num -= 5;
+//				console.log(num);
+			}else if(num >= 500 && num < 1000){
+				num *= 5;
+//				console.log(num);
+			}else if(num >= 1000 && num < 2000){
+				num /= 5;
+//				console.log(num);
+			}//else{
+//				//本来else内部有一行代码，现在优化后else里面没有代码了
+//				//else不是必须的，如果else内部没有逻辑（代码），else可以省略
+////				console.log(num);
+//			}
+			console.log(num);
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        table{
+            margin: 0 auto;
+        }
+        a{
+            text-decoration: none;
+        }
+        td{
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+        }
+        div{
+            width: 300px;
+            margin: 0 auto;
+            /*border:1px solid #ccc;*/
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>姓名</td>
+            <td>年龄</td>
+            <td>操作</td>
+        </tr>
+        <tr>
+            <td>康伟</td>
+            <td>25</td>
+            <td><a href="javascript:;">删除</a></td>
+        </tr>
+        <tr>
+            <td>范凯</td>
+            <td>26</td>
+            <td><a href="javascript:;">删除</a></td>
+        </tr>
+        <tr>
+            <td>李凌峰</td>
+            <td>210</td>
+            <td><a href="javascript:;">删除</a></td>
+        </tr>
+    </table>
+    <div>
+        <input type="text" placeholder="请输入你的姓名"><br>
+        <input type="text" placeholder="请输入你的年龄"><br>
+        <input type="button" value="增加">
+    </div>
+<script type="text/javascript">
+    window.onload = function () {
+//      获取输入框和按钮
+        var inputNodes = document.querySelectorAll('input');
+//      获取表格容器
+        var tbodyNode = document.querySelector('tbody');
+
+//        给提交按钮添加单击事件   获取输入框的内容  创建相应的节点 到tbody里边去
+        inputNodes[2].onclick = function () {
+//          1、获取输入框中的内容
+            var userName = inputNodes[0].value;
+            var age = inputNodes[1].value;
+
+//            2、判断内容的合法性    去除空格之后 是否为空（两个输入框都要判断）
+            if(userName.trim() && age.trim()){
+//              输入合法
+//                console.log('输入成功')
+//            <tr>
+//                <td>李凌峰</td>
+//                <td>210</td>
+//                <td><a href="javascript:;">删除</a></td>
+//            </tr>
+//                创建一个tr容器   里边需要在添加3个td（名字  年龄 删除按钮）
+                var trNode = document.createElement('tr');
+
+                var tdName = document.createElement('td');
+                tdName.innerHTML = userName;
+                trNode.appendChild(tdName);
+
+                var tdAge = document.createElement('td');
+                tdAge.innerHTML = age;
+                trNode.appendChild(tdAge);
+
+                var tdRemoveBtn = document.createElement('td');
+                tdRemoveBtn.innerHTML = '<a href="javascript:;">删除</a>';
+                trNode.appendChild(tdRemoveBtn);
+                console.log(trNode);
+
+//                把组装好的tr结构  追加到tbody中去
+                tbodyNode.appendChild(trNode);
+
+
+            }else{
+//                输入非法
+                alert('输入框不能为空')
+            }
+            inputNodes[0].value = '';
+            inputNodes[1].value = '';
+
+        }
+
+//      删除按钮逻辑  因为存在新增元素  所以使用事件委派的形式
+        tbodyNode.onclick = function (event) {
+			//以下两行是固定写法
+          event = event || window.event;
+          var target = event.target || event.srcElement;
+
+          if(target.nodeName == 'A'){//标签名称要大写
+//              获取当前这一行
+              var thisTr = target.parentElement.parentElement;
+//              得到当前这一行的 姓名
+              var name = thisTr.firstElementChild.innerHTML;
+//              console.log(name)
+//             提示是否要删除这个人的信息
+//            确定点击的是a标签    执行删除逻辑    要删除的是当前这一行   tr
+//              confirm 是确认框     弹出之后 会有两个按钮  点击确认则返回true  点击取消则返回false
+//              所以一般和if结合在一起使用
+              if(confirm('你确定要删除'+name+'的信息吗？')){
+                  this.removeChild(thisTr)
+              }
+
+          }
+
+        }
+
+
+    }
+  
+</script>
+
+
+</body>
+</html>

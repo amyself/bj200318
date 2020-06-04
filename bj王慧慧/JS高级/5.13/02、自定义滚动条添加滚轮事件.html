@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        /*禁止浏览器滚动条*/
+        html,body{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        #wrap{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: pink;
+            position: relative;
+        }
+        #wrap .content{
+            position: absolute;
+            left:0;
+            top:0;
+        }
+        #wrap .scrollBar{
+            width: 30px;
+            height: 100%;
+            position: absolute;
+            right: 0;
+            top: 0;
+            background: skyblue;
+            border-left: 1px solid orange;
+            border-right: 1px solid orange;
+        }
+        #wrap .scrollBar .scrollIn{
+            position: absolute;
+            top:0;
+            left:50%;
+            transform: translateX(-50%);
+            width: 26px;
+            /*height: 100px;*/
+            background: coral;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <div class="content"></div>
+    <!--自定义滚动条结构-->
+    <!--滑槽-->
+    <div class="scrollBar">
+        <!--滑块-->
+        <div class="scrollIn">
+
+        </div>
+    </div>
+
+</div>
+<script type="text/javascript">
+    window.onload = function () {
+        //    拖拽目标
+        var box = document.querySelector('.scrollIn');
+        var content = document.querySelector('.content');
+//        通过循环创建内容
+        for (var i = 0; i < 200; i++) {
+            content.innerHTML += i + '<br>';
+        }
+//       动态设置滑块高度
+//       自定义滚动条滑块的万能比例
+//        滑块的高度  /  滑槽的高度   =   滑槽的高度  /  内容的高度    =   滑块的滚动距离   /  内容的滚动距离
+        var scale = document.documentElement.clientHeight / content.offsetHeight;
+        box.style.height = document.documentElement.clientHeight * scale + 'px';
+        box.onmousedown = function (event) {
+            event = event || window.event;
+            var eleY = box.offsetTop;//元素起始top
+            var startY = event.clientY;//鼠标按下的y坐标
+            box.setCapture && box.setCapture();//  低版本开启全局捕获兼容写法
+            document.onmousemove = function (event) {
+                event = event || window.event;
+                var endY = event.clientY;//鼠标结束的位置Y
+                var disY = endY - startY;//纵向鼠标距离差
+                var lastY = eleY + disY;//元素最终的top值
+
+//              滑块边界值判断
+                if(lastY > document.documentElement.clientHeight - box.offsetHeight){
+                    lastY = document.documentElement.clientHeight - box.offsetHeight;
+                }else if(lastY < 0){
+                    lastY = 0;
+                }
+//              在滑块移动的同时  还需要修改内容区域的top值
+                box.style.top = lastY + 'px';
+//                scale = lastY / 内容区top值（内容区滚动距离）
+//                lastY   是当前滑块滚动的距离
+//                 lastY   /  contentDis  =  scale
+//                  10     /     5        =   2
+                var contentDis = lastY / scale;
+                content.style.top = -contentDis + 'px';
+            };
+            document.onmouseup = function () {
+                document.onmousemove = document.onmouseup = null;
+                box.releaseCapture && box.releaseCapture();//低版本浏览器 释放全局捕获
+            };
+//      阻止浏览器默认行为
+            return false;
+        }
+//        滚轮逻辑
+        document.addEventListener('mousewheel',scrollMove);
+        document.addEventListener('DOMMousescroll',scrollMove);
+        var flag = true;
+        function scrollMove(event) {
+//          console.log('我是滚轮')
+            event = event || window.event;
+//            判断浏览器
+            if(event.wheelDelta){
+//              ie/chrome
+                if(event.wheelDelta > 0){
+//                  上
+                    flag = true;
+                }else{
+                    flag = false;
+                }
+            }else if (event.detail){
+//                firfox
+                if(event.detail < 0){
+//                  上
+                    flag = true;
+                }else {
+//                    下
+                    flag = false;
+                }
+            }
+
+//            到这flag这个变量已经明确的帮我记录下 滚动的方向  开始不同方向的逻辑
+//            if else分支语句 在实际开发当中 使用频率还是高的
+//            if语句的结构清晰  易读   可以处理复杂的逻辑
+//            三元表达式的使用场景  一行代码  嵌套尽量不要超过3层   不易读    性能确实会比if好一些
+            if(flag){
+//              向上的逻辑
+//                滚轮往上，滑块应该从当前位置向上  内容就应该向下
+//                滑块的位置向上    那么我的top就应该减小
+                var scrollDis = box.offsetTop -10;
+                if(scrollDis < 0){
+                  scrollDis = 0;
+                }
+                box.style.top = scrollDis + 'px';
+//                内容的偏移
+                var contentDis = scrollDis / scale;
+                content.style.top = -contentDis + 'px';
+            }else{
+//              向下的逻辑
+//               滚轮向下，滑块应该从当前位置向下 内容就应该向上
+//                滑块的位置向下    那么我的top就应该增加
+                var scrollDis = box.offsetTop + 10;
+                if(scrollDis > document.documentElement.clientHeight - box.offsetHeight){
+                  scrollDis = document.documentElement.clientHeight - box.offsetHeight;
+                }
+                box.style.top = scrollDis + 'px';
+//                内容的偏移
+//                content的top最大值为0     只要懂了滚动条 就一定是负值
+//                如果搞不定 去浏览器检查工具里边 自己玩一会 就明白了   操作一下content的top
+                var contentDis = scrollDis / scale;
+                content.style.top = -contentDis + 'px';
+
+            }
+
+
+        }
+
+
+
+    }
+</script>
+</body>
+</html>

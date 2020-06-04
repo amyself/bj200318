@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var a = 7;    
+			var b = 9;
+			var c = a + b++; // a 7  b++  9   b 10    c 16
+			c = ++a + b++;//  ++a  8    a 8   b++  10  b 11  c  18
+			c = b + a++; //  b  11   a++ 8   a 9   c 19
+			c = ++a + b++;// ++a 10  a 10  b++  11  b 12  c 21
+			c = --a + b;// --a 9  b 12   a 9   c  21
+			c = a + b--;// a 9  b-- 12  b 11   c  21
+			console.log(a,b,c);
+		</script>
+	</body>
+</html>

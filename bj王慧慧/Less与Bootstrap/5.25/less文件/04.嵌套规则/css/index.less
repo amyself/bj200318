@@ -1,0 +1,24 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+//less默认情况下直接使用嵌套  编译后是后代选择器
+//如果需要给当前元素设置伪类，伪元素，结构类等  只需要在大括号使用&  代表其自身
+//如果需要操作直接子级  只需要在子元素名字前边使用‘>’；
+.list{
+  width: 400px;
+  border:1px solid #ccc;
+  margin: 0 auto;
+  list-style: none;
+  li{
+    height: 30px;
+    line-height: 30px;
+    &:hover{
+      background: pink;
+    }
+  }
+  >a{
+    color: red;
+  }
+}
+

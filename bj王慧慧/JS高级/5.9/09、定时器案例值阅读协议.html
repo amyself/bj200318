@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--disabled这个属性的意思  是置灰  属性名和属性值  相同 可以简写 类似于checked-->
+<input type="button" value="阅读协议（5s）" disabled>
+
+<script type="text/javascript">
+  //  阅读协议倒计时     倒计时结束后 让按钮恢复点击
+
+    window.onload = function () {
+      var num = 5;
+      var inputNode = document.querySelector('input');
+
+
+      var timer = setInterval(function () {
+        num--;
+//        n等于零的时候 说明倒计时结束 需要清除定时器 并且更换文字为确认  恢复按钮点击
+          if(num == 0){
+            clearInterval(timer);
+            inputNode.value = '确认';
+            inputNode.disabled = false;
+          }else {
+//              不等于0的之后 说明倒计时还在进行中  根据计数变量  动态的修改input的value
+              inputNode.value = '阅读协议（'+ num +'s）';
+          }
+      },1000);
+//        inputNode.onclick = function () {
+////           重置计数器   更改按钮的置灰状态  修改按钮文字
+//          num = 5;
+//            this.disabled = true;
+//            this.value = '阅读协议（5s）'
+//
+//            timer = setInterval(function () {
+//                num--;
+////        n等于零的时候 说明倒计时结束 需要清除定时器 并且更换文字为确认  恢复按钮点击
+//                if(num == 0){
+//                    clearInterval(timer);
+//                    inputNode.value = '确认';
+//                    inputNode.disabled = false;
+//                }else {
+////              不等于0的之后 说明倒计时还在进行中  根据计数变量  动态的修改input的value
+//                    inputNode.value = '阅读协议（'+ num +'s）';
+//                }
+//            },1000)
+//        }
+
+    }
+
+
+</script>
+</body>
+</html>

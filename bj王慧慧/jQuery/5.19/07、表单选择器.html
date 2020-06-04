@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="checkbox" checked>
+<input type="checkbox" checked>
+<input type="checkbox" checked>
+<input type="checkbox" checked>
+<input type="checkbox" checked>
+用户名： <input type="text"><br>
+密码： <input type="password"><br>
+
+<input type="checkbox" value="篮球" checked>篮球
+<input type="checkbox" value="足球">足球
+<input type="checkbox" value="羽毛球">羽毛球 <br>
+邮箱<input type="text" name="email" disabled><br>
+
+<select>
+    <option value="1">北京</option>
+    <option value="2" selected>天津</option>
+    <option value="3" >上海</option>
+</select><br>
+<input type="submit" value="提交">
+<script type="text/javascript" src="js/jquery-1.10.1.js"></script>
+<script type="text/javascript">
+  // 选择不可用的文本输入框
+//   显示选择爱好的个数
+//    显示选择的城市名称
+    $(':input:text:disabled').css('background','pink');
+    
+    console.log($(':input:checkbox:checked').length);
+    
+    console.log($('select option:selected').html())
+</script>
+</body>
+</html>

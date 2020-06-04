@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.box {
+  width: 400px;
+  height: 400px;
+  background: #87ceeb;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+.box .inner {
+  width: 200px;
+  height: 200px;
+  background: yellowgreen;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}

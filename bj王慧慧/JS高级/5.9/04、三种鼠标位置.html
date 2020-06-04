@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 300px;
+            height: 300px;
+            background: pink;
+            margin-top: 50px;
+            margin-left: 50px;
+        }
+        body{
+            height: 2000px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+
+    </div>
+<script type="text/javascript">
+    window.onload = function () {
+      var box = document.getElementById('box');
+//      关于鼠标的位置  咱们一共需要熟记  三种
+//        clientX:相对于视口左上角的水平位置    clientY：相对于视口左上角的垂直位置
+//        pageX:是相对于页面左侧的水平位置      pageY：是相对于页面顶部的垂直位置
+//        offsetX:是相对于元素本身左侧的水平位置   offsetY：是相对于元素本身顶部的距离
+//        以上三种获取方式返回的值都是number类型  不带单位    !!!结合样式操作的时候 记得拼接单位!!!
+
+      box.onclick = function (event) {
+        console.log(event);
+        console.log(event.clientX)
+      }
+    }
+</script>
+</body>
+</html>

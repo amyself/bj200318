@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<script>
+			// 交换两个变量的值
+			// 利用临时变量交换
+			var a=100;
+			var b=200;
+			var temp;
+			temp=a;
+			a=b;
+			b=temp;
+			document.write(a,b)
+			// 不借助第三方变量交换
+			var a=100;
+			var b=200;
+			a=b+a;//a=300,b=200
+			b=a-b;//a=300,b=100
+			a=a-b;
+			document.write(a,b)
+
+			// 作业
+var a = 7;
+var b = 9;
+var c = a + b++;//a=7,b++=9,b=10,c=7+9=16
+c = ++a + b++;//++a=8,a=8,b++=10,b=11,c=8+10=18
+c = b + a++;//b=11,a++=8,a=9,c=11+8=19
+c = ++a + b++;//++a=10，a=10，b++=11，b=12,c=10+11=21
+c = --a + b;//--a=9,a=9,b=12,c=21
+c = a + b--;//a=9,b--=12,b=11,c=8+12=21
+document.write(c)		
+		</script>
+		
+	</body>
+</html>

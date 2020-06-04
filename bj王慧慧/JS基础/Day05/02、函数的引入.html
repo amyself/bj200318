@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//函数定义
+			function printTriangle(){
+				for(var i = 0; i < 7; i++){
+					for(var j = 0; j < 6 - i; j++){
+						document.write('&ensp;');
+					}
+					
+					for(var k = 0; k < 2 * i + 1; k++){
+						document.write('*');
+					}
+					document.write('<br>');
+				}
+			}
+			
+			//函数调用
+			printTriangle();
+			//此处省略50行
+			printTriangle();
+			//此处省略100行
+			printTriangle();
+			
+			//封装函数解决代码代码冗余
+			
+			//函数定义的时候，内部代码是不执行的
+			//函数定义内部代码要想执行，必须调用才能执行
+			
+		</script>
+	</body>
+</html>

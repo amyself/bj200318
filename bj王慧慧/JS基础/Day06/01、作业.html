@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+//			1、有一个从小到大排好序的数组。现输入一个数，要求按原来的规律将它插入数组中
+//			//1、准备好数组
+//			var arr = [11,22,33,44,55,66];
+//			//2、输入插入的数据
+//			var num = parseFloat(prompt('请输入一个数'));
+//			//3、把数据插入到数组当中
+//			arr[arr.length] = num;
+//			//4、冒泡排序
+//			for(var i = 0; i < arr.length - 1; i++){
+//				for(var j = 0; j < arr.length - 1 - i; j++){
+//					if(arr[j] > arr[j+1]){
+//						var temp = arr[j];
+//						arr[j] = arr[j+1];
+//						arr[j+1] = temp;
+//					}
+//				}
+//			}
+//			//打印验证
+//			console.log(arr);
+			
+//			2、封装函数实现打印1到N的质数;
+//			function getPrimeNumber(n){
+//				//打印质数
+//				var flag = true;
+//				for(var i = 1; i <= n; i++){
+//					for(var j = 2; j < i; j++){
+//						if(i % j == 0){
+//							flag = false;
+//							break;
+//						}
+//					}
+//					if(flag && i!= 1){
+//						console.log(i);
+//					}
+//					flag = true;
+//				}
+//			}
+//			
+//			getPrimeNumber(100);
+			
+//			3、封装函数实现对数组进行排序；
+//			function sortArray(arr){
+//				//排序数组
+//				for(var i = 0; i < arr.length - 1; i++){
+//					for(var j = 0; j < arr.length - 1 - i; j++){
+//						if(arr[j] > arr[j+1]){
+//							var temp = arr[j];
+//							arr[j] = arr[j+1];
+//							arr[j+1] = temp;
+//						}
+//					}
+//				}
+//				return arr;
+//			}
+//			//正常思路
+//			var result = sortArray([10,5,2]);
+//			console.log(result);
+//			console.log(sortArray([10,5,2]));
+			
+			
+			//不正常 
+//			var arr = [10,5,2];
+//			sortArray(arr);
+//			console.log(arr);
+			
+//			4、封装函数实现对数组翻转
+//			function reverseArray(arr){
+//				//翻转数组
+//				for(var i = 0; i < arr.length / 2; i++){
+//					var temp = arr[i];
+//					arr[i] = arr[arr.length - 1 - i];
+//					arr[arr.length - 1 - i] = temp;
+//				}
+//				return arr;
+//			}
+//			var arr = [1,2,3,4,5];
+//			console.log(reverseArray(arr));
+
+
+//			5、封装函数实现对数组去重
+			function removeDuplicateOfArray(arr){
+				var newArr = [];
+				var flag = true;
+				for(var i = 0; i < arr.length; i++){
+					for(var j = 0; j < newArr.length; j++){
+						if(arr[i] == newArr[j]){
+							flag = false;
+							break;
+						}
+					}
+					
+					if(flag){
+						newArr[newArr.length] = arr[i];
+					}
+					
+					flag = true;
+				}
+				
+				return newArr;
+			}
+
+			var arr = [1,2,3,4,1,2,1,1];
+			console.log(removeDuplicateOfArray(arr));
+			
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #pNode{
+            /*visibility: hidden;*/
+            display: none;
+            /*
+                元素隐藏
+                1.不占位隐藏  display：none
+                2.占位隐藏    visibility：hidden
+                3.透明度  opacity：0
+                4.width：0
+                5.height：0
+                6.定位
+                7.translateX
+                8.scale（0）
+                9.skew（180deg）
+                10.rotateY(90deg)
+                11.text-indent
+            */
+        }
+    </style>
+</head>
+<body>
+<p id="pNode"><span>刚才谁开的门</span></p>
+<button id="btn">按钮</button>
+<script type="text/javascript">
+  // 点击p标签  修改这个p标签的内容
+    window.onload = function () {
+      var pNode = document.getElementById('pNode');
+      var btn = document.getElementById('btn');
+      //给p元素绑定单击事件
+      btn.onclick = function () {
+//          pNode.innerHTML = '<span>是风</span>';
+//          console.log(pNode.innerHTML)
+//          pNode.innerText = '<span>是风</span>';
+//          console.log(pNode.innerText)
+          
+//          设置内容时：
+          //  如果设置的纯文本  这两个属性   结果一样  innerHTML也是会生效的
+//         设置内容的时候：如果内容当中包含标签字符串  innerHTml会有标签的特性，也就是说标签会在页面上生效
+//         如果内容当中包含标签字符串  innerText会把标签原样展示在页面上，不会让标签生效
+//          读取内容时：
+//          读取内容的时候 如果标签内部还有其他标签，innerHTML会把标签内容带着的其他标签一起输出
+//          如果标签内部还有其他标签 innerText只会输出所有标签里面的文本，不会输出标签
+//          如果内部没有其他标签，它们两个一致
+
+//          textContent和innerText功能类似
+//          这两个方法值得隐藏  是占位隐藏    visibility：hidden
+          console.log(pNode.textContent);//只有高级浏览器认识,隐藏元素的内容可以看到
+          console.log(pNode.innerText);//所有的浏览器都认识，隐藏元素的内容看不到
+
+
+      }
+    }
+</script>
+</body>
+</html>

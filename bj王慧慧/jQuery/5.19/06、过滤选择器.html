@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="div1" class="box">div1(class=box)</div>
+<div id="div2" class="box">div2(class=box)</div>
+<div id="div3" >div3</div>
+<span class="box">span(class=box)</span>
+
+<ul>
+    <li>AAAAA</li>
+    <li title="hello">BBBBBBBB</li>
+    <li class="box"><span>CCCCC</span></li>
+    <li title="hello"><span>DDDDD</span></li>
+    <li title="new">newnewnew</li>
+    <li style="display: none">我本来是隐藏的</li>
+</ul>
+<script type="text/javascript" src="js/jquery-1.10.1.js"></script>
+<script type="text/javascript">
+  //    1、选择第一个div
+//  $('div:first').css('background','pink')
+  //    2、选择最后一个div
+//    $('div:last').css('background','pink')
+//     3、选择所有class属性不为box的div
+//    $('div:not(.box)').css('background','pink')
+//    4、选择内容为BBBBB的li  只要包含当前内容  即可选中
+//    $('li:contains(BBBBB)').css('background','pink');
+//    5、选择隐藏的li    show()  元素显示   hide()元素隐藏
+//        $('li:hidden').show(2000);
+//    6、选择有title属性的li元素
+//    $('li[title]').css('background','pink')
+//    7、选择有title属性 且title属性为hello的li元素
+//    $('li[title=hello]').css('background','pink');
+//    8、选择所有有title属性 且title属性不为hello的li元素
+//        $('li[title][title!=hello]').css('background','pink');
+//        $('li[title]:not([title=hello])').css('background','pink');
+//    选择第二个和第三个li
+//  :eq()选择器   传入索引值  直接获取当前集合的相应元素
+//    $('li:eq(1)').css('background','pink');
+//    $('li:eq(2)').css('background','pink');
+//    $('li:eq(1),li:eq(2)').css('background','pink');
+//    :lt()小于给定索引值   :gt()大于给定索引值
+//    $('li:gt(0):lt(2)').css('background','pink');
+    $('li:lt(3):gt(0)').css('background','pink');
+
+//     0    1   2   3   4   5
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>今天屋里有点热</h1>
+
+    <script type="text/javascript">
+        window.onload = function () {
+//       动态的给body添加一个元素，使用js在页面上添加元素
+//      1.创建节点的第一种方式
+           //这个方式不用，这样的方法去动态创建的时候会把原来的覆盖掉
+//            document.write('<p>空调别开了，电费挺贵的</p>');
+
+//       2.第二个方式  是有用的
+
+//            var body = document.querySelector('body');
+//            html  head  body  它们三个是有简洁的获取方式的
+//            console.log(document.documentElement);//html
+//            console.log(document.head);//head
+//            console.log(document.body);//body
+//            document.body.innerHTML += '<p>空调别开了，电费挺贵的</p>';
+//             原有的标签体文本  +  新增的标签体文本
+//            document.body.innerHTML = '<h1>今天屋里有点热</h1>' + '<p>空调别开了，电费挺贵的</p>'
+//            a+=b;
+//            a = a+b
+//       3.第三种方式  用的最多
+//            1、先创建一个自己想要的dom元素对象，此时这个对象不会存在与dom树当中，页面上看不见
+            var pNode = document.createElement('p');
+//            2、把创建好的dom对象内部填充所需要的内容
+            pNode.innerHTML = '<p>空调别开了，电费挺贵的</p>';
+//            3、将组装好的dom对象追加到已经存在的dom对象里边，代表将创建的dom元素添加到dom树上，页面上才可见
+            document.body.appendChild(pNode);
+
+        }
+
+    </script>
+</body>
+</html>

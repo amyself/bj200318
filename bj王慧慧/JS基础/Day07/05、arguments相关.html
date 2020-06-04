@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//arguments只存在于函数内部
+			//它是一个函数内置的变量
+			//它代表是函数实参伪数组，本质上是一个对象
+			
+			//1、函数的形参可有可无，因为arguments当中可以获取到函数的实参，但是不方便
+			//虽然可以不写形参，通过arguments去操作实参，但是最好还是写之前的带形参；
+//			function add(a,b){//形参可有可无,在ES5当中
+//				console.log(arguments);//实参伪数组
+////				return a + b;
+//				return arguments[0] + arguments[1];
+//			}
+//			var a = 10;
+//			var b = 20;
+//			console.log(add(a,b,100));
+			
+			
+			//2、arguments.length代表实参的个数
+			//arguments.length可以让函数功能多样化，丰富
+			//这个函数现在需要有+或者-的功能（加法和减法）
+			//传递3个实参我们就加法
+			//传递2个实参我们就减法
+//			function addOrSub(a,b,c){
+//				if(arguments.length === 2){
+//					return a - b;
+//				}else if(arguments.length === 3){
+//					return a + b + c;
+//				}
+//			}
+//			
+//			console.log(addOrSub(100,20));//减法
+//			console.log(addOrSub(1,2,3));//加法
+			
+			
+			//arguments.callee  代表arguments所在的函数本身
+			function fn(){
+				console.log(arguments);
+				console.log(arguments.callee);
+			}
+			fn();
+		</script>
+	</body>
+</html>

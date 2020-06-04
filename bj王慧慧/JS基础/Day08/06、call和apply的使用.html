@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//call和apply是任何函数都有的两个方法
+			//它们可以修改函数执行时候的this指向，可以修改函数的执行者
+			//1
+//			function fn(){
+//				console.log(this);
+//			}
+//			
+//			var obj = {
+//				name:'赵丽颖',
+//				age:33
+//			}
+//			fn();//本来this指向的是window，代表window在调用这个函数
+//			//想让obj去调用这个函数
+//			fn.call(obj);//调用fn的时候修改fn内部this指向，让obj去调用fn
+			
+			
+			//修改函数内部的this指向，可以让我们很方便的让一个对象使用另外一个对象的方法
+			
+			//2
+			
+			function Dog(name,age){
+				this.name = name;
+				this.age = age;
+			}
+			
+			function Car(name,color){
+				this.name = name;
+				this.color = color;
+			}
+//			Object.prototype.run = function(){
+//				console.log('跑的很快');
+//			}//直接把方法放在Object的原型对象当中也行，但是不好
+			
+			Dog.prototype.run = function(a,b){
+				console.log(a,b);
+				console.log(this);
+				console.log('跑的很快');
+			}
+			
+//			Car.prototype.run = function(){
+//				console.log('跑的很快');
+//			}
+			
+			var d1 = new Dog('旺财',3);
+			d1.run(10,20);
+			var c1 = new Car('法拉利','red');
+			
+			//让车去借用狗的方法去跑
+			//call和apply 可以让我们一个对象去使用另外一个对象的方法（修改方法内部this指向）
+//			c1.run();
+			d1.run.apply(c1,[100,200]);
+			d1.run.call(c1,1000,2000);
+			
+			
+			//call和apply 作用 修改函数或者方法内部this指向，修改执行者
+			//通常用来让一个对象借用另外一个对象的方法去使用
+			//call和appy区别
+			//1、如果函数或者方法有参数，apply需要把参数放在数组当中
+			//2、如果函数或者方法有参数，call从第二个参数开始用逗号隔开就行
+			
+			//call和apply在借用方法的时候都干了两件事情
+			//1、调用函数或者方法的时候，临时把内部的this修改为自己指定的对象
+			//2、函数或者方法，会自动执行
+			
+			//apply用的很少，call用的比较多
+			
+			
+			//bind 方法  和 call以及apply很像
+			//它也是可以修改原来的函数或者方法的内部this指向
+			//只不过它会返回一个新的函数，而且要调用必须手动调用
+			//永久的把别人的东西拿走
+			var fn = d1.run.bind(c1);
+			fn(10000,20000);
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

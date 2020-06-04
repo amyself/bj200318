@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+    <ul class="list">
+        <li>我是列表项1</li>
+        <li>我是列表项2</li>
+        <li class="single">我是列表项3</li>
+        <li>我是列表项4</li>
+        <li>我是列表项5</li>
+        <li>我是列表项6</li>
+    </ul>
+<script type="text/javascript">
+  window.onload = function () {
+    var ulNode = document.querySelector('.list');
+//    console.log(ulNode.childNodes);//拿到所有的子节点(文本节点 元素节点  注释节点)
+//    console.log(ulNode.children);//拿到所有的子元素节点
+//      拿到第一个子节点和第一个子元素节点
+//      console.log(ulNode.firstChild);//获取第一个子节点
+//      console.log(ulNode.firstElementChild);//获取第一个子元素节点(低级不认识)
+//      拿到最后一个子节点和最后一个子元素节点
+//      console.log(ulNode.lastChild);//拿到最后一个子节点
+//      console.log(ulNode.lastElementChild);//拿到最后一个子元素节点(低级不认识)
+        var liNode = document.querySelector('.single');
+        console.log(liNode.previousElementSibling);//拿到上一个兄弟元素节点(低级不认识)
+        console.log(liNode.previousSibling);//拿到上一个兄弟节点
+        console.log(liNode.nextElementSibling);//拿到下一个兄弟元素节点（低级不认识）
+        console.log(liNode.nextSibling);//拿到下一个兄弟节点
+
+
+//      无论怎么样，以后我们关注的是元素节点，找元素节点只要找到就行 不是非得使用上面的办法
+//      单纯查找元素得话  直接使用id class 或者选择器等等  更加方便
+//      现在咱们学的这几个方法  大多数情况下都是和事件回调函数当中的this结合去使用
+      
+//       兼容性封装获取某个元素的第一个子元素节点
+      function getFirstChildElement(node) {
+        if(node.firstElementChild){
+//          高级浏览器
+            return node.firstElementChild;//只有高级认识
+        }else{
+//            低级浏览器
+            var result = node.firstChild;//拿到的是第一个子节点，不一定是子元素节点
+//            while循环  知道什么时候结束 但是不知道需要执行多少次
+            while (result != null && result.nodeType != 1){
+            //如果第一次查询结果不是子元素节点 那么直接获取当前这个结果的下一个兄弟节点
+//            但是如果查询到最后 都没有元素节点 那么最后一次循环执行返回的就是null  就报错了
+                result = result.nextSibling;
+            }
+//           ulNode 父级
+//          文本节点
+//          文本节点
+//          文本节点
+//          注释节点
+//          第一个元素节点
+            return result;
+        }
+      }
+      var value = getFirstChildElement(ulNode);
+      console.log(value);
+//     作业  按照上边的方法  封装一个获取最后一个子元素节点的函数
+  }
+</script>
+</body>
+</html>

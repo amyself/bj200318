@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//数据类型的强制转换，也叫数据类型的显式转换，
+			//显式转换的意思就是你自己在使用那三个函数转化数据
+			
+			//数据类型的隐式转换，我们看不到使用那三个方法，但是最后还发生了数据转换
+			//数据类型的隐式转换式我们核心，面试题出的很多，但是后期我们用的很少
+			//隐式转换通常发生在数据之间的  运算  比较 和 判等的时候
+			
+			console.log(1 + 1);
+			console.log(1 + '10');//‘110’
+			console.log(1 + true);//2
+			console.log(1 + undefined);//NaN
+			console.log('i love you~' + 1314);
+			
+			console.log(10 > '11');//fasle
+			//2、纯数字与数字型字符串之间比较：222 <  '30'  //false  （此时数字型字符串会转成纯数字再与前面的纯数字比较，即222与30相比谁大？当然22喽！）
+			console.log('1234' > '13');//false
+//			'0'字符编码是48    'a'编码是97    'A'编码是65
+			
+			
+			//数据之间的运算和比较
+			//1、先看是不是 +法运算
+			//2、如果是 + 法运算，看两边有没有字符串，如果有就是拼接字符串
+			
+			//3、如果不是 + 法，看看是不是比较大小（> < >= <=）
+			//4、如果是比较大小，看看两边是否同时是字符串，如果同时是字符串，比较的是字符串的Unicode码
+			
+			//5、其余情况，所有的数据全部转数字
+			
+			
+			//数据之间的判等
+			//1、先看两边是不是同种数据类型，如果是直接看两边一样不一样，一样就相等，不一样就不等，
+			//2、如果是不同的数据类型，那么需要将两边同时转数字，然后再去判等
+			//3、特殊情况：如果碰到了null有特殊情况发生
+//					null 和 0 不相等 
+//					null 和 '' 不相等
+//					null 和 false 不相等
+//					null 和 undefined 相等
+			console.log(null == null);//true
+			console.log(1 == '1');//true
+			console.log(undefined == undefined);//true
+			console.log(null == 0);//false
+			console.log(null == false);//fasle
+			console.log(null == '');//false
+			console.log(null == undefined);//true
+			
+			
+			//NaN的总结：一句话  NaN 六亲不认
+			//NaN和任意的数运算的结果都是NaN,(除了字符串加法以外，和字符串加法是拼接)
+			//NaN和任意的数比较的结果都是false
+			//NaN和任意的数判等的结果都是不相等（包括它自己）
+			
+			console.log(1 + NaN);//NaN
+			console.log(1 > NaN);//false
+			console.log(NaN > 1);//false
+			console.log(NaN + NaN);//NaN
+			console.log(NaN == NaN);//false
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

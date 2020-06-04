@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .outer{
+            display: flex;
+            width:400px;
+            flex-direction: row;
+            flex-wrap: wrap;
+            list-style: none;
+            /*height: 300px;*/
+            margin: 0 auto;
+            flex-shrink: 0;
+        }
+        .outer >.inner{
+            flex-grow: 1;
+            margin: 10px 10px 10px 0;
+        }
+        .outer >.inner >img{
+            width: 90px;
+            height: 90px;
+            vertical-align: top;
+        }
+    </style>
+</head>
+<body>
+<ul class="outer">
+    <li class="inner">
+        <img src="img/j1.webp">
+    </li>
+    <li class="inner">
+        <img src="img/j2.webp">
+    </li>
+    <li class="inner">
+        <img src="img/j3.webp">
+    </li>
+    <li class="inner">
+        <img src="img/j4.webp">
+    </li>
+    <li class="inner">
+        <img src="img/j5.webp">
+    </li>
+    <li class="inner">
+        <img src="img/j6.webp">
+    </li>
+    <li class="inner">
+        <img src="img/j7.webp">
+    </li>
+    <li class="inner">
+        <img src="img/j8.webp">
+    </li>
+
+</ul>
+</body>
+</html>

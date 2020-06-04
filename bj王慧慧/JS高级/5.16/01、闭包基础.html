@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    //  1.必须存在函数嵌套     2.内部函数引用外部函数变量    3.外部函数必须调用
+//   当外部函数调用的时候就已经有了闭包  闭包的本质在这种嵌套关系下出现的那个对象    在内部函数身上
+  function fn() {
+    var a = 0;
+    var b = 10;
+    function fn1() {
+        a++;
+        console.log(a,b);//内部函数如果不引用 也不存在闭包
+    }
+    return fn1;
+  }
+//  1.延长外部函数变量对象的生命周期
+    //  2.让函数外部可以操作（读写）的函数内部的数据（变量/函数）
+//  3.注意：浏览器为了性能,后期将外部函数中不被内部函数使用的变量清除
+ var f = fn();//外部函数必须调用
+    f();
+    f();
+    f();
+
+ //    清除闭包，一般使用完成去清除  但是如果使用的不多，可以不清除 程序结束会一起清除
+    f = null;
+    //function fn() {
+//    var a = 0;
+//    a++;
+//    console.log(a);
+//}
+////  任何函数调用   执行上下文都是要重新创建的  原来的数据都没有了
+//    fn();
+//    fn();
+//    fn();
+
+//function fun() {
+//  return 1;
+//}
+//var a = fun();
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+//    var a;
+//    function a() {}
+//
+//    console.log(typeof a)
+//  全局 和函数   别总说局部
+//var b;
+//if (!(b in window)) {
+//    b = 1;
+//}
+//console.log(b)//
+//function c(c) {
+//    console.log(c)
+//    var c = 3
+//}
+//
+//c = 1;
+//c(2) //
+
+//var fn = function () {
+//    console.log(fn)
+//}
+//fn()
+var obj = {
+    fn2: function () {
+
+        console.log(fn2)//
+    }
+}
+obj.fn2()
+//    obj是一个对象  对象里边有一个方法 调用这个方法    对象内部没有作用域
+//    只能去全局里边找  但是全局没有fn2这个方法    所以只能报错
+//    以后记着 一定不要在对象里边找   在对象里 别惦记作用域的事
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+@zero:0;
+//这个变量要作为属性名 这种情况下调用时需要在变量名称外边加{}   @{w}
+@w:width;
+@b:.box;
+@bg:skyblue;
+@{b}{
+  @{w}: 400px;
+  height: 400px;
+  background: @bg;
+  position: absolute;
+  top: @zero;
+  left: @zero;
+  right: @zero;
+  bottom: @zero;
+  margin: auto;
+  .inner{
+    @{w}: 200px;
+    height: 200px;
+    background: yellowgreen;
+    position: absolute;
+    top: @zero;
+    left: @zero;
+    right: @zero;
+    bottom: @zero;
+    margin: auto;
+  }
+}

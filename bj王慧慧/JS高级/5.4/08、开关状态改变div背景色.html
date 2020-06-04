@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 200px;
+            height: 200px;
+            background: pink;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+<script type="text/javascript">
+  //  点击div   让div在两个颜色（状态）之间切换
+    window.onload = function () {
+      var box = document.getElementById('box');
+      var flag = true;//代表盒子默认的状态(粉色)
+
+      box.onclick = function () {
+        if(flag){
+//          如果标志位flag的值是true 说明当前盒子的颜色是粉色  我需要把盒子的颜色改变天蓝色
+            box.style.backgroundColor = 'skyblue';
+//            因为flag=true的时候 盒子时粉色  当前盒子是蓝色  所以需要修改标志的flag的值
+//            flag = false;
+        }else{
+//           代码只要能够执行到else里边 说明当前标志位flag的值为false  盒子的颜色是蓝色
+//            所以需要把盒子的颜色改回粉色
+            box.style.backgroundColor = 'pink';
+//           因为flag=false的时候  盒子是蓝色 当前盒子是粉色 需要修改标志的flag的值
+//            flag = true;
+        }
+        flag = !flag;
+      }
+
+    }
+//    var flag2 = true;
+//    box1.onclick = function () {
+//      if(flag2){
+//
+//      } else {
+//
+//      }
+//      flag2 = !flag2;
+//    }
+</script>
+</body>
+</html>

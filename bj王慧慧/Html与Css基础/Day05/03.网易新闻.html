@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>网易新闻</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        a{
+            text-decoration: none;
+            color: black;
+        }
+        #wrap{
+            width: 300px;
+            height: 423px;
+            margin: 0 auto;
+            margin-top: 35px;
+            border-top: 1px solid;
+            border-top-color: #dddddd;
+            border-bottom: 1px solid;
+            border-bottom-color: #dddddd;
+
+
+        }
+        .caption{
+            height: 42px;
+            line-height: 42px;
+            vertical-align: center;
+        }
+        h4{
+            height: 41px;
+            width: 88px;
+            line-height: 42px;
+            border-top: 1px solid;
+            border-top-color: red;
+        }
+        h4 a:hover{
+            color: red;
+        }
+        span{
+         display: inline-block;
+         width: 4px;
+         height: 4px;
+         background-color:#666666;
+         }
+        /*图片部分样式*/
+        .main{
+            position: relative;
+            height: 150px;
+            overflow: hidden;
+        }
+        img:hover{
+            transform: scale(1.2,1.2);
+            transition: 2s;
+        }
+        h3{
+            color: white;
+            position: absolute;
+            left: 40px;
+            bottom: 0;
+            height: 30px;
+        }
+        h3:before{
+            content:"//";
+            display:inline-block;
+            color: red;
+            font-size: 20px;
+        }
+        /*列表样式*/
+        ul{
+            padding: 15px;
+        }
+
+        ul>li{
+            list-style: square;
+            color: #666666;
+            height: 28px;
+            margin-top: 15px ;
+            width: 300px;
+
+        }
+        ul>li:first-child{
+            margin-bottom: 0px;
+        }
+        li>a:hover{
+            color: red;
+        }
+        .footer{
+            height: 10px;
+            width: 88px;
+            border-bottom: 1px solid;
+            border-bottom-color: red;
+            margin-top: 19px;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <div class="caption">
+        <h4>
+            <a href="#">军事</a>
+            <span></span>
+            <a href="#">航空</a>
+        </h4>
+    </div>
+    <div class="main">
+        <img src="img/8263b0b3j00q7os5u000ec0008c0046c.webp">
+        <h3>飞鲨砺翅!歼15在辽宁舰上展开训练</h3>
+    </div>
+    <div class="news">
+        <ul >
+            <li>
+                <a href="#">千钧一发！实拍武警拆弹专家如何拆弹排爆</a>
+            </li>
+            <li>
+                <a href="#">德国二战V1导弹罕见老照片：命中地面瞬间</a>
+            </li>
+            <li>
+                <a href="#">消防救援支队对武汉火车站进行全面消杀</a>
+            </li>
+            <li>
+                <a href="#">中国成功发射遥感三十号06组卫星</a>
+            </li>
+        </ul>
+    </div>
+    <div class="footer"></div>
+
+</div>
+
+</body>
+</html>

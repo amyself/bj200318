@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+	
+			//预解析：预解释 还叫代码提升
+			//在程序开始执行后，代码执行之前，会发生预解析
+			
+			//预解析会发生在  函数声明定义的函数 和 带var的变量身上
+			//代码开始执行之前会预解析：预解析分为两步：
+			//1、先预解析 函数声明定义的函数，函数重名会发生覆盖，
+			//2、再预解析 带var的变量（预解析不会带着值，只会提升变量），变量名重复会忽略；
+			//注意：函数如果是函数表达式定义的，当做带var的变量去对待
+			//		变量如果是不带var定义的，不会发生预解析
+			
+
+//			console.log(a);//undefined
+//			var a;
+			
+			//1)
+//			alert(a);//报错   
+//			a = 0;
+			
+			
+			//2）
+//			var a;
+//			alert(a);  //  undefined
+//			a = 0;
+//			alert(a); //   0
+			
+			//3)注意看看
+//			var a = [1,2,3];  
+//			alert(a);//[1,2,3]
+//			var a = function(){};
+//			console.log(a);//function(){};
+
+			
+//			function a(){ alert('我是函数') }
+////			var a//提升上来后发现和上面的变量名重复，会忽略掉
+//			alert(a); // function a(){ alert('我是函数') }
+//			
+////			注意: 函数声明定义的函数和函数表达式定义的函数有2个区别，除此以外，同等对待
+//			//1、预解析的时候有区别
+//			//2、打印的时候有区别，函数声明定义的函数会带名字打印，函数表达式定义的不带名字
+//			a = '我是变量';
+//			alert(a); 
+			
+			//4）
+//			function a(){ alert('我是函数') } 
+////			var a
+//			alert(a); //function a(){ alert('我是函数') }   
+//			a++;// ++是一个算术运算符（自增自减）NaN
+//			alert(a);//NaN    
+//			a = '我是变量';
+//			alert(a) //'我是变量';
+			
+			//5
+			//全局预解析
+//			function fn(){
+//				//函数内部也要做预解析，预解析是在函数调用才开始的，解析和全局一样
+//				var a;
+//		 		alert(a); //undefined   
+//		 		a = 1;
+//		 		alert(a); //1   
+//			};    //var  fn = function(){}
+//			
+//			var a;
+//			alert(a);//undefined
+//			a = 0;
+//			alert(a); //0  
+//			fn()
+//			alert(a); // 0  
+			
+			
+			//6、
+			
+//			function fn(){
+//		   		alert(a); // 0  
+//		   		a = 1;//隔山打牛改全局为1
+//		   		alert(a);  //1 
+//			}
+//			
+//			var a;
+//			alert(a);//undefined    
+//			a = 0;
+//			alert(a);//0    
+//			fn()
+//			alert(a); //  1
+			
+			
+			
+			//7、
+			
+//			function fn(){
+//		   		alert(a);    
+//		   		a = 1;
+//		   		alert(a);   
+//			}
+			
+			function fn(){
+				var a
+		 		alert(a);//undefined    
+		 		a = 1;
+		 		alert(a);//1    
+			}//var fn = function(){};
+			
+			var a;
+//			var fn;
+//			var a
+			alert(a); //undefined   
+			a = 0;
+			alert(a); //0   
+			fn();
+			
+			fn = function(){
+				alert(a); // 0  
+		 		a = 1;
+		 		alert(a);//1
+			}
+			
+			fn();
+			
+			
+			
+			a = 100;
+			alert(a);  //100 
+			
+		</script>
+	</body>
+</html>

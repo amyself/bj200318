@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//如何生成随机验证码
+			//1、确定码源
+			var str = '1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM';
+			//字符串也可以当数组用，但是只能读不能写
+//			console.log(str[0]);//可以读取
+//			str[0] = '6';//不起作用，不能写
+//			console.log(str);//字符串是常量，只能读不能写
+			
+			//2、从码源当中随机的获取字符，拼接成一个字符串  就是我们验证码
+			//8位验证码
+			var code = '';
+			for(var i = 0; i < 8; i++){
+				code += str[Math.floor(Math.random()*str.length)];
+			}
+			console.log(code);
+			
+			
+			//获取N位验证码
+			function getRandomCode(n){
+				var str = '1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM';
+				var code = '';
+				for(var i = 0; i < n; i++){
+					code += str[Math.floor(Math.random()*str.length)];
+				}
+				return code;
+			}
+			
+			console.log(getRandomCode(6));
+			console.log(getRandomCode(50));
+		</script>
+	</body>
+</html>

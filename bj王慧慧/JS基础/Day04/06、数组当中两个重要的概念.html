@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var arr = [100,2,300,4,5];
+			//定义一个数组定义好之后会自动出现两个概念：长度和索引（下标）
+			
+			//数组的长度，定义好数组以后会自动出现，它可以修改，对数组进行增删操作
+			console.log(arr.length);
+			
+			//数组的索引（下标）狠重要，知道了索引，那么我们就可以操作数组里面对应这个索引的元素
+			console.log(arr[3]);//打印下标为3的数组元素
+			
+			
+			
+			
+			arr[3] = 400;
+			//读写数据：读：代表只是再获取数据但是不会动原本的数据 （查）
+			//         写：代表把原来的数据动了（增  删   改）
+			arr[4] = 500;
+			console.log(arr);
+			
+			
+			//数组的长度 = 数组的最大下标  + 1；
+			//数组的长度可以在数组的末尾去修改数组（添加和删除）
+			//如果要对数组添加一个元素
+			console.log(arr[5]);//undefined
+			console.log(arr[100]);//undefined
+			
+			//通过数组长度给数组添加元素
+//			arr[arr.length] = 600;//代表从数组末尾加一个元素，数组的长度会自动改变
+//			console.log(arr);
+			
+			
+			//通过数组长度给数组删除元素
+			arr.length-=2;
+			console.log(arr);
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--同步与异步-->
+
+<script type="text/javascript">
+    //  同步操作时阻塞的    代码从上到下执行
+  var a = 0;
+//  定时器是异步操作
+//   定时器函数  是同步执行的 所以第一时间 你也能拿到定时器id
+  setTimeout(function () {
+        console.log('定时操作:'+a);
+    },5000);
+    for (var i = 0; i < 50000; i++) {
+        for (var j = 0; j < 50000; j++) {
+            a++;
+        }
+    }
+
+</script>
+</body>
+</html>

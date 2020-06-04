@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" placeholder="请输入内容">
+<script type="text/javascript">
+  //   键盘事件  要么就是给表单元素添加（最多的就是各种输入框）
+//    要么就是对document添加，document是页面最外层的元素（但是在html当中是没有东西表示的）
+
+    window.onload = function () {
+      var inputNode = document.querySelector('input');
+//      键盘事件有两个 分别是onkeyup（键盘抬起）   和onkeydown（键盘按下） 两个
+//      键盘事件使用比较多的是onkeyup（抬起事件）按下用的不多  因为抬起事件可以保证事件只触发一次
+//       与其说在讲键盘事件 不如说我们将怎么区分哪一个键
+//        按回车 打印嘿嘿
+//        按shift  打印哈哈
+//        任何事件在触发的时候，系统都会给我们封装好一个和这次事件相关的对象，被称作事件对象
+//        事件对象在高级浏览器触发的时候，都会把这个对象当做实参，传递给回调函数的第一个形参
+//        这个事件对象当中，包含了这一次触发事件所有的相关信息；
+//        事件对象常用的名字 event  ev   e
+        inputNode.onkeyup = function (event) {
+            console.log(event)
+            if(event.keyCode === 13){
+                console.log('嘿嘿')
+            }
+            if(event.keyCode === 16){
+              console.log('哈哈')
+            }
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//this是js当中内置的变量，一般用在函数当中
+			//this代表一个函数的执行者，谁调用的这个函数，this代表的就是谁，本质是一个对象
+			//this在外部也是存在的，固定代表的就是window对象
+			//this在不同场合函数的调用当中，代表的对象不同
+			//同一个函数，调用方式不同，this也不同
+			
+			//this会出现的5个场合
+			//window对象是我们js当中所谓顶级对象，当浏览器打开的一刹那，所有的一切都会
+			//放到window对象下，它叫做浏览器窗口对象；
+			//只有全局的东西会作为window的属性去对待
+			
+			//1)
+			var a = 100;
+			function fn(){
+				console.log(this);
+				console.log(111);
+			}
+			fn();//window对象在调用fn方法，我们平时只是把window省略掉了,window的方法叫函数
+			
+			
+			
+			
+			//2)
+			var obj = {
+				eat:function(){
+					console.log(this);
+				}
+			}
+			obj.eat();
+			
+			
+			
+			//3)
+			function func(){//不是一个对象,所以不存在属性
+				console.log(this);//window
+				function func2(){//
+					// 对象里面一个属性的值是函数叫做方法,this出现在方法中,指的是这个方法的对象
+					console.log(this);//window
+				}
+				func2();
+			}
+			func();
+			
+			
+//			//4)
+			function func1(){
+				console.log(this);//window
+				var obj = {
+					func2:function(){
+						console.log(this);
+					}
+				}
+				obj.func2();
+			}
+			func1();
+			//函数和方法要分清
+			//函数就是我们一般在外面写的函数，方法是对象内部的一个属性
+			//1、this在普通函数当中一般代表的就是window
+			//2、this在方法当中一般代表的就是这个方法的对象
+			//3、this在构造函数当中一般代表的就是实例化对象
+			//4、this在事件的回调函数当中，一般代表的就是添加事件的事件源（给谁添加事件）
+			//5、使用call和apply方法的时候，我们可以任意指定this值
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

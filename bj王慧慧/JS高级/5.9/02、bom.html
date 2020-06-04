@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="height: 3000px">
+    <script type="text/javascript">
+        //页面加载完成回调
+      window.onload = function () {
+//        当浏览器窗口大小发生改变的事件
+//          window.onresize = function () {
+////            console.log('111')
+////              document.documentElement.clientWidth  获取当前视口宽度
+////              document.documentElement.clientHeight  获取当前视口高度
+//              console.log('宽度：'+document.documentElement.clientWidth);
+//              console.log('高度：'+document.documentElement.clientHeight);
+//          }
+//          系统滚动事件
+//          当系统滚条滚动    这个事件就会触发回调函数
+          window.onscroll = function () {
+            console.log('滚')
+          }
+
+//          history对象   历史记录
+//          history.back()   返回上一页
+//          history.forward()  去到下一页
+//            history.go()   去到指定页
+//          location对象   地址栏   可以修改和读取地址
+          console.log(window.location.href);
+//          window.location.href = 'http://www.baidu.com'; //重定向
+
+//          navigator 对象   负责浏览器的版本、名称等信息
+          console.log(window.navigator.appName);// 网景   所有的浏览打印这个属性 都是网景
+          console.log(window.navigator.appVersion);// 浏览器版本
+          console.log(window.navigator.appCodeName);// 浏览器内核  但是打印出来一般都不准
+
+//         screen  屏幕
+          console.log(window.screen.width);//获取屏幕的宽    电脑分辨率
+          console.log(window.screen.height);//获取屏幕的高    电脑分辨率
+
+
+      }
+    </script>
+</body>
+</html>

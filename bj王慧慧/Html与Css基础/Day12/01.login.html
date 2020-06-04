@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link type="text/css"  rel="stylesheet" href="css/iconfont.css">
+    <style>
+        *{margin:0;padding:0;}
+        html,body{height: 100%;overflow: hidden;}
+        #wrap{
+            background-image: url("img/1.png");
+            background-size: cover;
+            height: 100%;
+            position: relative;
+
+        }
+        .mask{
+            background-color:  rgb(62,177,139);
+            opacity: 0.5;
+            height: 100%;
+
+        }
+        .login{
+            width: 367px;
+            height: 454px;
+            background: white;
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            top: 0;
+            margin: auto;
+        }
+        .pic{
+            width: 107px;
+            height: 107px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 50px auto 0;
+        }
+        .content{
+            margin: 88px auto 0;
+            width: 250px;
+        }
+        .first{
+            border-width: 0 0 2px 0;
+            border-bottom: 2px solid #33eebb;
+        }
+        .second{
+            border-width: 0 0 2px 0;
+            border-bottom: 2px solid #cccccc;
+            margin-top: 30px;
+        }
+        .content  input{
+            border: none;
+            height: 30px;
+        }
+        .content  input:focus{
+            border: none;
+            outline:medium;
+        }
+
+        .icon-touxiang,.icon-suo{
+            color: #33eebb;
+            width: 30px;
+            height: 30px;
+            display: inline-block;
+            margin-left: 50px;
+        }
+        .icon-suo{
+            color: #cccccc;
+
+        }
+        .sign{
+            text-align: center;
+            height: 100px;
+            line-height: 100px;
+
+        }
+        h3{
+            color: #33eebb;
+        }
+      a{
+          text-decoration: none;
+      }
+
+        .icon-changyongicon-{
+            color: #33eebb;
+            font-weight: bolder;
+            display: inline-block;
+
+        }
+        i{
+         padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <div class="mask"></div>
+    <div class="login">
+        <div class="pic">
+            <img src="img/2.png">
+        </div>
+        <div class="content">
+            <div class="first">
+                <input type="text" name="username"  placeholder="username"><a class="iconfont icon-touxiang" ></a>
+            </div>
+            <div class="second">
+                <input type="password" name="password" placeholder="password"><a class="iconfont icon-suo" ></a>
+
+            </div>
+        </div>
+        <div class="sign">
+          <a href="#">
+              <h3>SIGN&nbsp;&nbsp;&nbsp;IN<i  class="iconfont icon-changyongicon-"></i></h3>
+          </a>
+        </div>
+    </div>
+
+
+</div>
+</body>
+</html>

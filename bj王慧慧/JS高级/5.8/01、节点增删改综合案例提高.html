@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" placeholder="请输入歌曲名">
+<ul>
+
+</ul>
+<script type="text/javascript">
+    //   输入框中 按回车  获取当前输入框的value
+    // 组装结构  放到ul里边去  并且新加的li划过可以改变背景颜色
+    window.onload = function () {
+        var inputNode = document.querySelector('input');
+        var ulNode = document.querySelector('ul');
+//       当页面当中li的个数超过10个的时候  删除掉最早的那个li
+//        创建li的顺序 要倒序
+//        定义计数变量   用于记录创建了多少次li
+        var num = 0;
+//        记录上一次创建的li   第一次添加li要在ul的结尾追加   之后都要在上一次创建的li的前边增加
+        var oldLi = null;
+//        当前正创建的li
+        var liNode = null;
+//      给输入框绑定键盘事件
+        inputNode.onkeyup = function (event) {
+//         需要先判断用户是否按了回车
+            if(event.keyCode == 13){
+//              说明按下了回车   获取当前输入框中的value
+                var content = this.value;
+//                判断输入框中的内容 是否为空（如果写的都是空格 也算是空）
+//                所以先要把获取的value 去除两端空格之后  看看还有没有内容
+                if(content.trim()){
+//                  说明输入的是有效内容
+//                    alert('输入成功')
+//                   根据输入的信息 创建li   添加内容  放到ul中
+                    num++;
+                    console.log(num);
+//                    在liNode被重新赋值之前    存下这个元素
+                    oldLi = liNode;
+//                   oldLi = null        oldLi = 第一个
+//                   liNode = 第一个     liNode = 第二个
+//                    创建li
+                    liNode = document.createElement('li');
+                    liNode.innerHTML = content;
+//                   创建好的li，对于我们来说就是dom对象 所以我们可以直接在每次创建完li之后 直接把事件绑定
+                    liNode.onmouseenter = function () {
+                        this.style.backgroundColor = 'pink';
+                    };
+                    liNode.onmouseleave = function () {
+                        this.style.backgroundColor = 'white';
+                    };
+//                    把li追加给ul
+                    ulNode.insertBefore(liNode,oldLi);
+
+                    if (num>10){
+                        var last = ulNode.lastElementChild;
+                        ulNode.removeChild(last);
+                    }
+                } else {
+//                  说明输入的信息为空
+                    alert('请不要输入空信息')
+                }
+//             只要按下回车  不论我的结果是否成功   都需要清空输入框
+                this.value = '';
+            }
+        }
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 200px;
+            border: 1px solid #000;
+            overflow: auto;
+        }
+        body{
+            height: 2000px;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    今天天气真不错，中午吃点啥？今天天气真不错，中午吃点啥？今天天气真不错，中午吃点啥？今天天气真不错，中午吃点啥？今天天气真不错，中午吃点啥？今天天气真不错，中午吃点啥？今天天气真不错，中午吃点啥？今天天气真不错，中午吃点啥？今天天气真不错，中午吃点啥？今天天气真不错，中午吃点啥？今天天气真不错，中午吃点啥？今天天气真不错，中午吃点啥？今天天气真不错，中午吃点啥？今天天气真不错，中午吃点啥？今天天气真不错，中午吃点啥？今天天气真不错，中午吃点啥？今天天气真不错，中午吃点啥？今天天气真不错，中午吃点啥？今天天气真不错，中午吃点啥？今天天气真不错，中午吃点啥？今天天气真不错，中午吃点啥？今天天气真不错，中午吃点啥？今天天气真不错，中午吃点啥？今天天气真不错，中午吃点啥？今天天气真不错，中午吃点啥？今天天气真不错，中午吃点啥？今天天气真不错，中午吃点啥？今天天气真不错，中午吃点啥？
+</div>
+<br>
+<br>
+<br>
+<button id="btn1">得到滚动条位置</button>
+<button id="btn2">设置滚动条位置</button>
+<script type="text/javascript" src="js/jquery-1.10.1.js"></script>
+<script type="text/javascript">
+  $(function () {
+      $('#btn1').click(function () {
+//          scrollTop 得到某个元素或者浏览器的滚动条坐标
+//          返回值 是不带单位的
+//        console.log($('.box').scrollTop());
+          
+//          console.log($('body').scrollTop())
+//          console.log($('html').scrollTop())
+//          解决方案：html和body在获取的过程中一个有值 一个为零  所以让这两个值相加 也可以实现兼容
+//          document 在1.8版本以上可以直接使用  但是相加的解决方案 更加通用
+          console.log($('body').scrollTop() + $('html').scrollTop());
+//          console.log($('body').scrollTop() || $('html').scrollTop());
+          console.log($(document).scrollTop());
+      });
+//      设置滚动条位置
+      $('#btn2').click(function () {
+//        $('.box').scrollTop(200);
+//      在设置scrollTop的时候  跟获取的情况一样
+//       解决方案：html和body同时设置
+//          $('body').scrollTop(300);
+//          $('html').scrollTop(300);
+//          $('body,html').scrollTop(300);
+          $(document).scrollTop(500);
+      })
+  })
+</script>
+</body>
+</html>

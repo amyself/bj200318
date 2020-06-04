@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+//    var name = "The Window";
+//    var object = {
+//        name: "My Object",
+//        getNameFunc: function () {
+//
+//            return function () {
+//                return this.name;
+//            };
+//        }
+//    };
+//   方法的本质也是函数  所以当前是存在嵌套关系的
+//    看起来是嵌套 但是不是闭包  因为没有引用外部的变量
+//    内部函数只使用了一个this     当前函数中有没有this？  函数本身存在this 所以不存在引用外部
+//    console.log(object.getNameFunc()());
+
+
+    var name2 = "The Window";
+    var object2 = {
+        name2: "My Object",
+        getNameFunc: function () {
+            var that = this;
+            return function () {
+                return that.name2;
+            };
+        }
+    };
+    console.log(object2.getNameFunc()());
+</script>
+</body>
+</html>

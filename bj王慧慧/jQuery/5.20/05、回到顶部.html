@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .toTop{
+            width: 40px;
+            height: 40px;
+            background: pink;
+            font-size: 14px;
+            text-align: center;
+            color: #fff;
+            position: fixed;
+            right:100px;
+            bottom:100px;
+            cursor: pointer;
+        }
+        body{
+            height: 2000px;
+        }
+    </style>
+</head>
+<body>
+<div class="toTop">回到顶部</div>
+<script type="text/javascript" src="js/jquery-1.10.1.js"></script>
+<script type="text/javascript">
+    //   滚动距离超过首屏之后再显示  回到顶部按钮   小于这个距离  还要接着隐藏
+ $(function () {
+//     动画总时长
+   var time = 3000;
+//   动画帧时长       总时长/帧时长 = 总帧数（步数）
+   var itemTime = 30;
+
+//   回到顶部 给按钮绑定单击事件
+     $('.toTop').click(function () {
+//       获取总偏移（当前页面滚动条的坐标）
+         var offset = $('html').scrollTop() + $('body').scrollTop();
+//       单次偏移      总偏移 / 总帧数(就是动画总时长 / 帧时长)
+         var itemOffset = offset / ( time / itemTime );
+
+//         启动定时器   时间为帧时长  在定时器内 每一次减掉一个单次偏移
+         var timer = setInterval(function () {
+           offset -= itemOffset;
+//           滚动条到达顶部之后  清除定时器
+             if(offset <= 0){
+               clearInterval(timer);
+//               修正滚动条位置   这一步可以省略
+                 $('html,body').scrollTop(0);
+             }
+//           设置滚动条的坐标
+             $('html,body').scrollTop(offset);
+         },itemTime)
+     })
+ })
+</script>
+</body>
+</html>

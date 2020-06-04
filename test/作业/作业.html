@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel='stylesheet' type="text/css" href="index.css"/>
+		<style>
+			.todo-main li button {
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="root">
+			<div class="todo-container">
+				<div class="todo-wrap">
+					<div class="todo-header">
+						<input id="newTodo" type="text" placeholder="请输入你的任务名称，按回车键确认" />
+					</div>
+					<ul class="todo-main">
+		
+					</ul>
+					<div class="todo-footer">
+					<label>
+							<input id="checkAll" type="checkbox"/>
+					</label>
+						<span>
+		  已完成<span id="allCompletedTodos">0</span> / 全部<span id="allTodos">2</span>
+						</span>
+						<button id="removeAllCompleted" class="btn btn-danger">清除已完成任务</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="./jquery-1.10.1.js"></script>
+		<script>
+	$(function(){
+		var dataJson=[{content:"唱歌"},{content:"滑雪"},{content:"放风筝"}]
+		var $ulNode=$(".todo-main")
+		var $checkAllNode=$("#checkAll")
+		
+		function bindData(data){
+			for(var i=0;i<data.length;i++){
+			$ulNode.append("<li class='item' style='background:rgb(255, 255, 255);'><label>"+
+			"<input type='checkbox'><span>"+
+			data[i].content+"</span></label>"+
+			"<button class='btn btn-danger' style='display:none;'>删除</button></li>")
+			}
+			
+		}
+		bindData(dataJson)
+		
+		//已完成的状态
+		function allCompletedTodos(){
+			$("#allCompletedTodos").html($ulNode.find(":checkbox:checked").length)
+		}
+		//全选状态
+		function checkAll(){
+			$("#allTodos").html($ulNode.children("li").length)
+		}
+		checkAll()
+		//给input复选框绑定点击事件
+		
+		// $(".item input").click(function(){
+		// 	allCompletedTodos()
+		// 	$checkAllNode.prop("checked",$ulNode.find(":checkbox:not(:checked)").length===0)
+		// })
+		$ulNode.delegate("input",'click',function(){
+			allCompletedTodos()
+			$checkAllNode.prop("checked",$ulNode.find(":checkbox:not(:checked)").length===0)
+			
+		})
+			//全选与全不选
+		$checkAllNode.click(function(){
+			//console.log($(this).checked)错误写法
+			$ulNode.find(":checkbox").prop("checked",this.checked)
+			allCompletedTodos()
+		})
+		
+		//清除所有已完成的任务
+		$("#removeAllCompleted").click(function(){
+			$ulNode.find(":checkbox:checked").prop("checked",false)	
+			$("#allCompletedTodos").html($ulNode.find(":checkbox:checked").length)
+			$checkAllNode.prop('checked',false);
+			
+		})
+		
+		$("ul").delegate("li","mouseenter",function(){
+		$(this).css('background','#ccc');
+		$(this).children("button").show()	
+		})
+		$("ul").delegate("li","mouseleave",function(){
+		$(this).css('background','#fff');
+		$(this).children('button').hide();	
+		})
+		
+		//绑定移入移出事件
+		// $(".item").hover(function(){
+		// 	$(this).css('background','#ccc');
+		// 	$(this).children("button").show()
+		// },function(){
+		// 	$(this).css('background','#fff');
+		// 	$(this).children('button').hide();
+		// })
+		// 删除元素
+		// $(".item>button").click(function(){
+		// $(this).parent().remove()
+		// allCompletedTodos()			
+		// checkAll()
+		// })
+		$ulNode.delegate("button","click",function(){
+			console.log(1)
+			$(this).parent().remove()
+			allCompletedTodos()			
+			checkAll()
+			$checkAllNode.prop('checked',$todoMain.children('li').length!=0 &&
+			$ulNode.find(':checkbox:not(:checked)').length === 0)
+		})		
+		//增加新的li标签
+		$("#newTodo").keyup(function(event){
+			if(event.keyCode==13){
+				if($.trim($(this).val())){
+					var newData=[{
+						content:$(this).val()
+					}]
+					bindData(newData)
+					checkAll()
+				    $checkAllNode.prop('checked',false);
+					
+					
+				}
+				else{
+					alert("输入值不能为空")
+				}
+				$(this).val("")
+			}
+		})
+		
+	})
+		</script>
+	</body>
+</html

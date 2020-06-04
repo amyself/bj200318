@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//交换两个变量的值；(整数)
+			var a = 100;
+			var b = 200;
+			console.log(a,b);
+			//1、借助第三方变量实现
+//			var c;
+//			c = a;// =出现   右侧一定是一个有值的东西（值，变量），左侧一定是一个变量
+////			console.log(a);//赋值操作，把a的值赋值给c之后，a的值仍然存在，不是说就没有了；
+//			a = b;
+////			console.log(a);// 200
+//			b = c;
+//			console.log(a,b);
+			
+			
+			
+			//2、不用第三方变量，求和实现
+			a = a + b; //  a = 100 + 200   a = 300
+			b = a - b; //  b = 300 - 200   b = 100
+			a = a - b; //  a = 300 - 100   a = 200
+			
+			console.log(a,b);
+			
+			
+			
+			
+			//这个不是交换
+//			a = 200;
+//			b = 100;
+//			console.log(a,b);
+			
+			
+		</script>
+	</body>
+</html>

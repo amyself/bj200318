@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+  function $() {
+    var obj = {};
+    obj.name = '刘渊';
+    obj.say = function () {
+      alert('我喜欢赵丽颖');
+      return this
+    };
+    obj.eat = function () {
+      alert('我贼能吃');
+      return this;
+    };
+    return obj;
+  }
+  $().say().eat();
+</script>
+</body>
+</html>

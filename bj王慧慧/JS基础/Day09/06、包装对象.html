@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//包装对象就三种
+			//  A.B   A一定是对象    B一定是对象的属性    
+			var a = 100;
+//			console.log(a);
+			console.log(a instanceof Object);
+			console.log(a.toString());
+			console.log(a instanceof Object);
+			//a是一个数字，数字是基本数据类型，无法调用方法
+			//1、当用基本数据去调用方法的时候，首先会自动转化为对应包装对象
+			//   a = new Number(a);
+			//2、调用包装对象的方式实现转化字符串
+			//3、当调用完成一瞬间，再把a转化回去原来的数子 a = 100;
+			
+			
+			
+			
+			//包装对象就三种
+			//Number   String   Boolean
+			//我们以后是不会手动去创建包装对象
+			var b = new Number(100);
+			console.log(b)//这是一个数字的包装对象
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

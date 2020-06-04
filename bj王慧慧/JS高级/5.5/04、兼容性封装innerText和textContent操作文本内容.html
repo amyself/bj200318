@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+<div id="box">今天天气真不错</div>
+<script type="text/javascript">
+  //  获取当前div的文本内容  但是有要求  能用textContent的高级浏览器就要使用textContent
+//    不能用的再去使用innerText
+    window.onload = function () {
+
+      var box = document.getElementById('box');
+        console.log(setOrGetContent(box));
+      box.onclick = function () {
+//        console.log(box.innerText)
+          setOrGetContent(box,'心情好极啦');
+          console.log(setOrGetContent(box));
+      }
+
+
+
+//    兼容性封装操作元素的内容（读，写）
+//    参数1  要操作的元素   参数2：要写入的值（写入操作才需要 读取不用）
+//    用户是高级浏览器自动使用textContent  低级浏览器就使用innerText
+        function setOrGetContent(node,content) {
+            if(arguments.length === 1){
+//              代表当前是读取操作
+
+                if(node.textContent){
+//                  只要能拿到这个dom对象的textContent属性值，代表当前用户是高级浏览器
+                    return node.textContent;
+                }else {
+//                    代表拿不到  那就是低级浏览器
+                    return node.innerText;
+                }
+
+            }else if(arguments.length === 2){
+//              代表写入操作
+                if(node.textContent){
+//                  代表高级
+                    node.textContent = content;
+                }else {
+//                  代表低级
+                    node.innerText = content;
+                }
+            }
+        }
+    }
+
+</script>
+</body>
+</html>

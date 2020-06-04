@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    function fun(n, o) {
+//        n=0   o=undefined
+        console.log(o)
+        return {
+            fun: function (m) {
+
+
+                return fun(m, n)
+            }
+        }
+    }
+//    var a = fun(0);//undefined
+//    a.fun(1);//0
+//    a.fun(2);//0
+//    a.fun(3);//0
+//    内部的m  就是外部的n
+//    有返回值 立马调用之后的方法 形成了闭包机制  逐步创建新的  每次都是拿上一次的当做妈妈
+    var b = fun(0).fun(1).fun(2)
+
+</script>
+
+</body>
+</html>

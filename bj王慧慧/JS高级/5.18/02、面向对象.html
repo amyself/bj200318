@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script type="text/javascript">
+  //  面向对象语言的三大特征：封装、继承、多态
+//    es5当中没有类的概念，es5我们可以把构造函数理解为类
+//    es6语法当中添加了类的概念  class  但是也是假的  es6中本质也是使用构造函数实现的类，它就是一个语法糖
+
+//    公共的狗类
+    function Dog(name,age,color) {
+      this.name = name;
+      this.age = age;
+      this.color = color;
+    }
+    Dog.prototype.run = function () {
+      console.log('跑的很快');
+    };
+    Dog.prototype.eat = function () {
+      console.log('狗粮')
+    };
+//    柯基的狗类
+    function Cauchy(name,age,color) {
+//        this  指的是当前实例化对象
+//        this.name = name;
+//        this.age = age;
+//        this.color = color;
+//        2、借助构造函数继承  专门用来继承父类中的属性的
+        Dog.call(this,name,age,color);
+    }
+//    原型继承   原型继承主要是让子类继承父类的方法的
+//  让子类的原型  =  父类的一个实例
+  Cauchy.prototype = new Dog();
+//   在Cauchy的原型中，也就是父类的实例当中添加constructor构造器，手动添加，因为原型对象当中都有这东西.
+  Cauchy.prototype.constructor = Cauchy;
+
+//  多态   方法重写和方法重载
+//  方法重写   其实就是重写父类的方法
+//  方法重载，根据传递参数不同，函数具有不同的功能
+    Cauchy.prototype.eat = function (dataType) {
+      if(typeof dataType === 'number'){
+        console.log('我要吃磨牙棒')
+      }else if(typeof dataType === 'boolean'){
+        console.log('我要吃钙片')
+      }else if(typeof dataType === 'string'){
+        console.log('我要吃香肠')
+      }
+    }
+
+
+    var d1 = new Dog('wc',3,'black');
+    var c1 = new Cauchy('dp',2,'yellow');
+    console.log(d1);
+    console.log(c1);
+    d1.eat();
+    c1.eat('bb');
+
+</script>
+</body>
+</html>

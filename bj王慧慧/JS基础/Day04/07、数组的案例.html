@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+//			1、数组的遍历（打印数组当中所有的元素值）
+			//循环变量的值对应的就是数组的下标
+			
+//			for(var i = 1; i <= 100; i++){
+//				console.log(i);
+//			}
+			//从前往后去遍历数组
+			var arr = [100,200,300,400,500];
+//			for(var i = 0; i < arr.length; i++){
+//				//i的取值，刚好是0 - 4 对应的刚好就是数组的下标
+//				console.log(arr[i]);
+//			}
+			
+//			//从后往前去遍历数组
+//			for(var i = arr.length - 1; i >= 0; i--){
+//				console.log(arr[i]);
+//			}
+
+
+//			2、数组求和
+//			var sum = 0;
+//			for(var i = 0; i < arr.length; i++){
+//				sum += arr[i];
+//			}
+//			console.log(sum);
+
+
+//			3、求数组最大值，最小值，平均值
+			
+//			var arr = [23,44,10,88,66];
+//			var max = arr[0];//100
+//			var min = arr[0];
+//			var sum = 0;
+//			for(var i = 0; i < arr.length; i++){
+//				if(max < arr[i]){
+//					//用来判断最大值
+//					max = arr[i];
+//				}
+//				
+//				if(min > arr[i]){
+////					判断最小值
+//					min = arr[i];
+//				}
+//				//求和
+//				sum += arr[i];
+//			}
+//			console.log(max,min,sum/arr.length);
+
+//			4、合并数组（在新数组当中合并 / 在原数组当中合并）
+			var arr1 = [1,2,3,4,5];
+			var arr2 = [6,7,8,9,10];
+			
+			//1、把两个数组的值统一放到一个新数组当中，打印新数组
+			var newArr = [];
+//			//遍历第一个数组里面的每个值，一一放到newArr里面
+			for(var i = 0; i < arr1.length; i++){
+				newArr[newArr.length] = arr1[i]; //2
+//			  i = 0  	newArr[0] = 1;   newArr长度会自动变为1
+			//i = 1     newArr[1] = 2;   newArr长度会自动变为2
+			}
+			//遍历第二个数组里面的每个值，一一放到newArr里面
+			for(var i = 0; i < arr2.length; i++){
+				newArr[newArr.length] = arr2[i];
+//			  i = 0  	newArr[0] = 1;   newArr长度会自动变为1
+			//i = 1     newArr[1] = 2;   newArr长度会自动变为2
+			}
+			console.log(newArr);
+			console.log(arr1);
+			console.log(arr2);
+			
+			
+			//2、在任意的一个数组后面，放上另外一个数组的元素
+			
+			for(var i = 0; i < arr1.length; i++){
+				arr2[arr2.length] = arr1[i];
+			}
+			console.log(arr2);
+
+
+
+
+
+		</script>
+	</body>
+</html>

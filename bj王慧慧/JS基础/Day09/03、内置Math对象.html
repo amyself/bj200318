@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+//			round, floor,ceil,   random,  max  min  PI  pow abs  sin
+//			round, floor,ceil  都是要把小数转化为整数，如果是整数了，不动；
+			var num = 1.63;
+			console.log(Math.floor(num));//向下取整
+			console.log(Math.ceil(num));//向上取整
+			console.log(Math.round(num));//四舍五入取整
+			
+//			max  min  PI  pow abs  sin
+			console.log(Math.max(26,18,33,6));//求出一系列数字当中的最大值
+			console.log(Math.min(26,18,33,6));//求出一系列数字当中的最小值
+			console.log(Math.PI);//圆周率
+			console.log(Math.pow(2,5));//求2的5次方
+			console.log(Math.abs(-100));//绝对值
+			
+			//js当中求一个角度的三角函数，不能写角度，必须把角度转化为弧度
+			//圆的周长除以半径   代表360度所对应的弧度   2*PI
+			//180度 -----> PI
+			//30度 ----->？
+//			180/PI = 30/?     30*PI / 180
+			console.log(Math.sin(30*Math.PI / 180));//求30度对应的正弦值
+	
+	
+			//求随机数
+			console.log(Math.random());//取的是0-1之间的随机数，包含0但是不包含1
+			
+			
+			// 0 - 100之间的随机整数
+			console.log(Math.floor(Math.random()*101));//取0 - 100之间的整数
+			
+			// 1 - 100之间的随机整数 
+			console.log(Math.floor(Math.random()*100 + 1));
+			
+			// 3 - 100之间的随机整数
+			console.log(Math.floor(Math.random()*98 + 3));
+			
+			//求 a - b 之间的随机整数
+//			console.log(Math.floor(Math.random()*(b - a + 1) + a));
+			//  5 - 200之间
+			console.log(Math.floor(Math.random()*196 + 5));
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var num = 10;
+			function fun() {
+	  			var num = 20;
+	  				
+	  			fun2();
+			}
+			
+			function fun2() {
+				console.log(num);//20
+			}
+			fun();
+			
+			//函数定义时候作用域就定死了，调用的时候作用域链顺着作用域去查找，函数的作用域和调用没关系
+		</script>
+	</body>
+</html>

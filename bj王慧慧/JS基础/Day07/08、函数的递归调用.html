@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//在一个函数内部执行的时候，又调用（直接或者间接）调用自己
+			//我们就说这个函数是递归调用
+			//函数的递归调用是一把双刃剑，用的好，代码狠简洁，用的不好，造成灾难；
+			//递归调用函数用的不好，会出现内存溢出（内存装不下）
+			
+			
+			//递归要想用的好，必须满足以下两个条件
+			//1、递归必须有一个明显的结束条件
+			//2、递归必须有一个趋近于结束条件的趋势
+			
+			//递归调用灾难
+//			function fn(){
+//				console.log('i love you~');
+//				fn();
+//			}
+//			
+//			fn();
+			
+			//递归调用打印10次之后，停止
+			//计数器
+			var n = 0;
+			function fn(){
+				if(n == 10){
+					return;
+				}
+				console.log('i love you~');
+				n++
+				fn();
+			}
+			
+			fn();
+			
+			
+			
+			//递归实现求一个数的阶乘
+			// n! = (n-1)!*n
+			
+			function factorial(n){
+				if(n <= 1){
+					return 1;//谁调用返回给谁,f(2)调用,所以1返回给了f(2)
+				}
+				
+				factorial = 100;
+				
+//				return factorial(n-1)*n;
+				return arguments.callee(n-1)*n;//arguments.callee主要就是递归用
+			}
+			
+			console.log(factorial(5));
+			
+			//如果以后碰到很多种方法都可以解决的事情，能不用递归尽量别用
+			//因为递归效率狠慢 而且内存占用比较大
+			//除非逼不得已再用
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			
+			#box{
+				width: 300px;
+				height: 300px;
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="box"></div>
+		
+		<script type="text/javascript">
+			//回调函数的概念：
+			//1、函数是我定义的
+			//2、我没有调用
+			//3、最终执行了(可以认为回调函数都是在某一个时刻，系统帮你调用)
+			
+			//1、事件回调
+			//2、定时器回调
+			//3、ajax回调
+			//4、生命周期回调
+			
+//			function fn(){
+//				console.log(111);
+//			}
+//			fn();
+			
+			var box = document.getElementById('box');
+			box.onclick = function(){
+				console.log(' i love you~');
+				box.style.backgroundColor = 'green';
+			}
+			
+		</script>
+	</body>
+</html>

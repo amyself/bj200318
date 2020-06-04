@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            background: pink;
+            position: absolute;
+            left:0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+<script type="text/javascript">
+  var box = document.getElementById('box');
+//  速度
+  var speed = 3;
+
+  setInterval(function () {
+      //  上一次的left值(也相当于是当前的left值)     一直在上一次的基础之上 增加speed   在设置给 box
+      var startX = box.offsetLeft;
+      var lastX = startX + speed;
+//      边界值判断  右侧超出边界 需要反向运动
+//      document.documentElement.clientWidth  视口宽度  这么拿  html的视口宽度
+//      盒子右侧临界值 相当于     视口宽度 - 盒子的宽度
+      if(lastX > document.documentElement.clientWidth - box.offsetWidth){
+            lastX = document.documentElement.clientWidth - box.offsetWidth;
+//            这个逻辑参照金箍棒    修改元素样式案例
+            speed = -3;
+      }else if(lastX < 0){
+        lastX = 0;
+        speed = 3;
+      }
+
+
+
+      box.style.left = lastX + 'px';
+
+  },16);
+
+
+
+</script>
+
+
+</body>
+</html>

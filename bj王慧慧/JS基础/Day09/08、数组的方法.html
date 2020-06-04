@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//一、数组增删改查的方法，必须搞定 一共5个
+//			var arr = [1,2,3,4];
+			//1-1 末尾增删
+			//末尾增
+			//功能：在数组末尾添加元素，可以是多个
+			//参数：指定的要添加的元素
+			//返回：返回添加元素后原数组的长度
+			//这个方法会影响原数组
+//			var result = arr.push(100,200,300);
+//			console.log(arr);
+//			console.log(result);
+			
+			
+			//末尾删
+			//功能：在数组末尾删除一个元素
+			//参数：无
+			//返回：返回删除的那一个元素
+			//这个方法会影响原数组
+//			var result = arr.pop();
+//			console.log(arr);
+//			console.log(result);
+
+
+
+			//1-2 头部增删
+			//头部增
+			//功能：在数组头部添加元素，可以是多个
+			//参数：指定的要添加的元素
+			//返回：返回添加元素后原数组的长度
+			//这个方法会影响原数组
+//			var result = arr.unshift(100,200,300);
+//			console.log(arr);
+//			console.log(result);
+
+
+			//头部删
+			//功能：在数组头部删除一个元素
+			//参数：无
+			//返回：返回删除的那一个元素
+			//这个方法会影响原数组
+//			var result = arr.shift();
+//			console.log(arr);
+//			console.log(result);
+			
+			
+			
+			//1-3 任意位置增删改
+			//数组增删改一体化
+			//把这个方法当做删除去理解
+			
+			//删：
+			//功能：从任意位置开始删除任意个元素
+			//参数：2个   第一个代表起始位置，第二个代表删除的个数
+			//返回值： 返回删除的元素组成的新数组
+			//会影响原数组
+//			var result = arr.splice(1,2);
+//			console.log(arr);
+//			console.log(result);
+			
+			
+			//增：  其实就是从某个位置开始删除0个，然后添加新的
+			//功能：从任意位置开始删除0个元素，然后再这个位置添加新的元素
+			//参数：多个   第一个代表起始位置，第二个代表删除的个数固定是0，后面参数的都是新添加的元素
+			//返回值： 返回删除的元素组成的新数组固定就是[]
+			//会影响原数组
+//			var result = arr.splice(1,0,100,200);
+//			console.log(arr);
+//			console.log(result);
+			
+			
+			//改：  其实就是从某个位置开始删除要改的个数，然后添加新的
+			//功能：从任意位置开始删除要改的个数的元素，然后再这个位置添加新的元素
+			//参数：多个   第一个代表起始位置，第二个代表删除的个数，后面参数的都是新添加的元素
+			//返回值： 返回删除的元素组成的新数组
+			//会影响原数组
+//			var result = arr.splice(1,1,200);
+//			console.log(arr);
+//			console.log(result);
+			
+			
+			//二、数组排序sort
+			//功能：对数组进行排序
+			//参数：如果不写，那么默认会把数组当中元素转化为字符串，进行排序
+			//正常排序，必须传递一个函数，这个函数的返回值决定是升序还是降序
+			//返回值：返回拍好序的原数组
+//			var arr = [10,6,2,20];
+//			var result = arr.sort(function(a,b){
+////				return a - b;//升序
+//				return b - a;//降序
+//			});
+//			console.log(arr);
+//			console.log(result);
+			
+			
+			//三、数组转化字符串  join
+			//功能：以指定的连接符，降数组中的元素 连接成一个字符串
+			//参数：如果不写，默认以逗号连接， 如果是空串，数组元素直接拼接 ，如果是指定的，那连接符就是指定的e
+			//返回值：返回连接到的字符串;
+			//不会影响原数组；
+			var arr = [10,6,2,20];
+			var result = arr.join('');
+			console.log(arr);
+			console.log(result);
+			
+			
+			//四、翻转数组
+			//功能：翻转数组
+			//参数：无
+			//返回值：返回翻转后的原数组;
+			//会影响原数组；
+//			var arr = [10,6,2,20];
+//			var result = arr.reverse();
+//			console.log(arr);
+//			console.log(result);
+			
+			
+			//五、slice和concat（了解）
+			//slice用法和字符串的slice完全一样
+			//功能：截取数组的元素
+			//参数：起始位置和结束位置，不包含结束位置的，参数可以是负数
+			//返回值：返回截取的元素组成的新数组
+			//不会影响原数组
+//			var arr = [10,6,2,20];
+//			var result = arr.slice(1);
+//			console.log(arr);
+//			console.log(result);
+			
+			//concat 往数组内部拼接元素
+			//功能：往数组内部添加元素
+			//参数：要添加的元素，如果不传参，相当于复制了一个数组
+			//返回值：返回添加完元素之后的新数组，原数组不变
+			//不会影响原数组
+//			var arr = [10,6,2,20];
+//			var result = arr.concat();
+//			console.log(arr);
+//			console.log(result);
+//			console.log(arr == result);//对象数据判等，判的就是地址，地址一样就相等
+			
+			
+			//六、toString
+			//功能：把数组对象转化为基本数据字符串
+			//参数：无
+			//返回值：返回数组转化的字符串
+			
+//			var arr = [10,6,2,20];
+//			var result = arr.toString();
+//			console.log(arr);//'10,6,2,20'
+//			console.log(result);
+			
+			//数组   函数  对象  都有toString方法，返回的结果是不一样的
+			//数组调用这个方法，返回的就是去掉[]后剩余的，加引号
+			//函数调用这个方法，返回的就是函数数据本身，加引号
+			//对象调用这个方法，返回的是固定的 '[object Object]'
+			
+			
+//			console.log([1,2,3].toString());//'1,2,3'
+//			function fn(){};
+//			console.log(fn.toString());
+//			console.log({name:'zly'}.toString());
+			//两遍都是对象数据   对象数据之间的判等，判的就是地址
+			//所有的对象数据转化布尔值，都是true，包括数组、函数   
+			//对象和对象之间的比较及运算 以及 对象和基本数据之间的比较判等和运算 都要把对象数据转化为基本数据
+			//然后再按照基本数据的隐式转换去运算；
+//		
+//			console.log([1,2,3] + [1,2,3]);//
+//			console.log(fn - 100);//'function fn(){};'-100
+//			console.log({name:'zly'} + 100);
+			
+			
+			
+			
+			//这些方法也是必须搞定
+//			1. Array.prototype.indexOf(value) : 得到值在数组中的第一个下标，不存在返回-1
+//			var arr = [1,2,3];
+//			var result = arr.indexOf(2);
+//			console.log(result);
+			
+			
+			//数组去重  第一种方式
+//			var arr = [1,2,3,41,1,2,1];
+//			var newArr = [];
+//			var flag = true;
+//			for(var i = 0; i < arr.length; i++){
+//				for(var j = 0; j < newArr.length; j++){
+//					if(arr[i] == newArr[j]){
+//						flag = false;
+//						break;
+//					}
+//				}
+//				
+//				if(flag){
+//					newArr[newArr.length] = arr[i];
+//				}
+//				
+//				flag = true;
+//			}
+//			console.log(newArr);
+			
+			//数组去重第二种
+//			for(var i = 0; i < arr.length; i++){
+//				if(newArr.indexOf(arr[i]) == -1){//拿一个元素就去新数组内去找，如果没有返回-1；
+//					newArr.push(arr[i]);
+//				}
+//			}
+//			console.log(newArr);
+			
+//			2. Array.prototype.lastIndexOf(value) : 得到值在数组中的最后一个下标，不存在返回-1
+
+			//*******************************************8
+//			3. Array.prototype.forEach(function(item, index){}) : 遍历数组
+//				for循环是最基本的循环,它不是数组的方法
+				
+//				var arr = [1,2,3,4];
+//				arr.forEach(function(item,index){
+//					console.log(index,item);
+//				})
+				
+//				数组的forEach方法也可以去遍历数组,但是不能continue和break
+				//它比for循环效率要高的多；
+				
+//			4. Array.prototype.map(function(item, index){}) : 
+				//遍历数组返回一个新的数组，新的数组和老的数组有关系
+//				var arr = [1,2,3];
+//				
+//				var result = arr.map(function(item,index){
+//					return item * 2;  //返回由原数组 计算后的一个新值，放入一个新数组里面
+//				return 需要写一个条件,返回的是满足条件的数组的值,把满足条件的值放入一个新数组中
+//})
+//				
+//				console.log(result);
+			
+//			5. Array.prototype.filter(function(item, index){}) : 
+//				遍历过滤出一个新的子数组
+				var arr = [10,20,5,7]; 
+				var result = arr.filter(function(item,index){
+					return item >= 6;
+				})
+				console.log(result);
+				
+				
+				//写出至少5种数组方法
+				//forEach、map、filter、push  pop   shift  unshift  sort
+				
+				
+				
+				
+				
+				
+		</script>
+	</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		//打印1-100之间能被3或者7整除的数字	
+		
+//		for(var i = 1; i <= 100; i++){
+//			if(i % 3 == 0 || i % 7 == 0){
+////				i % 3 == 0 || i % 7 == 0结果为真，会执行
+//				console.log(i);//3
+//			}
+//		}
+		
+		//continue关键字的作用（循环当中才会出现）
+		//结束本次循环，返回从下一次开始
+		//break关键字的作用：1、switch语句用来跳出switch 2、循环当中用来跳出离它最近的一层循环（包含它的）
+		
+		for(var i = 1; i <= 100; i++){
+			if(!(i % 3 == 0 || i % 7 == 0)){
+				//i % 3 == 0 || i % 7 == 0为假 if会执行
+//				continue;//结束本次循环，返回从下一次开始（返回到i++,continue以下所有的代码不再执行）
+				
+				break;//立即跳出循环，而且跳出包含它的一层循环
+			}
+			console.log(i);
+		}
+		
+		
+		for(var i=0;i<=10;i++){
+			for(var j=0;j<3;j++){
+				break; //break;只结束最内层循环
+			}
+			console.log(i,j)
+		}
+		
+		
+		
+		
+		//简答题：
+		//1、while和do。。。while的区别
+		//2、break和continue关键字的作用
+		
+		
+		
+		</script>
+	</body>
+</html>

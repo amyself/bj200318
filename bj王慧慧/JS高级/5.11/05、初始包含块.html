@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+        /*
+            <p class='p1'>
+                <p class='p2'></p>
+            </p>
+        */
+
+        /*测试可以这么干    真实开发当中 html  body   尽量不要设置样式*/
+        html{
+            width: 600px;
+            height: 600px;
+            margin-left: 50px;
+            border:5px solid #ccc;
+            /*background: yellowgreen;!*当前属性最终作用的并不是html，而是document*!*/
+        }
+        body{
+            width: 500px;
+            height: 5000px;
+            margin-left: 50px;
+            /*当前body的颜色正常生效 作用于自己身上*/
+            /*html和boby  必须同时设置背景色   html的颜色会作用在document身上  body的作用于自己身上
+                如果给任意其中某一个设置   都是作用与document身上  这样的样式不止这一个
+            */
+            /*background: skyblue;*/
+            border: 5px solid salmon;
+        }
+        .box1{
+            width: 100px;
+            height: 100px;
+            background: pink;
+            position: absolute;
+            left:0;
+            top:0;
+        }
+    </style>
+</head>
+<body>
+<!--绝对定位之前所谓的参照物  位置原点等等叫法     其实说的就是定位元素的包含块-->
+<!--绝对定位元素的父级或者祖先元素开启了定位  那么这个父级或祖先元素 就叫做这个定位元素的包含块-->
+<!--子绝父不相，到底相对于谁定位呢？谁是这个元素的包含块呢？   body   html  浏览器窗口  页面左上角  视口？？？-->
+<!--一个空页面  打开一共有四个结构   document ->  初始包含块  ->  html  ->  body -->
+<!--
+    初始包含块是浏览器厂商提供给我们
+    它的宽和高，就是视口的宽高,刚好就是浏览器第一屏所占的位置
+    子绝父不相的情况下  相对的就是初始包含块
+-->
+<!--
+    页面渲染的逻辑是由BFC决定的
+-->
+    <div class="box1"></div>
+</body>
+</html>

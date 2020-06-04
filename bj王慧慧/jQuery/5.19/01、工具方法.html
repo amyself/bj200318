@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript" src="js/jquery-1.10.1.js"></script>
+<script type="text/javascript">
+  var person = {
+      name:'tom',
+      age:12
+  }
+  var arr = [9,6,1,4,7];
+//  $.each(遍历目标，回调函数（索引（key），值）)
+//   $.each是通用遍历方法 在jQuery的工具对象身上
+//  $().each不同  这个是专门用来遍历jQuery对象的
+//    $.each(person,function (k,v) {
+//      console.log(k,v)
+//    })
+//    $.each(arr,function (index,num) {
+//        console.log(index,num)
+//    })
+    console.log($.type(111));
+    console.log($.isFunction($()));
+    console.log($.isArray(arr));
+
+    var json = '{"username":"tom","age":13}';
+    var jsonArr = '[{"username":"tom","age":13},{"username":"tom","age":14}]';
+//    把json数据转换成   对象或者数组      解析json字符串
+    console.log($.parseJSON(json));
+    console.log($.parseJSON(jsonArr))
+
+</script>
+</body>
+</html>

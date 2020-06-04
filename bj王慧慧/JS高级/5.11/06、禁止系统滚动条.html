@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        html{
+            width: 600px;
+            height: 600px;
+            margin-left: 50px;
+            border:10px solid #ccc;
+            overflow: hidden;/*当前overflow属性没有作用在html身上*/
+        }
+        body{
+            width: 500px;
+            height: 500px;
+            margin-left: 50px;
+            border:10px solid coral;
+            overflow: hidden;/*当前overflow属性没有作用在body身上*/
+        }
+        /*
+        html和body这两个元素的overflow属性 控制着系统的滚动条
+        系统的滚动条有两个，一个是body身上的  一个是document身上的 我们平时看到的那个滚动条是document身上的
+        1、如果都是分开设置，只给html或者body其中的任意一个设置   只会作用在document身上
+        2、如果两个元素同时设置overflow属性，body的overflow属性会作用在自己的身上  html作用在document身上
+        3、如果两个元素同时设置overflow：hidden  那么系统的两个滚动条全部被关闭  这就是所谓了禁止浏览器滚动条
+            以后写页面经常会有下边的设置
+            html,body{
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+             }
+        */
+
+
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div class="header"></div>
+        <div class="main"></div>
+        <div class="footer"></div>
+    </div>
+
+<script type="text/javascript">
+  var str = 'abbbcccc';
+//  统计字符串里边 每个字母出现的次数   3行可以解决
+
+</script>
+
+</body>
+</html>

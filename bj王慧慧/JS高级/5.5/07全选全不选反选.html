@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <label>
+        唱歌<input type="checkbox">
+    </label>
+    <label>
+        打鼓<input type="checkbox">
+    </label>
+    <label>
+        滑雪<input type="checkbox">
+    </label>
+    <label>
+        吃饭<input type="checkbox">
+    </label>
+    <br>
+    <button>全选</button>
+    <button>全不选</button>
+    <button>反选</button>
+<script type="text/javascript">
+  //  全选全不选反选功能
+//    点击三个按钮 根据不同的按钮  来控制上边的四个checkbox
+    window.onload = function () {
+//        下边的两个查询 都是查找的集合 所以返回的是伪数组对象  不能直接使用dom的方法 需要遍历
+      var btns = document.querySelectorAll('button');
+      var inputNodes = document.querySelectorAll('input');
+
+//      全选
+        btns[0].onclick = function () {
+//          alert('我是全选')
+            for (var i = 0; i < inputNodes.length; i++) {
+                inputNodes[i].checked = true;
+            }
+        };
+//        全不选
+        btns[1].onclick = function () {
+//          alert('我是全不选')
+            for (var i = 0; i < inputNodes.length; i++) {
+                inputNodes[i].checked = false;
+            }
+        };
+//        反选
+        btns[2].onclick = function () {
+//          alert('我是反选')
+//       反选逻辑：就是获取当前复选框的checnked属性值  然后取反   最终再设置回给当前这个复选框
+            for (var i = 0; i < inputNodes.length; i++) {
+                inputNodes[i].checked = !inputNodes[i].checked;
+//                当前i = 0
+//                 inputNodes[0].checked = !inputNodes[0].checked;
+
+            }
+        }
+
+    }
+
+</script>
+</body>
+</html>

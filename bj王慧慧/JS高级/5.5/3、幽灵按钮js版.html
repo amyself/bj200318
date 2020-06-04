@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .wrap{
+            margin: 100px auto;
+            width: 300px;
+            height: 80px;
+            line-height: 80px;
+            background: yellowgreen;
+            text-align: center;
+            color: #fff;
+            font-size: 30px;
+            /*font-weight: bold;*/
+            position: relative;
+            transition: 2s;
+        }
+        .top,.bottom{
+            width: 0;
+            height: 10px;
+            background: pink;
+            position: absolute;
+            transition: 2s;
+        }
+        .top{
+            top:0;
+            left:0;
+        }
+        .bottom{
+            bottom: 0;
+            right:0;
+        }
+    </style>
+</head>
+<body>
+    <div class='wrap'>
+        <div class="top"></div>
+        HTML5
+        <div class="bottom"></div>
+    </div>
+<script type="text/javascript">
+  window.onload =function () {
+    var wrap = document.querySelector('.wrap');
+    console.log(wrap);
+    var top = document.querySelector('.top');
+    var bottom = document.querySelector('.bottom');
+//    给wrap绑定移入移出事件
+      wrap.onmouseover = function () {
+//          让top 和bottom的宽度变成百分百
+//          让wrap的背景颜色变成白色   文字颜色变成yellowgreen
+          top.style.width = '100%';
+          bottom.style.width = '100%';
+          this.style.backgroundColor = '#fff';
+          this.style.color = 'yellowgreen'
+      };
+      wrap.onmouseout = function () {
+//          让top 和bottom的宽度变成0
+//          让wrap的背景颜色变成yellowgreen   文字颜色变成白色
+          top.style.width = '0';
+          bottom.style.width = '0';
+          this.style.backgroundColor = 'yellowgreen';
+          this.style.color = '#fff';
+      };
+  }
+//  1.先看报错  是不是用dom对象调用的dom方法 元素是否能够拿得到    在不就是单次 方法名 括号等写错了
+//  2.在事件回调函数的最上边 alert一个值    用来判断 事件生效了没有没
+//  3.如果你有操作元素的属性（class  id  name等等）  或者元素的内容
+//  4.最后再去研究你的逻辑对不对  去打印你的各种变量 看看值和你想的一不一样
+//    如果有条件语句   在if  else里边  都写上alert 去输出变量  用来判断值是否正确
+</script>
+</body>
+</html>

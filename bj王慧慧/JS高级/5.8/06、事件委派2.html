@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul>
+        <li>我是列表项1</li>
+        <li>我是列表项2</li>
+        <li>我是列表项3</li>
+        <li>我是列表项4</li>
+        <li>我是列表项5</li>
+        <li>我是列表项6</li>
+    </ul>
+<button id="btn">添加元素</button>
+<script type="text/javascript">
+  window.onload = function () {
+    var liNodes = document.querySelectorAll('li');
+    var btn = document.getElementById('btn');
+    var ulNode = document.querySelector('ul');
+//      for (var i = 0; i < liNodes.length; i++) {
+//          liNodes[i].onmouseover = function () {
+//              this.style.backgroundColor = 'pink';
+//          };
+//          liNodes[i].onmouseout = function () {
+//              this.style.backgroundColor = 'white';
+//          }
+//      }
+//      btn.onclick = function () {
+//        var liNode = document.createElement('li');
+//        liNode.innerHTML = '我是新来的';
+//          liNode.onmouseover = function () {
+//              this.style.backgroundColor = 'pink';
+//          }
+//          liNode.onmouseout = function () {
+//              this.style.backgroundColor = 'white';
+//          }
+//        ulNode.appendChild(liNode);
+//      }
+
+
+//          事件委托的第二个好处：统一给固定的（已有的）祖先或父级元素添加事件
+//          就算是新增的子元素 也依旧存在事件相应
+//      事件对象常用的  event  ev  e
+//      高级浏览器在调用事件回调函数的时候会把事件对象传递给第一个形参
+//      低版本浏览器在调用回调函数的时候不会把事件对象当做第一个形参，而是给了window下的一个属性叫event
+      ulNode.onmouseover = function (event) {
+          event = event || window.event;//高级版本低级版本浏览器的兼容写法  固定
+//          获取目标元素  兼容写法 固定
+          var target = event.target || event.srcElement;
+        if(target.nodeName == 'LI'){
+            target.style.backgroundColor = 'pink'
+        }
+      };
+      ulNode.onmouseout = function (event) {
+        if(event.target.nodeName == 'LI'){
+            event.target.style.backgroundColor = 'white';
+        }
+      };
+      btn.onclick = function () {
+        var liNode = document.createElement('li');
+        liNode.innerHTML = '我是新来的';
+        ulNode.appendChild(liNode);
+      }
+
+  }
+</script>
+</body>
+</html>

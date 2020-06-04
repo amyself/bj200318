@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			//当函数内部出现变量不带var
+			//1、先看函数内部有没有定义var这个变量，如果有就是局部变量
+			//2、如果函数内部没有定义var这个变量，找形参，形参如果有，当做局部变量处理
+			//3、如果形参也没有，那么找全局，全局有，那么就是在操作全局变量
+			//4、如果全局也没有，那么相当于在全局定义了一个变量（全局变量）
+			
+			var a = 10;
+			var b = 20;
+			var c = 30;
+			var d = 40;
+			function fn(){
+				var a = 100;
+				var b = 200;
+				var c = 300;
+				d = 400;//隔山打牛，把全局修改为400
+				e = 500
+				console.log(a,b,c,d);
+				console.log(e);//函数调用之后，这一行相当于全局定义了一个变量
+			}
+			
+//			console.log(e);//调用之前，e还没有定义呢，
+			fn();
+			console.log(a,b,c,d);
+			console.log(e);//函数调用之后，这一行相当于全局定义了一个变量
+			
+		</script>
+	</body>
+</html>

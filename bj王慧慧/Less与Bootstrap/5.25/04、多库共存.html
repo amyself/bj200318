@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript" src="js/myJq.js"></script>
+<script type="text/javascript" src="js/jquery-1.10.1.js"></script>
+<script type="text/javascript">
+  //  如果有两个库同时使用了$，就存在冲突了
+//    console.log($());
+//  noConflict方法会让jQuery释放掉$的使用权，让其他的库可以正常使用
+  // 这个时候使用jQuery就只能写全称了（jQuery）
+    jQuery.noConflict();
+    $();
+    jQuery(function () {
+      alert('我是jQuery')
+    })
+</script>
+</body>
+</html>

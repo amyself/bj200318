@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box"></div>
+<script type="text/javascript">
+  window.onload = function () {
+//    拖拽目标
+    var box = document.getElementById('box');
+
+      box.onmousedown = function (event) {
+          event = event || window.event;
+      var eleX = box.offsetLeft;//元素起始left
+      var eleY = box.offsetTop;//元素起始top
+      var startX = event.clientX;//鼠标按下的x坐标
+      var startY = event.clientY;//鼠标按下的y坐标
+      box.setCapture && box.setCapture();//  低版本开启全局捕获兼容写法
+      document.onmousemove = function (event) {
+        event = event || window.event;
+        var endX = event.clientX;//鼠标结束的位置X
+        var endY = event.clientY;//鼠标结束的位置Y
+        var disX = endX - startX;//横向鼠标距离差
+        var disY = endY - startY;//纵向鼠标距离差
+        var lastX = eleX + disX;//元素最终left值
+        var lastY = eleY + disY;//元素最终的top值
+        box.style.left = lastX + 'px';// 最终元素位置设置  记得拼接单位
+        box.style.top = lastY + 'px';
+      };
+      document.onmouseup = function () {
+        document.onmousemove = document.onmouseup = null;
+        box.releaseCapture && box.releaseCapture();//低版本浏览器 释放全局捕获
+      };
+//      阻止浏览器默认行为
+          return false;
+  }
+
+  }
+</script>
+</body>
+</html>

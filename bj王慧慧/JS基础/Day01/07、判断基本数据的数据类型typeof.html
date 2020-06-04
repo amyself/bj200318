@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var a = 100;//'number' 类型名的小写字符串形式
+//			console.log(a);
+			a = 'zhaoliying';//'string' 类型名的小写字符串形式
+			a = true;//'boolean' 类型名的小写字符串形式
+//			console.log(typeof a);
+			
+			
+			var b;//'undefined' 类型名的小写字符串形式
+			
+			b = null;//'object'   为什么？因为小布当年犯下的错 （设计缺陷）
+			console.log(typeof b);
+			
+			
+			
+			//typeof判断一个值是什么类型
+			//后面可能直接就是一个值 typeof 100
+			//后面也可能是一个变量，不过要先从变量里面拿值，然后再去判断 typeof a
+			
+			
+			//typeof后面一个值，返回的结果最终是这个值得类型名的小写字符串形式
+			//但是null这个值特殊：
+			// 1、null返回的是object  由于设计缺陷造成的
+			// 2、null本来就是在初始化对象和删除对象才要使用，归为object
+			
+			
+			console.log( typeof typeof 100);//'string'
+			
+			
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li>11111</li>
+    <li>22222</li>
+    <li>33333</li>
+    <li>44444</li>
+    <li>55555</li>
+</ul>
+<br>
+<button id="btn1">添加li</button>
+<button id="btn2">解除事件委托</button>
+<script type="text/javascript" src="js/jquery-1.10.1.js"></script>
+<script type="text/javascript">
+    //   点击li  要给当前的li修改背景颜色
+//    $('ul li').click(function () {
+//      $(this).css('background','pink');
+//    });
+//  delegate方法  由父元素调用 传递三个参数（子元素，事件名称，回调函数）
+//  在jq的事件委托中   会直接帮你在回调函数中 修改this的指向到当前的事件源
+//    $('ul').delegate('li','click',function () {
+//        $(this).css('background','pink')
+//    });
+    $('ul').on('click','li',function () {
+        $(this).css('background','pink')
+    });
+//    点击btn1  创建新的li
+    $('#btn1').click(function () {
+      $('ul').append('<li>我是新增的li</li>')
+    })
+//  点击btn2 解除事件委托
+    $('#btn2').click(function () {
+      $('ul').undelegate();
+    })
+</script>
+</body>
+</html>

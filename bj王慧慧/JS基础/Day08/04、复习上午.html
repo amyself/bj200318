@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			function Computer(name,brand,color,price){
+				this.name = name;
+				this.brand = brand;
+				this.color = color;
+				this.price = price;
+				this.playGame = function(){
+					console.log('能玩游戏');
+				};
+				this.writeCode = function(){
+					console.log('能写代码');
+				}
+			}
+			
+//			var result = Computer();
+//			console.log(result);
+//			console.log(window);
+			
+			var c1 = new Computer('拯救者','联想','black',6000);
+			console.log(c1);
+			console.log(c1.name);
+			console.log(c1.price);
+			c1.writeCode();//调的是c1对象对应的方法writeCode，是自己的，有自己的函数空间
+			
+			var c2 = new Computer('拯救者','联想','black',6000);
+			c2.writeCode();//调的是c2对象对应的方法writeCode，是自己的，有自己的函数空间
+			
+			// this
+			//1、普通函数调用的时候this  window
+			//2、方法当中调用 this 这个方法的对象
+			//3、构造函数调用的时候 this  准备实例化的对象
+			//4、事件的回调函数，this指的就是事件源
+			//5、call和apply 方法  this可以自己指定
+			// 普通函数和构造函数的区别
+			//调用的时候才知道是普通函数还是构造函数
+			//this不同   返回值不同
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

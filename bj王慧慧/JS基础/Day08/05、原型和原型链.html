@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//
+			function BeautyGirl(name,age,gender){
+				this.name = name;
+				this.age = age;
+				this.gender = gender;
+//				this.eat = function(){
+//					console.log('吃饭');
+//				}
+			}
+			
+			//把所有对象公共的方法，添加到原型对象当中，实现资源共享，节约内存；
+//			BeautyGirl.prototype.eat = function(){
+//				console.log('吃饭');
+//			}
+			
+			
+			var g1 = new BeautyGirl('zhaoliying',33,'female');
+			var g2 = new BeautyGirl('yangmi',34,'female');
+			
+			g1.eat();
+			g2.eat();
+			
+			console.dir(BeautyGirl);
+			
+//			g1和g2调用的eat都是自己独立的eat方法,有自己的独立空间
+//         	而最后无论是调用谁的eat方法，效果和结论都是一样的吃饭
+//			这样就造成了不必要的空间浪费  内存浪费
+			//想想如何能让他们调用方法的时候调用同一份数据就可以，没必要每个人都来一份
+			//原型就是来解决这个事情
+			//原型又叫原型对象
+			//原型对象就是 函数对象身上的一个属性prototype
+			//我们把函数对象身上的一个属性prototype 称作是显示原型对象
+			//因为我们在修改原型对象数据的时候都是通过prototype去修改的
+			
+			//不要在每个人身上都添加一样的方法，直接把方法添加在原型对象当中
+			
+//			var myfun;//undefined
+//			myfun();//报错  type
+//			myfun= function(){
+				
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

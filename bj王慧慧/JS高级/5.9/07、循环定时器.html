@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script type="text/javascript">
+
+      window.onload = function () {
+          var timer = null;
+//          定义间隔时间   单位为秒
+//          var time = 100;
+//        循环定时器有点类似于死循环的感觉
+//        如果不清除  它会按照自己的执行间隔一直执行
+
+//        每个3秒  打印一次   今天晚上吃点啥
+//         循环定时器  也是两个参数  和延迟定时器一样
+//          第一个参数 是 回调函数  第二个参数是 间隔时间   单位也为毫秒
+//          打印10次之后   清除定时器
+          var num = 0;
+          timer = setInterval(function () {
+              num++;
+              console.log('今天晚上吃点啥');
+              if (num == 10){
+                clearInterval(timer)
+              }
+
+          },2000);
+
+//          清除循环定时器    需要传入定时器ID
+//        clearInterval(timer);
+//      以后无论是清除延迟定时器还是循环定时，用于存储定时器id的变量 一定要注意作用域问题
+//      在一些情况下 经常因为作用问题 不能够正常的访问到定时器id变量 倒是无法清除定时器
+      }
+    </script>
+</body>
+</html>

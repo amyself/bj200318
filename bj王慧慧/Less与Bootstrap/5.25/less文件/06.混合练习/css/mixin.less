@@ -1,0 +1,15 @@
+//混合调用必须写分号
+//混合允许传递参数 与声明变量的方式相同 在混合的小括号内 使用@声明 逗号分隔
+//如果参数不设置初始值的情况下  调用混合 参数个数必须对等
+//混合设置参数时 在参数的后边使用：赋值 即为默认值  调用混合如果没传这些参数 就会使用默认值
+.allCenter(@w:100px,@h:100px,@bg:red){
+  width: @w;
+  height: @h;
+  background: @bg;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+};

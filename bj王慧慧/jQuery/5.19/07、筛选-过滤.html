@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul>
+        <li><span>EEEEE</span></li>
+        <li title="hello" class="box2">BBBBB</li>
+        <li class="box">CCCCC</li>
+        <li title="hello" class="item">DDDDD</li>
+        <li title="two"><div><span>EEEEE</span></div></li>
+    </ul>
+    <li>eeeee</li>
+    <li>EEEEE</li>
+<script type="text/javascript" src="js/jquery-1.10.1.js"></script>
+<script type="text/javascript">
+  //过滤选择器 是在查找dom的过程中进行筛选  把匹配的dom元素封装进jquery对象
+//  筛选过滤的方法  是在已经有jQuery对象的前提下  要把当前的这个对象进行过滤
+  // 这时只能通过方法来解决 而不能使用选择器
+    $(function () {
+      var $list = $('ul li');
+//      我要这个li集合里边的第一个
+//        $list.first().css('background','pink');
+//     我要这个li集合里边的最后一个
+//        $list.last().css('background','pink')
+//      我要这个li集合里边的第二个
+//        $list.eq(1).css('background','pink');
+//      我要这个li集合当中 title属性为hello
+//      filter 能够根据传入的选择器  对前边的jquery对象进行筛选
+//        $list.filter('[title=hello]').css('background','pink');
+//        $list.filter(':first').css('background','pink')
+//      我要这个li集合当中有span子标签的li
+//       只要后代元素当中存在 即可选中
+        $list.has('span').css('background','pink')
+
+    })
+
+
+</script>
+</body>
+</html>

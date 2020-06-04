@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<button id="btn">按钮</button>
+<script type="text/javascript">
+    window.onload = function () {
+        var box = document.getElementById('box');
+        var btn = document.getElementById('btn');
+//      dom2事件添加的方式和dom0完全不一样,dom2需要使用事件添加方法去做
+//      dom2事件添加的时候，高级浏览器和低级浏览使用的方法不一样
+//        function fn() {
+//            console.log('我是dom2事件')
+//        }
+//        高级浏览器
+//        box.addEventListener('click',fn);
+//      dom2事件添加同一类型事件多次，会依次执行 不会覆盖
+//        box.addEventListener('click',function () {
+//          console.log('说来说去还是想吃火锅')
+//        });
+//        dom2解绑
+//        解绑的时候，也是有解绑的方法
+//        解绑的时候传递的参数 必须和绑定的时候参数完全一样（包括地址，因此必须用函数名作为参数）才能解绑
+//        如果你的事件需要解绑，那么函数必须在外边定义成有名函数，才能保证绑定和解绑的是同一个函数
+//        btn.onclick = function () {
+//          box.removeEventListener('click',fn)
+//        }
+//        function fn2() {
+//            console.log('今天还是打算吃火锅')
+//        }
+//        低级浏览器 添加dom2事件
+//        box.attachEvent('onclick',fn2);
+//        和高级浏览器一样 绑定多个同类型事件，也是会按照一定顺序依次执行
+//        高级浏览器是从上到下执行，低级浏览器从下到上执行
+//        box.attachEvent('onclick',function () {
+//          console.log('外边的雨停了')
+//        })
+
+//        和高级浏览器一样，添加的时候如果需要解绑，函数也要在外边定义成有名函数
+//        btn.onclick = function () {
+//          box.detachEvent('onclick',fn2)
+//        }
+//    最终我们需要注意：高级浏览器dom2绑定解绑的方法 addEventListener 和 removeEventListener
+//                      低级浏览器dom2绑定解绑的方法 attachEvent和detachEvent
+
+//        兼容性处理元素绑定dom2事件     封装函数   取值全都冲形参说话
+//        node:  要绑定的元素
+//        eventType：事件类型   不带on传入
+//        callback：回调函数
+        function addEvent(node,eventType,callback) {
+//          判断当前是高级浏览器还是低级浏览器
+            if(node.addEventListener){//判断这个方法是否存在
+//              高级
+                node.addEventListener(eventType,callback)
+            }else {
+//              低级
+                node.attachEvent('on'+eventType,callback)
+            }
+        }
+
+//        添加dom2事件  使用兼容模式
+        addEvent(box,'click',function () {
+          console.log('我是兼容绑定')
+        })
+
+    }
+//  作业   dom2兼容解绑
+
+
+
+//    function add() {
+//
+//    }
+//    console.log(add);
+//    console.log(add());
+</script>
+</body>
+</html>

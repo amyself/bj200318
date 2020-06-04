@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+
+	<button id="btn">按钮</button>
+	<script type="text/javascript">
+
+		window.onload = function () {
+            //等待页面加载完成之后，自动会执行函数当中的代码
+//			这是一个事件，事件处理函数 都是回调函数
+//			我定义的  我没掉用  最后执行了
+
+            //通过id将对应元素封装成dom对象，返回给变量btn
+			var btn = document.getElementById('btn');
+
+			btn.onclick = function () {
+//			  btn的时间处理回调函数，当btn被点击之后，会自动执行这个函数内部的代码
+				alert('我的学生真给力');
+			}
+			console.log(btn)
+
+		}
+//		function fun() {
+//		  alert('今天天气真不错');
+//		}
+//		fun();
+	</script>
+	</body>
+</html>

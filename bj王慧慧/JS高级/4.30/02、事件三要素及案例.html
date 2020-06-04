@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	<!--  7种input 类型必须记住的    3个按钮  普通按钮 重置按钮 提交按钮
+									4个输入框  文本  密码  单选 多选-->
+	<input type="button" id="btn" value="按钮">
+
+	<script type="text/javascript">
+		//点击按钮实现一个数字的自增
+//		1.页面加载完成的回调函数
+		window.onload = function () {
+//		  获取事件源
+			var btn = document.getElementById('btn');
+			var num = 0;
+//			给事件源添加对应的事件监听
+			btn.onclick = function () {
+//			  每点击一次按钮 就让数字自增
+//				内部代码添加事件监听的时候是不执行的
+//				只有页面打开，点击这个元素，才会执行；
+				num++;
+				console.log(num);
+			}
+//			注意：事件一旦添加到元素身上，是可以重复触发执行的！！！！
+		}
+	</script>
+	</body>
+</html>

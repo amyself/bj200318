@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//typeof 返回的是数据类型名的小写字符串形式
+			var a = 100;//'number'
+			a = 'zhaoliying';//'string'
+			a = true;//'boolean'
+			a = undefined;//'undefined'
+			a = null;//'object'
+			a = [1,2,3];//'object'
+			a = function(){};//'function'
+			a = {};//'object'
+//			console.log(typeof a);
+			//typeof是用来判定数据类型的，但是只能判定死5种
+			//数字   字符串  布尔值   undefined  函数
+			//typeof 判定不了  null 数组  对象,有心无力 因为结果都是'object'
+			
+			
+			
+			//instanceof出现可以帮我们解决判定死数组和对象
+			//instanceof是用来判断一个对象是否是一个构造函数的实例：
+			// A instanceof B     A必须是一个对象    B必须是一个构造函数
+			//数组判定
+			var b = [];
+			var c = {};
+			var d = function(){};
+			console.log(b instanceof Array);//看b里面的数据是否是Array的实例
+			console.log(c instanceof Array);
+			
+			//对象判定
+			//一切皆对象（除了基本数据值）也就是说所有的对象类型数据  都是Object的实例
+			console.log(b instanceof Object);//看b里面的数据是否是Array的实例
+			console.log(c instanceof Object);
+			console.log(Array instanceof Object);
+			console.log(d instanceof Object);
+			console.log(Object instanceof Object);
+			console.log(1 instanceof Object);//false
+			
+			
+			//=== 可以判定undefined和null
+			//因为他们是类型 他们也只有一个值；
+			var e = null;
+			console.log(e === null);
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

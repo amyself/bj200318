@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//什么是数组
+			//5种基本数据    if   for
+			
+			//数组是一种数据，它属于对象数据类型
+			//数组概念：同种或者不同种类型数据的有序集合
+			
+			//数组就是用来让我们一次性的存储多个数据用的（这些数据可以是相同类型，也可以是不同类型）
+			
+			
+			//数组的定义：
+			//1、数组的字面量定义：
+			var arr = [];//定义了一个空数组
+			console.log(arr);
+			var arr1 = [1,2,3,'zhaoliying',4];//定义了一个数组里面有5个元素,可以不同类型
+			console.log(arr1);
+//			//注意：数组虽然可以存储不同数据类型的数据，但是一般都是存储相同类型的；
+			var arr2 = [1,2,3];//定义了一个数组里面有3个元素,相同类型
+			console.log(arr2);
+			
+//			//2、构造函数定义数组
+			var arr3 = new Array();//相当于定义了一个空数组
+			console.log(arr3);
+			var arr4 = new Array(1,2,3);//相当于定义了一个数组，里面有3个元素1，2，3
+			console.log(arr4);
+//			
+			var arr5 = new Array('zhaoliying');//相当于定义了一个数组，里面存储了一个元素'zhaoliying';
+			console.log(arr5);
+			
+			//坑
+			var arr6 = new Array(4);//相当于定义了一个数组，里面不是一个元素，4代表的是数组的长度（4个元素）
+			console.log(arr6);
+			
+			//数组的定义，以后我们用的比较多的就是字面量定义，构造函数定义的方式用的比较少，但是得会；
+			
+			//其实字面量定义数组  是 构造函数定义数组的简写方式，也就是说数组本质都是由构造函数定义出来的；
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//实例化一个狗 就得有狗的妈妈  狗类   一个函数
+			
+//			function Dog(name,age){
+//				this.name = name;
+//				this.age = age;
+//				this.run = function(){
+//					console.log('run的很快');
+//				}
+//			}
+//			
+////			var result = Dog('小黑',3);
+////			console.log(result);
+//			
+//			
+//			var d1 = new Dog('旺财',2);
+//			d1.run();
+//			
+//			var d2 = new Dog('小黑',3);
+//			d2.run();
+//			
+			
+			
+			function Car(name,color,price){
+				this.name = name;
+				this.color = color;
+				this.price = price;
+				this.run = function(){
+					console.log('pao');
+				}
+			}
+			
+//			Car('pasate','black',150000);
+			
+			
+			var c1 = new Car('劳斯莱斯','red',15000000);
+			//调用的时候new干了4件事
+			//1、首先会在堆当中开辟一个新的空间（准备实例化出来的对象）
+			//2、把函数调用的this指向指向新开辟的空间
+			//3、老老实实执行函数里面的代码，就是把相应的属性和值赛到新的空间当中（实例化过程）
+			//4、把实例化的丰满的有内容的这个空间地址给返回
+		</script>
+	</body>
+</html>

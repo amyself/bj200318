@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul,li{
+            list-style: none;
+        }
+        img{
+            display: block;
+        }
+        .wrap{
+            width: 600px;
+            height: 400px;
+            background: pink;
+            margin: 50px auto;
+            overflow: hidden;
+            position: relative;
+        }
+        /*图片容器*/
+        .wrap > .list{
+            width: 3000px;
+            height: 100%;
+            position: absolute;
+            top:0;
+            left:0;
+        }
+        .wrap > .list>li{
+            float: left;
+        }
+        .wrap > .iconList{
+            position: absolute;
+            bottom:10px;
+            left:50%;
+            transform: translateX(-50%);
+        }
+        .wrap > .iconList>li{
+            width: 20px;
+            height: 20px;
+            background: pink;
+            border-radius: 50%;
+            float: left;
+            margin-right: 10px;
+            border: 1px solid #fff;
+        }
+        .wrap > .iconList > li.current{
+            background: grey;
+        }
+        /*左右两个箭头*/
+        .wrap > span{
+            position: absolute;
+            top:50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 60px;
+            font-size: 30px;
+            color: #fff;
+            line-height: 60px;
+            text-align: center;
+            background: rgba(110,110,110,0.8);
+            cursor: pointer;
+            opacity: 0;
+            transition: 20s;
+        }
+        .prev{
+            left:0;
+        }
+        .next{
+            right: 0;
+        }
+
+    </style>
+</head>
+<body>
+<!--轮播图主体结构     显示区域-->
+    <div class="wrap">
+        <!--图片容器-->
+        <ul class="list">
+            <li><img src="img/1.jpg" alt=""></li>
+            <li><img src="img/2.jpg" alt=""></li>
+            <li><img src="img/3.jpg" alt=""></li>
+            <li><img src="img/4.jpg" alt=""></li>
+            <li><img src="img/5.jpg" alt=""></li>
+        </ul>
+        <!--小圆点-->
+        <ul class="iconList">
+            <li class="current"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <span class="prev"> < </span>
+        <span class="next"> > </span>
+    </div>
+    <script type="text/javascript">
+      window.onload = function () {
+//        移入显示区域容器  显示两个箭头按钮  鼠标离开时在隐藏掉
+//          小圆点点击切换 （排它）
+          var wrap = document.querySelector('.wrap');
+          var spanNodes = document.querySelectorAll('.wrap span');
+          var iconList = document.querySelectorAll('.iconList>li');
+//            目前能实现移入移出的事件  有两组onmouseenter和onmouseleave  还有onmouseout和onmouseover
+          wrap.onmouseenter = function () {
+//            console.log('移入')
+              spanNodes[0].style.opacity = 1;
+              spanNodes[1].style.opacity = 1;
+          };
+          wrap.onmouseleave = function () {
+//              console.log('移出')
+              spanNodes[0].style.opacity = 0;
+              spanNodes[1].style.opacity = 0;
+          };
+          for (var i = 0; i < iconList.length; i++) {
+              iconList[i].onclick = function () {
+                  for (var j = 0; j < iconList.length; j++) {
+                      iconList[j].className = '';
+                  }
+                  this.className = 'current';
+              }
+          }
+       }
+    </script>
+</body>
+</html>

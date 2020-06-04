@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 200px;
+            height: 200px;
+            background: pink;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+<script type="text/javascript">
+    window.onload = function () {
+        var box = document.getElementById('box');
+
+//      添加滚轮事件的时候 两个都要添加，因为我们也不知道用户使用的是什么浏览器
+//      如果我们填的事件和浏览器不对应，不会报错，只是没结果
+
+        box.addEventListener('mousewheel',scrollMove);
+        box.addEventListener('DOMMouseScroll',scrollMove);
+        
+        function scrollMove(event) {
+            event = event || window.event;
+            var flag = true;//   这个变量为true时就是向上   为false时就是向下
+//            console.log('我滑动了滚轮')
+//            判断浏览器
+            if(event.wheelDelta){
+//              ie/chrome
+                if(event.wheelDelta > 0){
+//                  向上
+                    flag = true;
+                }else {
+//                    向下
+                    flag = false;
+                }
+            }else if(event.detail){
+//              firfox
+                if(event.detail < 0){
+//                  向上
+                    flag = true;
+                }else{
+//                    向下
+                    flag = false
+                }
+            }
+//            flag  就代表我的滚动方向
+//          到了这个位置，我要拿的就是滚动的方向是向上还是向下  不关心是通过什么浏览去滚动的
+            if(flag){
+//              向上   让盒子高度减小
+                box.style.height = box.offsetHeight - 10 + 'px';
+            }else{
+//                向下  让盒子高度增加
+                box.style.height = box.offsetHeight + 10 + 'px';
+            }
+
+
+        }
+
+    }
+</script>
+</body>
+</html>

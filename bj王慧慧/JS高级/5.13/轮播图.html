@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<style type="text/css">
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    #container{
+        position: relative;
+        width: 600px;
+        height: 400px;
+        overflow: hidden;
+        margin: 0 auto;
+    }
+    #list{
+        position: absolute;
+        width: 4200px;
+        height: 400px;
+    }
+    #list>img{
+       float: left;
+
+    }
+    #points{
+        position: absolute;
+        width: 600px;
+        height: 20px;
+        left: 250px;
+        bottom: 10px;
+    }
+    #points>span{
+        float: left;
+        width: 10px;
+        height: 10px;
+        border: 1px solid bisque;
+        border-radius: 50% 50%;
+        margin-right: 5px;
+    }
+    .on{
+        background: #cccc22;
+    }
+    #btn{
+        position: absolute;
+        width: 600px;
+        height: 20px;
+        bottom: 50%;
+    }
+
+    #btn>a{
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        text-decoration: none;
+        color: black;
+        font-size: 30px;
+		opacity: 0;
+    }
+    a:first-of-type{
+        left: 10px;
+        bottom: 50%;
+    }
+    a:nth-of-type(2){
+        right: 10px;
+        bottom: 50%;
+    }
+</style>
+</head>
+<body>
+<div id="container">
+    <div id="list" style="left:-600px">
+        <img src="img/5.jpg">
+        <img src="img/1.jpg">
+        <img src="img/2.jpg">
+        <img src="img/3.jpg">
+        <img src="img/4.jpg">
+        <img src="img/5.jpg">
+        <img src="img/1.jpg">
+    </div>
+    <div id="points">
+        <span index="1" class="on"></span>
+        <span index="2"></span>
+        <span index="3"></span>
+        <span index="4"></span>
+        <span index="5"></span>
+    </div>
+    <div id="btn">
+        <a href="javascript:;" id="pre">&lt;</a>
+        <a href="javascript:;" id="next">&gt;</a>
+    </div>
+
+</div>
+</body>
+<script>
+	window.onload=function(){
+		var wrap=document.getElementById("container")
+		var imgWrap=document.getElementById("list")
+		var pre=document.getElementById("pre")
+		var next=document.getElementById("next")
+		var points=document.querySelectorAll("#points >span")
+		var index=0
+		var WIdTH=600//移动一张图片时的宽度距离
+		var isMoving=false
+		
+		
+		
+		wrap.onmouseenter=function(){
+			clearInterval(autoTimer)
+			pre.style.opacity=1;
+			next.style.opacity=1;
+		}
+		wrap.onmouseleave=function(){
+			autoTimer=setInterval(function(){
+				nextPage(true)
+			},4000)
+			pre.style.opacity=0;
+			next.style.opacity=0;
+		}
+		next.onclick=function(){
+			nextPage(true)
+		}
+		pre.onclick=function(){
+			nextPage(false)
+		}
+		//给每个小圆点绑定点击事件,实现切换
+		
+		for(var i=0;i<points.length;i++){
+			points[i].index=i
+			points[i].onclick=function(){
+				nextPage(this.index)
+			}
+		}
+		//自动轮播
+		var autoTimer=setInterval(function(){
+			nextPage(true)
+		},4000)
+		
+		function nextPage(next){
+			if(isMoving){
+				return
+			}
+			isMoving=true
+			
+			if(typeof next=='boolean'){
+				var dis=next?-WIdTH:WIdTH
+				}else{
+				var dis=-(next-index)*WIdTH
+				}
+			
+			//获取当前元素的位置
+			var curL=imgWrap.offsetLeft
+			var targetL=curL+dis//移动后元素的位置
+			// imgWrap.style.left=targetL+"px"//设置元素移动后的位置
+			
+			//实现动画效果
+			var TIME=3000//总时长:TIME
+			var ITEM_TIME=30//单元间隔时长
+			var show_img=points.length
+			
+			
+			//图片默认显示的图片,小圆点的样式
+			var timer=setInterval(function(){
+				curL+=dis/(TIME/ITEM_TIME)	
+				if(curL==targetL){
+					clearInterval(timer)
+					if(curL==0){
+						curL=-show_img*WIdTH
+					}else if(curL==(show_img+1)*WIdTH){
+						curL=-WIdTH
+					}
+					isMoving=false
+				}
+				imgWrap.style.left=curL+"px"//设置元素移动后的位置
+				
+			},ITEM_TIME)
+			
+			//小圆点跟随图片切换
+			autoPlay(next)
+		
+		}
+		
+		//小圆点跟随图片切换
+		function autoPlay(next){
+			if(typeof next=="boolean"){
+				var targetIndex=next ? index+1:index-1;
+			}else{
+				var targetIndex=next
+			}
+		
+			if(targetIndex<0){
+				console.log(targetIndex)
+				targetIndex=points.length-1
+				console.log(points.length)
+			}else if(targetIndex>points.length-1){
+				targetIndex=0;
+			}
+			points[targetIndex].className="on"
+			points[index].className=''
+			index=targetIndex
+			
+		}
+		
+	}
+</script>
+</html>

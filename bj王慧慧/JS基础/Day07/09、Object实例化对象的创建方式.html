@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//1、字面量创建
+			//对象是无序键值对的集合
+			//内部由属性和属性值组成
+			//对象的属性，本质上都必须是字符串，但是在前端当中对象的属性引号可有可无
+			//对象的属性名如果不符合标识符规则，那么必须带引号
+			
+			//对象的属性值，可以是任意的数据类型；基本数据和对象数据都可以
+			//对象的属性值如果是一个函数，那么这个属性我们被称作是这个对象的方法；
+			
+			//以后我们也可以说对象是由属性和方法组成的，其实方法是一种特殊的属性；
+			
+//			var arr = [];
+			var obj = {
+				name:'旺财',
+				'age':3,
+				"height":100,
+				eat:function(){
+					console.log('吃货');
+				},
+				'con-type':1//对象的属性名如果不符合标识符规则，那么必须带引号
+			};
+			
+			var obj2 = {};//定义一个对象，内部没有任何数据
+			console.log(obj);
+			
+			//2、构造函数创建
+			
+			var obj3 = new Object({
+				name:'赵丽颖',
+				'age':33,
+				"height":165,
+				eat:function(){
+					console.log('吃货');
+				},
+				movies:['乘风破浪','青云志'],
+				'con-type':1//对象的属性名如果不符合标识符规则，那么必须带引号
+			});
+			
+			var obj4 = new Object();//定义一个对象，内部没有任何数据
+			console.log(obj3);//也是定义了一个对象，它才是定义对象的本质写法，字面量定义是它的渐变写法
+			
+			
+			
+			//3、工厂函数创建
+			
+			function createObject(name,age,height){
+				var obj = new Object({
+					name:name,//冒号前面是创建对象的属性名，冒号后面代表的是函数的形参变量（取值）
+					age:age,
+					height:height
+				})
+				
+				return obj;
+			}
+			var result = createObject('zhaoliying',33,165);
+			console.log(result);
+			
+			var result1 = createObject('yangmi',34,168);
+			console.log(result1);
+			
+			var result2 = createObject('dilireba',20,168);
+			console.log(result2);
+			
+			
+			
+			//无论上面是哪种对象的创建方式，本质上都是通过构造函数创建出来的对象
+			//而且他们创建出来的对象都称作是Object的实例化对象
+			//因为他们创建的这些对象都是由Object 实例化出来的，简称是Object的实例；
+			
+			//Object的实例化对象特点： 
+			//通过Object实例化的对象可以是任何的对象，Object类别不确定，实例化的对象可以任意指定
+			//你给这个对象指定是人就是人，你给这个对象指定是狗那就是狗，就看你填的属性是什么
+			//也就是说通过Object实例化的对象不确切；
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

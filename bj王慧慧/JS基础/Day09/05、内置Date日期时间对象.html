@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// Date是一个函数
+			// 不管使用普通调用还是构造函数调用，最后都会返回一个日期时间对象
+//			var a = Date();
+//			var b = new Date();
+//			console.log(a);
+//			console.log(b);
+			//一般我们都是要去获取对象当中的年月日时分秒  去自己格式化日期和时间用的
+			
+			
+			
+			var date = new Date();//
+			console.log(date);
+			console.log(date.getFullYear());//拿年
+			console.log(date.getMonth());//拿月份  但是月份是0 - 11表示的，求出来记得+1
+			console.log(date.getDate());//拿日
+			console.log(date.getHours());//时
+			console.log(date.getMinutes());//分
+			console.log(date.getSeconds());//秒
+			console.log(date.toLocaleTimeString());//获取转化为本地的时间字符串
+			console.log(date.toLocaleDateString());//获取本地的日期字符串
+			console.log(date.getTime());//1970 年 1 月 1 日之间的毫秒数
+			console.log(Date.now());//1970 年 1 月 1 日之间的毫秒数
+
+			//实例化对象的方法和构造函数对象的方法 各自各自，不能互相混用
+			//原型对象的方法是给实例化对象用的，而不是给构造函数用的
+			
+			
+			//返回一个日期时间字符串  要求日期2020年4月29日
+			
+			function getFormatString(){
+				//格式化当前日期时间
+				var date = new Date();
+				var year = date.getFullYear();//拿年
+				var month = date.getMonth()+1;//拿月份  但是月份是0 - 11表示的，求出来记得+1
+				var day = date.getDate();//拿日
+				var time = date.toLocaleTimeString();
+				return '现在是：'+year + '年' + month + '月' + day + '日  ' + time;
+			}
+			
+			console.log(getFormatString());
+			
+
+		</script>
+	</body>
+</html>

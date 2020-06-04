@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="css/iconfont.css" type="text/css" rel="stylesheet">
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+        html,body{
+            height: 100%;
+            overflow: hidden;
+        }
+        #wrapper{
+            height: 100%;
+            background-color: #f0efee;
+        }
+        #wrapper:before{
+            content:'';
+            display: table;
+            clear: both;
+        }
+        .card{
+            width: 240px;
+            height: 437px;
+            background-color: white;
+            border: 1px solid #dad9d9;
+            border-radius: 3px;
+            box-shadow:#e5e4e3 3px 3px  3px ;
+            margin: 50px auto;
+        }
+        .pic>img{
+         width: 240px;
+        height: 243px;
+        }
+        .content{
+        height: 146px;
+        padding-left: 20px;
+        }
+        .content p{
+            color: #717171;
+            font-size: 18px;
+            margin: 20px 0;
+        }
+        .content a,.content span{
+            text-decoration: none;
+            color: #b4b4b4;
+        }
+        .content .para{
+            font-size: 13px;
+            color: #b7b5b5;
+        }
+        .footer{
+            padding-left: 20px;
+            height: 48px;
+            border-top: 1px solid #e9e9e9;
+        }
+        .footer div:nth-child(1){
+            float: left;
+        }
+        .footer div:nth-child(2){
+            float: right;
+            margin-right: 30px;
+        }
+        .icon-icon:nth-child(1),.icon-icon:nth-child(2){
+            color: #b9cb41;
+        }
+    </style>
+</head>
+<body>
+<div id="wrapper">
+    <div class="card">
+        <div class="pic">
+            <img src="img/3.png">
+        </div>
+        <div class="content">
+            <p>Annimation</p>
+            <a href="#" class="iconfont icon-weizhi"></a><span>Movie</span>
+            <p class="para">
+                Lorem Ipsum is simply dummy text of the printing & typesetting industry.
+            </p>
+        </div>
+        <div class="footer">
+            <div>
+                <i class="iconfont icon-icon"></i>
+                <i class="iconfont icon-icon"></i>
+                <i class="iconfont icon-icon"></i>
+                <i class="iconfont icon-icon"></i>
+                <i class="iconfont icon-icon"></i>
+            </div>
+            <div>
+                <img src="img/4.png">
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

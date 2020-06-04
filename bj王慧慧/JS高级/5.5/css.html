@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 200px;
+            height: 200px;
+            background: pink;
+            transition: 2s;
+            position: absolute;
+            /*
+                因为opacity 默认值为1
+                BFC
+                块元素width默认值是什么？  auto    不是父级百分百   height同理
+                left right top bottom   默认值是0是错的   真正的默认值的auto  原地不动
+            */
+        }
+        .box:hover{
+            opacity: 0;
+            left:400px;
+        }
+        .box1,.box2{
+            width: 100px;
+            height: 100px;
+        }
+        .box1{
+            background: pink;
+        }
+        .box2{
+            background: yellowgreen;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <!--<div class="box"></div>-->
+    <div class="box1"></div>
+    <div class="box2"></div>
+</body>
+</html>

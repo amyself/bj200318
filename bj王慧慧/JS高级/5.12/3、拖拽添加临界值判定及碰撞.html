@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 100px;
+            height: 100px;
+            background: pink;
+            position: absolute;
+            left:0;
+            top:0;
+        }
+        #imgNode{
+            width: 200px;
+            position: absolute;
+            left:50%;
+            top:50%;
+            transform: translate(-50%,-50%);
+        }
+    </style>
+</head>
+<body>
+<div id="box">哈哈哈</div>
+<img id="imgNode" src="img/1.jpg" alt="">
+<script type="text/javascript">
+    window.onload = function () {
+
+        var box = document.getElementById('box');
+        var imgNode = document.getElementById('imgNode');
+//        拿元素距离视口的位置，返回的是一个对象（只能读不能写）  能够拿到距离视口最干净的位置
+        console.log(imgNode.getBoundingClientRect().left);
+
+        box.onmousedown = function (event) {
+            event = event || window.event;//兼容写法
+//        console.log('鼠标按下');
+//     元素起始位置   按下鼠标的时候
+            var eleX = box.offsetLeft;
+            var eleY = box.offsetTop;
+
+//         鼠标按下的位置
+            var startX = event.clientX;
+            var startY = event.clientY;
+//            对低版本浏览器设置全局捕获
+            box.setCapture && box.setCapture();
+            document.onmousemove = function (event) {
+                event = event || window.event;
+//             在移动过程中 根据当前鼠标位置 动态的修改box的left和top
+//              console.log('鼠标移动');
+//             获取元素移动后的位置
+                var endX = event.clientX;
+                var endY = event.clientY;
+//                计算鼠标距离差
+                var disX = endX - startX;
+                var disY = endY - startY;
+//                计算元素最终位置    元素起始位置 + 鼠标距离差（元素距离差）  = 元素最终位置
+                var lastX = disX + eleX;
+                var lastY = disY + eleY;
+
+//                临界值判断
+                if(lastX > document.documentElement.clientWidth - box.offsetWidth - 50){
+//                    右侧边界    元素当前的left >  视口的宽度 - 元素本身的宽度
+                    lastX = document.documentElement.clientWidth - box.offsetWidth;
+                }else if (lastX < 50){
+//                    左侧边界
+                    lastX = 0;
+                }
+                if(lastY > document.documentElement.clientHeight - box.offsetHeight -50){
+//                  底部边界   元素当前的top > 视口高度 - 元素高度
+                    lastY = document.documentElement.clientHeight - box.offsetHeight;
+                }else if(lastY < 50){
+//                  顶部边界
+                    lastY = 0;
+                }
+//              设置最终的位置给元素
+                box.style.left = lastX + 'px';
+                box.style.top = lastY + 'px';
+//              元素设置位置之后，元素才能可能碰到中间的盒子
+
+                var boxL = lastX + box.offsetWidth;
+                var imgL = imgNode.getBoundingClientRect().left;
+
+                var boxT = lastY + box.offsetHeight;
+                var imgT = imgNode.getBoundingClientRect().top;
+
+                var boxR = lastX;
+                var imgR = imgNode.getBoundingClientRect().left + imgNode.offsetWidth;
+
+                var boxB = lastY;
+                var imgB = imgNode.getBoundingClientRect().top + imgNode.offsetHeight;
+                
+                if(boxL < imgL || boxT < imgT || boxR > imgR || boxB > imgB){
+//                  代表碰不上
+                    imgNode.src = 'img/1.jpg'
+                }else {
+//                    代表碰上
+                    imgNode.src = 'img/2.jpg'
+                }
+            };
+            document.onmouseup = function () {
+//             移除鼠标移动和鼠标抬起事件
+                console.log('鼠标抬起');
+                document.onmousemove = null;
+                document.onmouseup = null;
+//               对低版本浏览器释放全局捕获  全局捕获有设置就得有释放
+                box.releaseCapture && box.releaseCapture();
+            };
+
+//            解除浏览器默认行为
+            return false;
+        };
+
+    }
+</script>
+</body>
+</html>

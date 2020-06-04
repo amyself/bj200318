@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul,li{
+            list-style: none;
+        }
+        img{
+            display: block;
+        }
+        .wrap{
+            width: 600px;
+            height: 400px;
+            background: pink;
+            margin: 50px auto;
+            overflow: hidden;
+            position: relative;
+        }
+        /*图片容器*/
+        .wrap > .list{
+            width: 4200px;
+            height: 100%;
+            position: absolute;
+            top:0;
+            left:-600px;
+        }
+        .wrap > .list>li{
+            float: left;
+        }
+        .wrap > .iconList{
+            position: absolute;
+            bottom:10px;
+            left:50%;
+            transform: translateX(-50%);
+        }
+        .wrap > .iconList>li{
+            width: 20px;
+            height: 20px;
+            background: pink;
+            border-radius: 50%;
+            float: left;
+            margin-right: 10px;
+            border: 1px solid #fff;
+        }
+        .wrap > .iconList > li.current{
+            background: grey;
+        }
+        /*左右两个箭头*/
+        .wrap > span{
+            position: absolute;
+            top:50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 60px;
+            font-size: 30px;
+            color: #fff;
+            line-height: 60px;
+            text-align: center;
+            background: rgba(110,110,110,0.8);
+            cursor: pointer;
+            opacity: 0;
+            transition: 1s;
+        }
+        .prev{
+            left:0;
+        }
+        .next{
+            right: 0;
+        }
+
+    </style>
+</head>
+<body>
+<!--轮播图主体结构     显示区域-->
+<div class="wrap">
+    <!--图片容器-->
+    <ul class="list">
+        <li><img src="./img/5.jpg" alt=""></li>
+        <li><img src="./img/1.jpg" alt=""></li>
+        <li><img src="./img/2.jpg" alt=""></li>
+        <li><img src="./img/3.jpg" alt=""></li>
+        <li><img src="./img/4.jpg" alt=""></li>
+        <li><img src="./img/5.jpg" alt=""></li>
+        <li><img src="./img/1.jpg" alt=""></li>
+    </ul>
+    <!--小圆点-->
+    <ul class="iconList">
+        <li class="current"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <span class="prev"> < </span>
+    <span class="next"> > </span>
+</div>
+<script type="text/javascript">
+    window.onload = function () {
+//     显示区域容器   （移入移出的时候需要停止和重启自动轮播     控制左右两个按钮的隐藏）
+        var wrap = document.querySelector('.wrap');
+//     图片容器  (操作left值 用来切换图片)
+        var list = document.querySelector('.list');
+//     左右两个按钮  （显示与隐藏    切换图片）
+        var prev = document.querySelector('.prev');
+        var next = document.querySelector('.next');
+//     小圆点集合  （高亮状态切换   点击小圆点 图片切换）
+        var iconList = document.querySelectorAll('.iconList li');
+//      定义图片宽度
+        var PAGE_WIDTH = 600;
+//        动画总时长
+        var time = 3000;
+//        动画帧时长     总时长/帧时长 = 总帧数(步数)
+        var itemTime = 30;
+//        显示图片张数    show_img * PAGE_WIDTH = 真最后一张（图片排列的倒数第二张）的left
+        var show_img = iconList.length;
+//        定义变量  保存上一次的索引
+        var index = 0;
+//        解决快速滑动bug      要想一个办法  让我动画没有执行完成之前  不能继续调用下一次
+        var isMoving = false;
+//       自动轮播
+//         var autoTimer = setInterval(function () {
+// //            模拟每过四秒钟  点击了一下 next按钮
+// //            本质就是调用翻页函数 传递true
+//             nextPage(true)
+//         },4000);
+//        移入移出 控制左右按钮
+        wrap.onmouseenter = function () {
+            prev.style.opacity = 1;
+            next.style.opacity = 1;
+            clearInterval(autoTimer);
+        };
+        wrap.onmouseleave = function () {
+            prev.style.opacity = 0;
+            next.style.opacity = 0;
+            autoTimer = setInterval(function () {
+              nextPage(true);
+            },4000);
+        }
+//      点击左右按钮  切换图片
+        prev.onclick = function () {
+            nextPage(false);
+        };
+        next.onclick = function () {
+            nextPage(true);
+        };
+//      点击小圆点切换到对应的图片
+        for (var i = 0; i < iconList.length; i++) {
+            iconList[i].index = i;
+//            iconList[0].index = 0;
+//            iconList[1].index = 1;
+//            iconList[2].index = 2;
+//            iconList[3].index = 3;
+//            iconList[4].index = 4;
+            iconList[i].onclick = function () {
+//                console.log(this.index)
+                nextPage(this.index);
+            }
+        }
+
+        function nextPage(next) {
+            if(isMoving){
+//                当isMoving 为true的时候 才会进入这个if当中 说明当前动画正在执行
+//                所以直接return这个函数 停止这次调用的操作
+              return;
+            }
+//            如果当前isMoving 为false 才可以执行到这里    说明当前轮播图没有执行动画
+//            函数正常执行 但是要更新isMoving的状态到true
+            isMoving = true;
+//            参数类型判断
+            if(typeof next === 'boolean'){
+//           总偏移量      移动一次 走的值   根据获取的正负值  直接就已经带着方向了
+                var offset = next ? -PAGE_WIDTH : PAGE_WIDTH;
+            }else {
+//                （当前点击索引 - 上一次的索引） * 图片宽
+                var offset = -(next-index) * PAGE_WIDTH;
+            }
+
+//          单次偏移   = 总偏移 / (总时长/帧时长)
+            var itemOffset = offset / (time / itemTime);
+//          获取list当前位置
+          var left = list.offsetLeft;
+//          当前位置 +  总偏移 = 终点的位置(这一次移动后   图片的位置)
+          var targetLeft = left + offset;
+          var timer = setInterval(function () {
+			  
+              left += itemOffset;
+//           left   =  -600       -606  -612   -618   -624
+//           itemOffset = -6
+//           当list的left的值 等于targetLeft  就说图片的动画执行完成了
+                if(left == targetLeft){
+                  clearInterval(timer);
+//                  边界值判断
+                    if(left == 0){//从真的第一张翻到了假的第五张   需要修正位置到 真的第五张
+//                        show_img * PAGE_WIDTH = 真最后一张（图片排列的倒数第二张）的left
+                        left = -show_img * PAGE_WIDTH;
+                    }else if(left == -(show_img+1)*PAGE_WIDTH){
+                        left = -PAGE_WIDTH;
+                    }
+//                  在这个判断中 当前位置等于终点位置 说明当前这一次的动画已经执行完成
+//                    这个时候需要把isMoving的状态 重置回false   避免下一次无法调用naxtPage方法
+                    isMoving = false;
+                }
+              list.style.left = left + 'px';
+          },itemTime);
+//          小圆点一样需要区分方向  在当前函数作用域内 形参next就是点击左或右按钮传递的布尔值
+            autoIcon(next);
+        }
+//      小圆点切换的逻辑和翻页的关系     翻页了就一定需要小圆点切换
+//        nextPage这个方法 只要执行了  我的小圆点就一定要切换
+        function autoIcon(next) {
+            if(typeof next === 'boolean'){
+ //        确定当前要显示的索引
+//            next如果为true  说明要去下一页  索引应该+1
+//            next如果为false  说明要去上一页  索引应该-1
+//            index在页面刚打开时 表示默认索引    当切换发生时 代表上一次的索引
+                var targetIndex = next ? index + 1 : index -1;
+            }else {
+//                next这个形参 只要能够进入到else里边  说明你当前传递的就是 点击的那个小圆点的索引
+                var targetIndex = next;
+            }
+
+//            小圆点边界值判断
+            if (targetIndex < 0){
+//                说明你在第一页  又点击了上一页按钮  这个时候小圆点应该去最后一个 索引最大值
+                targetIndex = iconList.length-1;
+            }else if (targetIndex > iconList.length-1){
+//                说明你在最后一页 又点击了下一页按钮 这个时候小圆点应该去第一个 索引为0
+                targetIndex = 0;
+            }
+//          给上一次的删除 高亮的class   给当前的添加高亮的class；
+            iconList[targetIndex].className = 'current';
+            iconList[index].className = '';
+//           更新索引
+            index = targetIndex;
+
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: #333;
+        }
+        .wrap{
+            width: 300px;
+            height: 80px;
+            line-height: 80px;
+            text-align: center;
+            margin: 100px auto;
+            border:2px solid #ddd;
+            color: #fff;
+            font-size: 30px;
+            position: relative;
+            box-sizing: border-box;
+        }
+        .top,.right,.left,.bottom{
+            position: absolute;
+            background: #fff;
+            transition: 0.3s;
+            opacity: 0;
+
+        }
+        .top,.bottom{
+            width: 0;
+            height: 2px;
+        }
+        .left,.right{
+            width: 2px;
+            height: 0;
+        }
+        .top{
+            top:-2px;
+            left:-100%;
+        }
+        .bottom{
+            bottom:-2px;
+            right:-100%;
+        }
+        .left{
+            left:-2px;
+            bottom:-100%;
+        }
+        .right{
+            right:-2px;
+            top:-100%;
+        }
+
+        .wrap:hover .top{
+            left:0;
+        }
+        .wrap:hover .right{
+            top:0;
+        }
+        .wrap:hover .bottom{
+            right:0;
+        }
+        .wrap:hover .left{
+            bottom:0;
+        }
+        .wrap:hover .top,.wrap:hover .bottom{
+            width: 100%;
+        }
+        .wrap:hover .left,.wrap:hover .right{
+            height: 100%;
+        }
+        .wrap:hover .left,.wrap:hover .right,.wrap:hover .top,.wrap:hover .bottom{
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        HTML5
+        <div class="top"></div>
+        <div class="right"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+    </div>
+</body>
+</html>

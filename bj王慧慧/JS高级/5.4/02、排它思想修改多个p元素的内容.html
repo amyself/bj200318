@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>我是段落1</p>
+<p>我是段落2</p>
+<p>我是段落3</p>
+<p>我是段落4</p>
+<p>我是段落5</p>
+<script type="text/javascript">
+  //  1.点击任意的一个p  让所有的p内容变成哈哈
+//    window.onload = function () {
+//
+////        获取所有的p
+//        var pList = document.querySelectorAll('p');
+////        给每个p都要绑定单击事件
+//        for (var i = 0; i < pList.length; i++) {
+////            在循环当中  pList相当于一次访问了这个伪数组当中的每一个dom
+//            pList[i].onclick = function () {
+////              点击之后 需要把每个p的内容都改成哈哈
+//                for (var j = 0; j < pList.length; j++) {
+//                    pList[j].innerHTML = '哈哈';
+//                }
+//            };
+//        }
+//    }
+//    2.点击任何一个p，点击的那个变成哈哈，其他的变成嘿嘿
+    window.onload = function () {
+      var pList = document.querySelectorAll('p');
+
+//      通过循环给每一个p标签绑定点击事件
+        for (var i = 0; i < pList.length; i++) {
+            pList[i].onclick = function () {
+//              点击之后，点击的那一个变成哈哈  其余的变成嘿嘿
+//              1.先让所有的都变成嘿嘿
+                for (var j = 0; j < pList.length; j++) {
+                    pList[j].innerHTML = '嘿嘿';
+                }
+//              2.再把点击的那个变成哈哈
+//                一共5个p元素 索引最大值是4
+//                pList[i].innerHTML = '哈哈';
+//                只要以后你们敢在事件回调函数当中直接使用外部for循环的循环变量，肯定给你报错
+//                因为内部事件回调函数执行的时候，循环早就执行完了，循环变量的值会变成结束判断的值+1
+//                this在事件回调函数当中，代表发生事件的那个元素对象（一般情况下就是事件源）
+                this.innerHTML = '哈哈';
+
+            }
+        }
+
+    }
+</script>
+</body>
+</html>

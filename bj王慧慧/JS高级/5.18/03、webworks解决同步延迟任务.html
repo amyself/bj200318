@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+//  function fun() {
+//      var a = 0;
+//      for (var i = 0; i < 50000; i++) {
+//          for (var j = 0; j < 50000; j++) {
+//              a++;
+//          }
+//      }
+//      return a;
+//  }
+//  如果有一个同步且非常耗时的任务，就会给用户造成特别差的体验
+//  在这之前出现这种状况，前端毫无办法，只能交给服务端去做
+//  直到web workers出现  情况才有所改善，但是都不怎么使用
+//  web workers是模拟分线程执行的
+//Worker('myfun.js')    里边传递的是一个路径
+var myWorker = new Worker('myfun.js');
+
+myWorker.postMessage('哈哈');
+myWorker.onmessage = function (event) {
+  event = event || window.event;
+  console.log(event.data)
+};
+  console.log('今天风真大');
+
+
+
+</script>
+</body>
+</html>

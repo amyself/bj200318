@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//数据类型的手动转换，其实本质上是从字符串当中去提取数字（和数据的强制转化隐式转换不一样）
+			//如果给的不是字符串，那么会转化为字符串，然后再提取
+			//parseInt()   从字符串当中提取整数  
+			//parseFloat() 从字符串当中提取小数
+			//两个方法要求字符串中数字字符必须在前面，才能提
+			
+			var str = 'audaiusd123';//NaN  
+			str = '     123sjygakdj';//123
+			str = '     12.34uaysgda';
+			str = '     12.34.56sdasdggada'
+			console.log(parseInt(str));
+			console.log(parseFloat(str));
+			
+//			parseInt(678/10%10)
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

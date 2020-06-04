@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    function Foo() {//函数定义   没调用不管
+        getName = function () { alert (1); };
+        return this;
+    }
+    Foo.getName = function () { alert (2);};//相当于往函数对象内部添加了一个属性
+    Foo.prototype.getName = function () { alert (3);};//foo函数的显式原型对象 这是给实例化对象用的
+    function getName() { alert (5);}
+    var getName = function () { alert (4);};//  覆盖上边
+    //请写出以下输出结果：
+    Foo.getName();//2    调用函数对象上的方法
+
+//    getName();//4   发生了覆盖 所以输出后边的值
+
+// 首先foo作为一般函数执行 因为自身没有getName 所以修改外部（window）的getName
+//   返回this    这个时候this的指向是全局  所以相当于 window.getName();
+//    Foo().getName();//1
+//    getName();//1
+//    new Foo.getName();//2  当做构造函数使用   最终执行结果
+
+//    new foo()先看成一个整体去执行   生成实例化对象  实例化对象的方法就是原型里的方法
+//    new Foo().getName();//3
+//    new new Foo().getName();//3
+//    但是不会报错   会先把前边的那个new暂时舍弃
+//  把第二个new foo() 当做构造函数调用  返回实例化对象
+//    实例化对象.getName（）   这个时候最前边的new就可以执行了
+//    把这个整体当做了 构造函数调用     new 实例化对象.getName（）   只要返回值就可以了
+</script>
+</body>
+</html>

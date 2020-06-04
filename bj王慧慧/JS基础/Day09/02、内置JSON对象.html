@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//JSON是js内置的对象，就是别人给你已经创建好的一个对象，直接拿来用
+			
+			//json是一种数据格式
+			//用来让前后端进行数据交互的统一格式
+			//前端往后端去传输数据的时候必须转化为json格式,json本质上是一个字符串，叫做json串
+			//parse， stringify是JSON对象内部的两个方法，专门用来让我们处理json数据用的
+			
+			//前端json数据的格式，必须是对象或者对象的数组  {}   [{},{},{}]才能转化
+			
+			var username = 'zhaoliying';
+			var age = 33;
+			//前端往后台传递
+			//1、先把数据封装为一个对象
+			var obj = {
+				username:username,
+				age:age
+			}
+			//2、通过JSON对象的stringify方法把对象转化为json数据
+			var result = JSON.stringify(obj);
+			console.log(obj);
+			console.log(result);//转化出来的json串，就可以往后台去传
+			
+			
+			
+			
+			//后台往前端传，传递过来的也一定是json串，我们需要从json串当中获取我们需要的数据
+			//先把json串转化为前端的对象
+			var result1 = JSON.parse(result);
+			//从转化的对象当中去取数据
+			console.log(result);
+			console.log(result1.username);
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

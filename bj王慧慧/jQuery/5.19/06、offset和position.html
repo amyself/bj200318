@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box1{
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            top:20px;
+            left:10px;
+            background: pink;
+        }
+        .box2{
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            /*top:50px;*/
+            background: yellowgreen;
+        }
+        .inner{
+            width: 150px;
+            height: 150px;
+            background: orange;
+            margin-left: 50px;
+        }
+        .box3{
+            position: absolute;
+            top:300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <div class="inner">
+            <div class="box2"></div>
+        </div>
+
+    </div>
+<div class="box3">
+    <button id="btn1">读取offset和position</button>
+    <button id="btn2">设置offset</button>
+</div>
+<script type="text/javascript" src="js/jquery-1.10.1.js"></script>
+<script type="text/javascript">
+  //   打印box1和box2相对于页面左上角和相对于包含块左上角的位置
+//  offset 返回一个对象 有left和top两个属性  相对于页面左上角的位置   没有单位 但是以像素计
+//  position 返回一个对象  有left和top两个属性 相对于包含块左上角的位置 没有单位 但是以像素计
+    $('#btn1').click(function () {
+//      console.log($('.box1').offset());
+//      console.log($('.box2').offset());
+//        console.log($('.box1').position())
+        console.log($('.box2').position())
+    });
+//    设置box2的位置
+//offset  传递一个对象 可以设置元素的位置 设置时不需要带单位
+    $('#btn2').click(function () {
+        $('.box2').offset({
+            left:300,
+            top:200
+        })
+    })
+
+</script>
+</body>
+</html>

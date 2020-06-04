@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button>测试1</button>
+<button>测试2</button>
+
+<button>测试4</button>
+<button id="test">测试3</button>
+<script type="text/javascript" src="js/jquery-1.10.1.js"></script>
+<script type="text/javascript">
+    /* jQuery对象是一个包含所有匹配的任意个数dom元素的伪数组对象
+    * 需求：
+    *     1、统计一共多少个按钮
+    *     2、取出第2个button的文本
+    *     3、输出所有的button标签体文本
+    *     4、输出测试三是所有按钮当中的第几个
+    * */
+    $(function () {
+      var btns = $('button');
+//      1、统计一共多少个按钮
+      console.log(btns.length);
+//      2、取出第2个button的文本
+//       jQuery对象和dom对象互转
+//   $(this)    dom => jQuery     把dom对象传递给jQuery核心函数 返回的就是这个dom对象对应的jQuery对象
+//      jQuery => dom  索引取值 或者遍历  访问个体 就是一个dom
+        console.log($(btns[1]).html());
+      console.log(btns[1].innerHTML);
+//        var arr = [1,2,3,4,5];
+//        console.log(arr[1])
+//       这个方法是在jQuery对象上  专门用来遍历jQuery对象的
+//       之前学过的$.each   是通用遍历方法  用来遍历常规的数组或者对象
+        btns.each(function () {
+//         在each的函数内部    你的this会指向每一个遍历的dom
+            console.log(this.innerHTML);
+        });
+//      4、输出测试三是所有按钮当中的第几个  $(this).index();
+        console.log($('#test').index());
+    })
+</script>
+</body>
+
+
+</html>

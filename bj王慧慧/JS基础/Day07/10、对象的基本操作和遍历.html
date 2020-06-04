@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var obj = {
+				name:'赵丽颖',
+				age:33,
+				eat:function(){
+					console.log('吃饭');
+				},
+				'con-type':100
+			}
+			
+			console.log(obj);//打印的对象内部也存在下面添加的属性，因为浏览器优化后结果
+			
+			//如果你想读写对象的数据有两种方式
+			//1、.语法和[]语法；
+			//[]语法是通用的语法，所有的属性都可以去操作
+			
+			//[]语法
+//			增
+//			obj['height'] = 165;//[]直接操作对象内部属性的时候必须带引号，不带[]内部就是变量。
+//			console.log(obj);
+////			改
+//			obj['name'] = '杨幂';
+//			console.log(obj);
+//			//对于增和改    有则更改，无则添加
+////			删
+//			delete obj['age']; //删除
+//			console.log(obj);
+////			查
+//			console.log(obj['con-type']);//读取obj当中con-type属性的值
+//			console.log(obj['eat']);
+			
+			
+			//点语法
+			//增
+			obj.height = 165;
+			console.log(obj);
+//			//改
+			obj.name = '杨幂';
+			console.log(obj);
+//			//删
+			delete obj.age;
+			console.log(obj);
+//			//查
+			console.log(obj.name);
+			console.log(obj.eat);
+			
+			
+			//点语法和[]谁好
+			//一般咱们使用的时候都使用的是点语法，但是在某些特定场合下我们点语法没法用
+			//此时我们还得用[]语法
+			//1、属性名如果不符合标识符规则  点语法无法操作；
+//			console.log(obj.con-type);//不能使用点语法
+			console.log(obj['con-type']);//只能使用中括号语法
+			
+			//2、如果我们操作的属性存储在一个变量当中，想用这个变量的值作为属性去操作
+			var a = 'gender';
+//			obj.a = 'female';//它添加的属性是a  属性值是'female'
+			obj[a] = 'female';//第一步：先从a变量当中取除a的值，并且自动转化字符串
+							  //第二步：再以转化好的这个字符串为属性，去操作对象
+							  
+							  
+			var b = true;
+			obj[b] = 'haha';
+			console.log(obj);				  
+							  
+							  
+			var c = 12.345;
+			obj['c'] = 'heihei';    //obj['c'] ====== obj.c
+			console.log(obj);
+							  
+			
+			
+			
+			
+			//对象的遍历：
+			//数组的遍历使用for循环遍历
+			//对象的遍历使用for in循环去遍历,for in遍历的是对象的属性
+			for(var key in obj){
+				console.log(key,obj[key]);
+			}
+
+			
+			
+			
+			//数组是数组，数组也是对象(特殊的对象，因为有序)
+			var arr = [1,2,3];
+			arr.heihei = 'hehe';//把数组当对象使用
+			//这是一个对象，里面有数字属性还有其它属性，数字属性对应的部分我们可以认为是数组
+			//其它的属性我们可以认为是对象的属性
+			//for循环遍历数组的时候，只不过是再遍历这个对象数字属性的值而已
+			//for in循环遍历数组的时候，不管数字属性和非数字属性都能拿到（length除外，length默认不能遍历）
+			
+			for(var i = 0; i < arr.length; i++){
+				console.log(arr[i]);//数组当数组去遍历的时候，用for，拿的就是数字属性（下标）的值
+			}
+			
+			for(var key in arr){
+				console.log(key,arr[key]);//数组当对象去遍历的时候，用for。。in 拿的是所有的属性和值
+			}
+			
+			//函数是函数，函数也是对象(特殊的对象，因为可以执行)
+			
+			function fn(){
+				console.log(111);
+			}
+			console.log(fn);//把函数当函数数据去打印，只能打印到函数表面数据	
+			console.dir(fn);//把函数当对象数据去打印，能打印函数内部存储的数据
+			
+			
+//			函数当函数用  加括号 
+			fn()//函数当函数用  加括号 ,当函数去用是再执行函数表面的数据代码
+			fn.a = 100;//函数当对象用 ，给函数对象内部添加属性为a 值为100
+			
+			console.log(fn);//把函数当函数数据去打印，只能打印到函数表面数据	
+			console.dir(fn);
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

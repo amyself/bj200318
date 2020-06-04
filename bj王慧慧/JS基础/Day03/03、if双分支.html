@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//语法：
+			/*
+			 if(){
+			 	代码块
+			 }else{
+			 	代码块
+			 }
+			 */
+			//执行过程
+			//1、计算if小括号当中的值
+			//2、把小括号当中的值转化为布尔值
+			//3、根据小括号当中的值得真假决定是走哪一个花括号当中代码
+			//如果是真，就走if花括号当中的代码块，如果是假就走else花括号当中的代码
+			
+			//理解： 双分支其实和单分支 都可以理解为双分支，单分支只是在处理条件为真的时候，条件为假
+			//什么都不做（不处理），双分支其实是单分支的增强版，条件为真和假都要处理，只是处理的代码不同
+			
+			//单双分支其实都是从真假角度去看待一个事情，把这个事情分成了两个方面去考虑
+			
+			
+			
+			
+//			1、天气好就去看电影，不好就写代码
+//			var weather = false;
+//			if(weather){
+//				console.log('我们一起看电影');
+//			}else{
+//				console.log('我们苦逼写代码');
+//			}
+			
+			
+//			var weather = parseFloat(prompt('请输入代表天气的数据'));
+//			if(weather == 1){
+//				console.log('我们一起看电影');
+//			}else{
+//				console.log('我们苦逼写代码');
+//			}
+	
+//			2、输入一个数，这个数如果大于0就-1，不大于0就+1
+			
+			var num = parseFloat(prompt('请输入一个数'));
+			
+//			if(num > 0){
+////				num--;
+////				--num;
+////				num = num - 1;
+//				num -= 1;
+//					
+//
+//
+////				console.log(--num)
+//			}else{
+////				num++;
+////				++num;
+////				num = num + 1;
+//				num += 1;
+//				
+//
+////				console.log(++num)
+//			}
+//			console.log(num);//这个代码是因为在每个分支都是重复的，可以提到外面
+			
+			
+			//如果是双分支，并且双分支内部的代码只有一行，可以替换成三元表达式
+			
+			num > 0?num -= 1:num += 1;
+			console.log(num);
+			
+			
+			
+			
+			</script>
+	</body>
+</html>

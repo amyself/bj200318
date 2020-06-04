@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<img id="logo" src="https://gss0.bdstatic.com/5bVWsj_p_tVS5dKfpU_Y_D3/res/r/image/2017-05-19/6fec71d56242b74eb24b4ac80b817eac.png">
+<script type="text/javascript" src="js/jquery-1.10.1.js"></script>
+<script type="text/javascript">
+  //输出图片的宽度
+  var $logo = $('#logo');
+//  图片未加载完成  如果直接获取图片的信息 肯定是拿不到的
+  console.log($logo.width());
+//  jQuery提供的加载事件  是document.ready  指的是文档（dom）加载完成后的回调 不包含其他资源
+//  document.ready 可以指定多次   而window.onload 只能指定一次
+  $(function () {
+      console.log('jQuery输出1：'+$logo.width());
+  });
+  $(function () {
+      console.log('jQuery输出2：'+$logo.width());
+  });
+//  $(document).ready(function () {
+//
+//  });
+//     window.onload 是需要加载完外部资源才会执行的 如：html  css js  图片等
+  window.onload = function () {
+      console.log('onload输出1：'+$logo.width());
+  };
+  window.onload = function () {
+      console.log('onload输出2：'+$logo.width());
+  };
+    window.onload = function () {
+      $('.box')
+    }
+
+</script>
+</body>
+</html>

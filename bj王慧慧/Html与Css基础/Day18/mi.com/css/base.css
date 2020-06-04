@@ -1,0 +1,31 @@
+/*html{*/
+/*    min-width: 1226px;*/
+/*}*/
+body{
+    font: 14px/1.5 Helvetica Neue,Helvetica,Arial,Microsoft Yahei,Hiragino Sans GB,Heiti SC,WenQuanYi Micro Hei,sans-serif;
+    color: #333;
+    min-width: 1226px;
+    position: relative;
+/*    使body成为定位元素*/
+}
+.clearfix::before,.clearfix::after{
+    content: '';
+    /*解决重叠外边距，用table*/
+    display: table;
+    clear: both;
+}
+/*重置图片的样式*/
+img{
+    width: 100%;
+    vertical-align: top;
+}
+/*确定网页主容器的宽度*/
+.w{
+    width: 1226px;
+    margin: 0 auto;
+}
+/*清除a标签的默认样式*/
+a{
+    text-decoration: none;
+    color: inherit;
+}

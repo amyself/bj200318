@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//函数本身也就是数据，数组也是数据，基本数据也是数据，都是可以当函数参数去传
+			//函数（对象数据）当参数传递的是函数的地址
+			//函数作用域不关心在哪调用，而关心在哪定义
+//			function fun(func) {
+//	  			var num = 20;
+//	  			func();
+//			}
+//			
+//			function fun2() {
+//				console.log(num);//10
+// 不是20,因为作用域在定义的时候就已经确定好了
+//			}
+//			
+//			var num;
+//			num = 10;
+//			
+//			
+//			fun(fun2);
+			
+			
+			function fn(arr){
+				arr[1] = 22;
+				console.log(arr);
+			}
+			var arr;
+			arr = [1,2,3,4];
+			fn(arr);
+			console.log(arr);
+			
+			
+			
+		</script>
+	</body>
+</html>

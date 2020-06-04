@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			
+			#box{
+				width: 300px;
+				height: 300px;
+				background-color: hotpink;
+				
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="box">
+			
+		</div>
+		
+		<script type="text/javascript">
+			//点击div 让div的宽度变成500  高度变成500   背景色变成天蓝
+			
+			window.onload = function(){
+				var box = document.getElementById('box');
+				
+				box.onclick = function(){
+					
+					console.log(box.style.width);//从行内式拿不到样式的，因为一开始行内是没有这个样式的
+					
+					box.style.width = 500 + 'px';
+					box.style.height = '500px';
+					box.style.backgroundColor = 'skyblue';
+					
+					console.log(box.style.width);//设置了行内样式之后，才能读取到；就算能读取也不是这样去读取；
+					
+				}
+			}
+			
+			//js操作样式的时候，都是操作的行内样式（内敛样式），只有是内敛才会让权限最高，才能保证js后期操作的样式被生效；
+			//js如果一开始就去读取元素的某个样式，是读取不到的，因为一开始行内没有写样式；
+			//一般我们在操作样式的时候，设置可以直接设置，读取的时候后面会有特定的方法去读；现在没办法；
+			
+		</script>
+	</body>
+</html>

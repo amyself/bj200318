@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//1、封装函数实现打印100遍i love you~
+			//函数定义的时候要兼顾思考函数调用
+			
+			//函数就是一个工具，只会干，至于谁干  什么时候干，干谁，所有不明确的东西都是参数
+			//函数定义参数和返回值     有没有参数，有没有返回值   题意、语义说了算
+		
+//			function printLove(){
+//				for(var i = 0; i < 100; i++){
+//					console.log('i love you~');
+//				}
+//			}
+//			
+//			printLove(1);
+			
+			
+			//2、封装函数实现打印n遍你想打的内容~
+			
+//			function printContent(n,content){
+//				for(var i = 0; i < n; i++){
+//					console.log(content);
+//				}
+//			}
+//			printContent(10,'haha');
+//			printContent(100,'i love you~');
+
+
+
+			//3、封装函数实现2+3的和(函数名字最好是动词)
+//			function add(){
+//				console.log(5);//打印不代表把5返回出去，外部就办法使用
+//				return 2 + 3;  //把求出的结果从函数内部，返回到外部去，我们在外部可以使用这个值
+//			}
+//			
+//			var result = add();
+//			console.log(result);
+			
+			
+			//4、封装函数实现两个数的和(函数名字最好是动词)
+
+			function add(a,b){
+				return a + b;
+			}
+//			var result = add(10,20);
+//			console.log(result);
+			//下面这一行，也可以直接打印最终的结果，只是这个结果没保存，以后没法用
+			console.log(add(10,20));
+			
+			
+			
+			//函数分类：两种思路
+			//1、自定义函数和系统函数     alert() 系统函数（小布已经帮你定义好了，你直接使用）
+			//函数必须定义才能调用
+			
+			
+			//2、自定义函数按照参数和返回值：
+			// 1)无参无返回值（没有return,返回undefined）
+			// 2)无参有返回值
+			// 3)有参无返回值
+			// 4)有参有返回值（以后大部分函数都是有参也有返回值）
+			
+			
+			//所有的函数，都可以有参数和有返回值，只不过参数和返回值看你要不要，不要相当于没用
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

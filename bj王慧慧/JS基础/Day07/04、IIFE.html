@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			a{
+				text-decoration: none;
+			}
+			
+			input{
+				outline: none;
+			}
+			
+			ul,li{
+				list-style: none;
+			}
+			
+			img{
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<script type="text/javascript">
+//		函数IIFE
+//		Immediately Invoked Function Expression意为立即调用的函数表达式，也就是说，
+//		声明函数的同时立即调用这个函数。
+		//也叫做匿名函数自调用
+// 函数声明定义的有名函数
+//		function fn(){
+//			console.log('i love you~');
+//		}
+//		fn();
+// 函数表达式定义的有名函数
+//		var fn = function(){
+//			console.log('i love you~');
+//		}
+//		fn();
+//		fn();
+
+	//  上面两种函数都叫有名函数
+	
+		var a = 10
+		//匿名函数调用
+		//匿名函数自调用，立即调用函数表达式；
+		(function(){
+			console.log('i love you~');
+		})();//SyntaxError  语法错误，代码不执行就会检查语法
+		
+		// 两个不是同一个函数,产生了新的地址,和中括号定义的数组一样
+//		(function(){
+//			
+//		})();  最后的括号是调用的小括号，可以用来传实参    function后的小括号是形参小括号
+		
+
+//		特点:*************************************
+		//1、函数定义的同时调用
+		//2、只能调用一次，以后不可能在调用这个函数（如果想调用多次，必须使用有名函数）
+		//3、匿名函数自调用，函数整体不会发生预解析，但是函数内部执行会预解析
+		
+		//在哪用到
+		//1、项目初始化的代码放到匿名函数当中保证执行一次
+		//2、实现框架的封装 jQuery（模块化）
+//		(function( window, undefined ) {
+//			//jQuery的源码
+//		})( window );
+
+
+
+		//和匿名函数理解一样
+//		var arr = [1,2,3];
+//		console.log(arr[1]);
+		//上面的写法  arr内部存储的这个数组数据可以复用
+		
+		console.log([1,2,3][1]);//如果没有变量存储数组，只能使用一次，
+		 						//没法再去使用原来这个数组的数据
+		 						
+		 		// 只要出现中括号数组,就代表是一个新的数组,就会产生一个新的地址值				
+		console.log([1,2,3][0]);//拿的是一个新数组的元素，和上面的数组不是一个
+		
+		</script>
+	</body>
+</html>

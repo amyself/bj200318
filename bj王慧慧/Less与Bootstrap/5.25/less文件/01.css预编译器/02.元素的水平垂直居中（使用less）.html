@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--如果要在页面当中直接使用less写法  那么style标签的type必须指定为text/less
+        如果当前style标签的type类型为less  就必须使用less的js文件进行编译  不然就算写的是css也不能够识别
+    -->
+    <style type="text/less">
+        @zero:0;
+        .box{
+            width: 400px;
+            height: 400px;
+            background: pink;
+            position: absolute;
+            top: @zero;
+            right: @zero;
+            bottom: @zero;
+            left: @zero;
+            margin: auto;
+        }
+        .inner{
+            width: 200px;
+            height: 200px;
+            background: yellowgreen;
+            position: absolute;
+            top: @zero;
+            right: @zero;
+            bottom: @zero;
+            left: @zero;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="inner"></div>
+</div>
+<script type="text/javascript" src="js/less.js"></script>
+</body>
+
+</html>

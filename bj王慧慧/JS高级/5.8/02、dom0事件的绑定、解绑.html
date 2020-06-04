@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <button id="btn">按钮</button>
+<script type="text/javascript">
+  window.onload = function () {
+    var box = document.getElementById('box');
+    var btn = document.getElementById('btn');
+//    dom0绑定单击事件
+      box.onclick = function () {
+        console.log('北京今天下雨了');
+      };
+//      dom0事件如果添加同一类型的事件多次，后面的会把前面的覆盖
+      box.onclick = function () {
+        console.log('晚上应该吃火锅');
+      }
+//    dom0解绑 点击按钮之后解绑dom0事件
+      btn.onclick = function () {
+//          dom0事件解绑的本质 就是把事件属性和事件回调函数 断开连接
+          box.onclick = null;
+      }
+  }
+</script>
+</body>
+</html>

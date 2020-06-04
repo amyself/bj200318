@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        /*禁止浏览器滚动条*/
+        html,body{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        #wrap{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: pink;
+            position: relative;
+        }
+        #wrap .content{
+            position: absolute;
+            left:0;
+            top:0;
+        }
+        #wrap .scrollBar{
+            width: 30px;
+            height: 100%;
+            position: absolute;
+            right: 0;
+            top: 0;
+            background: skyblue;
+            border-left: 1px solid orange;
+            border-right: 1px solid orange;
+        }
+        #wrap .scrollBar .scrollIn{
+            position: absolute;
+            top:0;
+            left:50%;
+            transform: translateX(-50%);
+            width: 26px;
+            height: 100px;
+            background: coral;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <div class="content"></div>
+    <!--自定义滚动条结构-->
+    <!--滑槽-->
+    <div class="scrollBar">
+        <!--滑块-->
+        <div class="scrollIn">
+
+        </div>
+    </div>
+
+</div>
+<script type="text/javascript">
+window.onload = function () {
+//  获取滑块
+    var scrollIn = document.querySelector('.scrollIn');
+    var content = document.querySelector('.content');
+    var scale = 0;
+//    创建数据
+    for (var i = 0; i < 200; i++) {
+        content.innerHTML += i+'<br>';
+    };
+//    视口发生改变时  触发的回调函数
+    window.onresize = function () {
+        scrollInAutoHeight();
+
+    }
+    scrollInAutoHeight();
+    function scrollInAutoHeight() {
+        //      动态设置滚动条高度
+//    滑块的高度 / 滑槽的高度 = 滑槽的高度 / 内容的高度 = 滑块的滚动距离 / 内容的滚动距离
+        scale = document.documentElement.clientHeight / content.offsetHeight;
+        scrollIn.style.height = document.documentElement.clientHeight * scale + 'px';
+    }
+
+//   给滑块绑定相应的事件
+    scrollIn.onmousedown = function (event) {
+        event = event || window.event;
+//        元素起始位置
+        var eleY = scrollIn.offsetTop;
+//        鼠标起始位置
+        var startY = event.clientY;
+        scrollIn.setCapture && scrollIn.setCapture();//对低版本浏览器开启全局捕获
+        document.onmousemove = function (event) {
+            event = event || window.event;
+//            鼠标结束位置
+            var endY = event.clientY;
+            var disY = endY - startY;
+            var lastY = eleY + disY;
+//          临界值判断   大于最大值 等于最大值   小于最小值 等于最小值
+            if(lastY > document.documentElement.clientHeight - scrollIn.offsetHeight){
+                lastY = document.documentElement.clientHeight - scrollIn.offsetHeight;
+            }else if(lastY < 0){
+                lastY = 0;
+            }
+
+            scrollIn.style.top = lastY + 'px';
+//    滑块的高度 / 滑槽的高度 = 滑槽的高度 / 内容的高度 = 滑块的滚动距离 / 内容的滚动距离
+//          内容跟随移动
+            var contentDis = lastY / scale;
+            content.style.top = -contentDis + 'px';
+        };
+        document.onmouseup = function () {
+            document.onmousemove = document.onmouseup = null;
+//            释放全局捕获   有开启就要有释放
+            scrollIn.releaseCapture && scrollIn.releaseCapture();
+        };
+        return false;
+    }
+    
+    document.addEventListener('mousewheel',scrollMove);
+    document.addEventListener('DOMMouseScroll',scrollMove);
+    var speed = 10;
+    function scrollMove(event) {
+      event = event || window.event;
+//      判断浏览器
+        if(event.wheelDelta){
+//          ie/chrome
+            if(event.wheelDelta > 0){
+//              上
+                speed = -10;
+            }else{
+//                下
+                speed = 10;
+            }
+        }else if(event.detail){
+//          firfox
+            if(event.detail < 0){
+//              上
+                speed = -10;
+            }else{
+//                下
+                speed = 10;
+            }
+        }
+//      代码执行到此处  我要的就是最终的结果，向上还是向下  不需要关心什么浏览器滚动的
+        var scrollDis = scrollIn.offsetTop + speed;
+        if(scrollDis > document.documentElement.clientHeight - scrollIn.offsetHeight){
+            scrollDis = document.documentElement.clientHeight - scrollIn.offsetHeight;
+        }else if(scrollDis < 0){
+            scrollDis = 0;
+        }
+        scrollIn.style.top = scrollDis+'px';
+//        内容的
+        var contentDis = -scrollDis / scale;
+        content.style.top = contentDis + 'px';
+    }
+}
+</script>
+</body>
+</html>

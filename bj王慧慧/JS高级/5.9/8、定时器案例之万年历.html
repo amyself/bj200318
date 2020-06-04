@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2></h2>
+<script type="text/javascript">
+  var hNode = document.querySelector('h2');
+  
+  function getDateTimeString() {
+    var date = new Date();
+    var year = date.getFullYear();
+//    月份返回的是0-11  所以要+1
+    var month = date.getMonth() + 1;
+    var day = date.getDate();
+    var time = date.toLocaleTimeString();
+
+    return '现在是' + year + '年' + month + '月' + day + '日' + time;
+  }
+  setInterval(function () {
+    var result = getDateTimeString();
+    hNode.innerHTML = result;
+  },1000)
+</script>
+
+</body>
+</html>

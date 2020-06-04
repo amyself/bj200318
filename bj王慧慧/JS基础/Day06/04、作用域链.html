@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+//			var a = 0;
+			function fn1(){
+//				var a = 1;
+				function fn2(){
+//					var a = 2;
+					function fn3(){
+//						var a = 3
+						console.log(a);//3
+					}
+					fn3();
+				}
+				fn2();
+			}
+			
+			fn1();
+
+			//作用域链：
+			//和作用域完全不是一个东西
+			//作用域链描述的是程序查找变量的过程
+			//首先在自己的作用域当中去查找，如果查找不到，去到上级作用域去查找，查找就用
+			//查不到继续往上查找，直到找到真正的全局，找到就用，找不到报错（引用错误，这个变量没定义）
+			
+			//作用域链的顶端 一定是全局；
+			//作用域链是真实存在的，我们后期是可以看到的
+			//作用域是函数定义好就存在的，而作用域链是函数调用的时候才有的；
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

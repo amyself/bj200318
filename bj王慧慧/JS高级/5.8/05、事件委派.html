@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul>
+        <li>我是列表项1</li>
+        <li>我是列表项2</li>
+        <li>我是列表项3</li>
+        <li>我是列表项4</li>
+        <li>我是列表项5</li>
+        <li><span>我是列表项6</span></li>
+    </ul>
+<script type="text/javascript">
+  window.onload = function () {
+    var liNodes = document.querySelectorAll('li');
+
+//      for (var i = 0; i < liNodes.length; i++) {
+//          liNodes[i].onmouseover = function () {
+//            this.style.backgroundColor = 'pink';
+//          };
+//          liNodes[i].onmouseout = function () {
+//              this.style.backgroundColor = 'white';
+//          }
+//      }
+
+
+//      事件委派
+//      1、把事件监听不在给子元素了 ，而是给父元素
+//      2、当我们对目标元素触发事件的时候，这个事件会冒泡到父元素身上,父元素身上刚好有事件监听
+//      我们在父元素的事件监听中去获取事件的目标元素，然后处理目标元素
+//      event.target:目标元素代表鼠标真正触发事件的那个元素（代表最初的，最内部的）
+      var ulNode = document.querySelector('ul');
+
+      ulNode.onmouseover = function (event) {
+//        this.style.backgroundColor = 'pink';
+          console.log(event);
+          if(event.target.nodeName == 'LI'){
+              event.target.style.backgroundColor = 'pink';
+          }else if (event.target.parentNode.nodeName == 'LI'){
+              event.target.parentNode.style.backgroundColor = 'pink';
+          }
+      }
+      ulNode.onmouseout = function (event) {
+          if(event.target.nodeName == 'LI'){
+              event.target.style.backgroundColor = 'white';
+          }else if(event.target.parentNode.nodeName == 'LI'){
+              event.target.parentNode.style.backgroundColor = 'white';
+          }
+      }
+  }
+</script>
+</body>
+</html>
